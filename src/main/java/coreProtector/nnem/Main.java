@@ -15,7 +15,7 @@ public class Main {
         // on applique le panel CF GamePanel
         GamePanel gamePanel= new GamePanel();
         window.add(gamePanel);
-adzafazfzefezf
+
         window.pack(); // pour que le panel soit visible
         window.setLocationRelativeTo(null); // pour que la fenetre soit au centre
         window.setVisible(true);//pour que la fenetre soit visible

@@ -16,7 +16,7 @@ public class GamePanel extends JPanel {
     final int screenHeight=tileSize*maxSreenRow;//    ^
     //-------------------------------------
 
-
+azafzafza
     // creer un un panel qui va prendre toutes les info utiles de l'ecran pour y afficher
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));

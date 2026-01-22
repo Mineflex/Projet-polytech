@@ -19,20 +19,23 @@ public class TileManager {
         this.gp=gp;
 
         //ecrire le nombre de tiles dans le jeux
-        tile= new Tile[1];
+        tile= new Tile[10];
         mapTileNumber= new int[gp.maxWorldCol][gp.maxWorldRow];
 
 
-        getTileImage("/mapTiles/grass.png");
-        loadMap();
+        getTileImage();
+        loadMap("/maps/mapOverworld.txt");
     }
 
-    public void getTileImage(String filePath){
+    public void getTileImage( ){
 
         try {
 
             tile[0]=new Tile();
-            tile[0].image= ImageIO.read(getClass().getResourceAsStream(filePath));
+            tile[0].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/grass.png"));
+
+            tile[1]=new Tile();
+            tile[1].image= ImageIO.read(getClass().getResourceAsStream("/playerSprites/p1.png"));
 
 
         }catch (IOException e){
@@ -41,9 +44,9 @@ public class TileManager {
 
     }
 
-    public void loadMap(){
+    public void loadMap(String map){
         try{
-            InputStream is=getClass().getResourceAsStream("/maps/mapOverworld.txt");
+            InputStream is=getClass().getResourceAsStream(map);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col=0;

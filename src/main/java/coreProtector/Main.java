@@ -1,10 +1,8 @@
-package coreProtector.nnem;
+package coreProtector;
 
-import coreProtector.nnem.gameGestion.GamePanel;
+import coreProtector.gameGestion.GamePanel;
 
 import javax.swing.*;
-import java.awt.*;
-import java.nio.file.Path;
 
 public class Main {
 

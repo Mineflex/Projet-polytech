@@ -1,4 +1,4 @@
-package coreProtector.nnem.gameGestion;
+package coreProtector.gameGestion;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

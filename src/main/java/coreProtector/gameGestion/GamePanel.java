@@ -1,4 +1,4 @@
-package coreProtector.nnem.gameGestion;
+package coreProtector.gameGestion;
 
 import javax.swing.*;
 import java.awt.*;

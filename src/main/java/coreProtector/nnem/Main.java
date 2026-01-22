@@ -27,6 +27,6 @@ public class Main {
         window.setVisible(true);//pour que la fenetre soit visible
 
         gamePanel.startGameThread();
-
+//
     }
 }

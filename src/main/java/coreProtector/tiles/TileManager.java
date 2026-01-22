@@ -37,6 +37,9 @@ public class TileManager {
             tile[1]=new Tile();
             tile[1].image= ImageIO.read(getClass().getResourceAsStream("/playerSprites/p1.png"));
 
+            tile[2]=new Tile();
+            tile[2].image= ImageIO.read(getClass().getResourceAsStream("/playerSprites/p2.png"));
+
 
         }catch (IOException e){
             e.printStackTrace();
@@ -44,34 +47,41 @@ public class TileManager {
 
     }
 
-    public void loadMap(String map){
-        try{
-            InputStream is=getClass().getResourceAsStream(map);
+    public void loadMap(String map) {
+        try {
+            InputStream is = getClass().getResourceAsStream(map);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
-            int col=0;
-            int row=0;
+            int col = 0;
+            int row = 0;
 
-            while (col<gp.maxWorldCol && row<gp.maxWorldRow){
-                String line= br.readLine();
 
-                while (col<gp.maxWorldCol){
-                    String numbers[] =line.split(" ");
+            while (row < gp.maxWorldRow) {
+                String line = br.readLine();
 
+                if (line == null) break;
+
+
+                String numbers[] = line.split(" ");
+
+
+                while (col < gp.maxWorldCol) {
                     int num = Integer.parseInt(numbers[col]);
 
-                    mapTileNumber[col][row]=num;
+                    mapTileNumber[col][row] = num;
                     col++;
-                    if (col== gp.maxWorldCol){
-                        col=0;
-                        row++;
-                    }
+                }
+
+
+                if (col == gp.maxWorldCol) {
+                    col = 0;
+                    row++;
                 }
             }
             br.close();
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
+            e.printStackTrace(); // Affiche l'erreur si le fichier a un problème
         }
     }
 
@@ -87,7 +97,7 @@ public class TileManager {
             int worldX= worldCol * gp.tileSize;
             int worldY= worldRow* gp.tileSize;
             int screenX= worldX-gp.player.worldx +gp.player.screenX;
-            int screenY= worldY-gp.player.worldx+gp.player.screenY;
+            int screenY= worldY-gp.player.worldy+gp.player.screenY;
 
             g2.drawImage( tile[tileNum].image, screenX,screenY,gp.tileSize,gp.tileSize,null);
             worldCol++;

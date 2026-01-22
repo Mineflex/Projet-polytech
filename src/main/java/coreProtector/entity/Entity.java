@@ -3,7 +3,7 @@ package coreProtector.entity;
 import java.awt.image.BufferedImage;
 
 public class Entity {
-    public  int x,y; //position des entitées
+    public  int worldx,worldy; //position des entitées en fonction de la map, et pas de l'ecran
     public int speed; //vitesse des entitées
 
     public BufferedImage up1, up2;

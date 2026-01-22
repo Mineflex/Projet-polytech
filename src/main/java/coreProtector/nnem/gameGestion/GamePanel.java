@@ -83,6 +83,12 @@ public class GamePanel extends JPanel implements  Runnable{
         }else if(keyH.rightPressed==true){
             playerX+=playerSpeed;
         }
+
+        if (keyH.sprintPressed){
+            playerSpeed=6;
+        }else {
+            playerSpeed=4;
+        }
     }
 
     //Methode pour dessiner avec Jpanel

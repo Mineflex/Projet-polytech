@@ -11,15 +11,15 @@ import java.io.InputStreamReader;
 
 public class TileManager {
     GamePanel gp;
-    Tile[] tile;
-    int mapTileNumber[][];
+    public Tile[] tile;
+    public int mapTileNumber[][];
 
 
     public TileManager(GamePanel gp){
         this.gp=gp;
 
         //ecrire le nombre de tiles dans le jeux
-        tile= new Tile[10];
+        tile= new Tile[15];
         mapTileNumber= new int[gp.maxWorldCol][gp.maxWorldRow];
 
 
@@ -31,14 +31,18 @@ public class TileManager {
 
         try {
 
+            //grass
             tile[0]=new Tile();
             tile[0].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/grass.png"));
+            tile[0].collision=true;
 
             tile[1]=new Tile();
             tile[1].image= ImageIO.read(getClass().getResourceAsStream("/playerSprites/p1.png"));
 
             tile[2]=new Tile();
             tile[2].image= ImageIO.read(getClass().getResourceAsStream("/playerSprites/p2.png"));
+
+
 
 
         }catch (IOException e){
@@ -99,7 +103,11 @@ public class TileManager {
             int screenX= worldX-gp.player.worldx +gp.player.screenX;
             int screenY= worldY-gp.player.worldy+gp.player.screenY;
 
-            g2.drawImage( tile[tileNum].image, screenX,screenY,gp.tileSize,gp.tileSize,null);
+            //afficher que la partie visible de la map sur l'ecran pour eviter le lag
+            if(worldX + (gp.tileSize) *2 >gp.player.worldx - gp.player.screenX  && worldX - (gp.tileSize) *2 <gp.player.worldx+gp.player.screenX &&  worldY +(gp.tileSize) *2 >gp.player.worldy-gp.player.screenY && worldY-(gp.tileSize) *2 < gp.player.worldy+gp.player.screenY){
+                g2.drawImage( tile[tileNum].image, screenX,screenY,gp.tileSize,gp.tileSize,null);
+            }
+
             worldCol++;
 
             if(worldCol==gp.maxWorldCol){

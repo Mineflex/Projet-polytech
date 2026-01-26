@@ -31,16 +31,11 @@ public class TileManager {
 
         try {
 
-            //grass
+            //grass -------------------
             tile[0]=new Tile();
-            tile[0].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/grass.png"));
-            tile[0].collision=true;
+            tile[0].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/grass_00.png"));
 
-            tile[1]=new Tile();
-            tile[1].image= ImageIO.read(getClass().getResourceAsStream("/playerSprites/p1.png"));
-
-            tile[2]=new Tile();
-            tile[2].image= ImageIO.read(getClass().getResourceAsStream("/playerSprites/p2.png"));
+            //------------
 
 
 

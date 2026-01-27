@@ -24,7 +24,7 @@ public class TileManager {
 
 
         getTileImage();
-        loadMap("/maps/mapOverworld.txt");
+        loadMap("/maps/map.txt");
     }
 
     public void getTileImage( ){
@@ -32,10 +32,50 @@ public class TileManager {
         try {
 
             //grass -------------------
-            tile[0]=new Tile();
-            tile[0].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/grass_00.png"));
+            tile[1]=new Tile();
+            tile[1].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/grass_00.png"));
+
+            tile[2]=new Tile();
+            tile[2].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/grass_01.png"));
+
+            tile[3]=new Tile();
+            tile[3].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/grass_03.png"));
 
             //------------
+
+            //path---------------------
+            tile[0]=new Tile();
+            tile[0].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/bottom-dirt_path.png"));
+
+            tile[4]=new Tile();
+            tile[4].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/left-bottom-dirt-path.png"));
+
+            tile[5]=new Tile();
+            tile[5].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/left-dirt-path.png"));
+
+            tile[6]=new Tile();
+            tile[6].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/left-top-dirt-path.png"));
+
+            tile[7]=new Tile();
+            tile[7].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/middle-dirt-path.png"));
+            tile[7].collision=true;
+
+            tile[8]=new Tile();
+            tile[8].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/right-bottom-dirt-path.png"));
+
+            tile[9]=new Tile();
+            tile[9].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/right-dirt-path.png"));
+
+            tile[10]=new Tile();
+            tile[10].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/right-top-dirt-path.png"));
+
+            tile[11]=new Tile();
+            tile[11].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/top-dirt-path.png"));
+
+
+
+
+            //-----------------------
 
 
 

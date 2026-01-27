@@ -58,7 +58,7 @@ public class TileManager {
 
             tile[7]=new Tile();
             tile[7].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/middle-dirt-path.png"));
-            tile[7].collision=true;
+            //tile[7].collision=true;
 
             tile[8]=new Tile();
             tile[8].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/right-bottom-dirt-path.png"));

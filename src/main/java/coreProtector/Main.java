@@ -2,6 +2,7 @@ package coreProtector;
 
 import coreProtector.gameGestion.GamePanel;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Main {
@@ -12,7 +13,6 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setTitle("Core Protector");
         window.setResizable(false);
-
 
 
 

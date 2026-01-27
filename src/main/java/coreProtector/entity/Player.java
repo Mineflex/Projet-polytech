@@ -16,12 +16,12 @@ public class Player extends Entity{
     public final int screenY;
 
     public Player(GamePanel gp, KeyHandler keyH){
-
+        sizeMultiplier=1;
         this.gp=gp;
         this.keyH=keyH;
 
-        screenX = gp.screenWidth/2 - gp.tileSize/2;
-        screenY=gp.screenHeight/2 - gp.tileSize/2;
+        screenX = gp.screenWidth/2 - gp.tileSize*sizeMultiplier/2;
+        screenY=gp.screenHeight/2 - gp.tileSize*sizeMultiplier/2;
 
         hitBox=new Rectangle(0 + gp.scale *8,0 + gp.scale *8 ,gp.scale*16,gp.scale*16);
 
@@ -179,7 +179,7 @@ public class Player extends Entity{
                 break;
         }
 
-        g2.drawImage(image,screenX,screenY,gp.tileSize,gp.tileSize,null);
+        g2.drawImage(image,screenX,screenY,gp.tileSize *sizeMultiplier,gp.tileSize*sizeMultiplier,null);
 
 
 

@@ -1,6 +1,7 @@
 package coreProtector.gameGestion;
 
 import coreProtector.entity.Player;
+import coreProtector.items.SuperItem;
 import coreProtector.tiles.TileManager;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ public class GamePanel extends JPanel implements  Runnable{
     //paramettres de l'ecran---------------
 
     final int originalTileSize=32; // la taille de chacun de nos sprites et tiles (pixel art)
-    public final int scale=3; // un multiplicateur pour augmenter la taille sur l'ecran car sinon tout est minuscule
+    public final int scale=2; // un multiplicateur pour augmenter la taille sur l'ecran car sinon tout est minuscule
     public final int tileSize= originalTileSize*scale; // La taille visible, donc agrandie, en pixel de chaque sprites
 
     public final int maxScreenCol=16; //Le nombre max de tiles en largeur sur l'ecran
@@ -31,8 +32,15 @@ public class GamePanel extends JPanel implements  Runnable{
     TileManager tileM= new TileManager(this);
     KeyHandler keyH= new KeyHandler();
     Thread gameThread;
-    public ColligionManager collisionM= new ColligionManager(this);
+    public CollisionManager collisionM= new CollisionManager(this);
+    public AssetSetter assetSetter = new AssetSetter(this);
     public Player player= new Player(this, keyH);
+
+    public SuperItem itm[]= new SuperItem[100];
+
+
+
+
 
     // creer un un panel qui va prendre toutes les info utiles de l'ecran pour y afficher
     public GamePanel(){
@@ -42,6 +50,11 @@ public class GamePanel extends JPanel implements  Runnable{
         this.addKeyListener(keyH);
         this.setFocusable(true);
     }
+
+    public void setupGame(){
+        assetSetter.SetItem();
+    }
+
     public void startGameThread(){
         gameThread=new Thread(this);
         gameThread.start();
@@ -92,6 +105,12 @@ public class GamePanel extends JPanel implements  Runnable{
         Graphics2D g2= (Graphics2D) g;
 
         tileM.draw(g2);
+
+        for(int i = 0; i< itm.length; i++){
+            if(itm[i] !=null){
+                itm[i].draw(g2,this);
+            }
+        }
 
         player.draw(g2);
         //Une fois afficher le pc peut y enlever de la memoire( c'est pour pas surcharger la ram)

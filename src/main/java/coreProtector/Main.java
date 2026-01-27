@@ -24,6 +24,7 @@ public class Main {
         window.setLocationRelativeTo(null); // pour que la fenetre soit au centre
         window.setVisible(true);//pour que la fenetre soit visible
 
+        gamePanel.setupGame();
         gamePanel.startGameThread();
 //
     }

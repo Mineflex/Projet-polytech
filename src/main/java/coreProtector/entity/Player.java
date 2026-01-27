@@ -14,17 +14,19 @@ public class Player extends Entity{
 
     public final int screenX;
     public final int screenY;
+    int hasTestItem=0;
 
     public Player(GamePanel gp, KeyHandler keyH){
-        sizeMultiplier=1;
+        sizeMultiplier=2;
         this.gp=gp;
         this.keyH=keyH;
 
         screenX = gp.screenWidth/2 - gp.tileSize*sizeMultiplier/2;
         screenY=gp.screenHeight/2 - gp.tileSize*sizeMultiplier/2;
 
-        hitBox=new Rectangle(0 + gp.scale *8,0 + gp.scale *8 ,gp.scale*16,gp.scale*16);
-
+        hitBox=new Rectangle(0 + gp.scale *8*sizeMultiplier,0 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
+        hitBoxDefaultX=hitBox.x;
+        hitBoxDefaultY=hitBox.y;
 
         setDefaultValues();
         getPlayerImage();
@@ -89,6 +91,10 @@ public class Player extends Entity{
 
             collisionOn=false;
             gp.collisionM.checkTile(this);
+
+            int objIndex=gp.collisionM.chechItem(this, true);
+            pickUpItem(objIndex);
+
             if (collisionOn==false){
                 switch (direction){
                     case "up":
@@ -124,6 +130,21 @@ public class Player extends Entity{
 
 
     }
+
+    public void pickUpItem(int i){
+
+        if (i !=999){
+            String itemName = gp.itm[i].name;
+            switch ( itemName){
+                case "test":
+                    gp.itm[i]=null;
+                    break;
+            }
+        }
+
+
+    }
+
     public void draw(Graphics2D g2){
 
         BufferedImage image=null;

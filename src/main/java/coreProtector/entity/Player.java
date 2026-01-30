@@ -92,8 +92,7 @@ public class Player extends Entity{
             collisionOn=false;
             gp.collisionM.checkTile(this);
 
-            int objIndex=gp.collisionM.chechItem(this, true);
-            pickUpItem(objIndex);
+
 
             if (collisionOn==false){
                 switch (direction){
@@ -131,19 +130,8 @@ public class Player extends Entity{
 
     }
 
-    public void pickUpItem(int i){
-
-        if (i !=999){
-            String itemName = gp.itm[i].name;
-            switch ( itemName){
-                case "test":
-                    gp.itm[i]=null;
-                    break;
-            }
-        }
 
 
-    }
 
     public void draw(Graphics2D g2){
 

@@ -14,19 +14,19 @@ public class GamePanel extends JPanel implements  Runnable{
     public final int tileSize= originalTileSize*scale; // La taille visible, donc agrandie, en pixel de chaque sprites
 
     public final int maxScreenCol=12; //Le nombre max de tiles en largeur sur l'ecran
-    public final int maxScreenRow=6; // idem mais en longueurs
+    public final int maxScreenRow=6; // idem mais en hauteur
     public final int screenWidth=tileSize*maxScreenCol; // la taille final de l'ecran
     public final int screenHeight=tileSize*maxScreenRow;//    ^
     //-------------------------------------
 
     //parametre monde
-    public final int maxWorldCol=50;
-    public final int maxWorldRow=50;
-    public final int worldWidth= tileSize*maxWorldCol;
-    public final int worldHeight= tileSize*maxWorldRow;
+    public final int maxWorldCol=50; // nombre max de tile en longueur
+    public final int maxWorldRow=50;//^Idem mais en hauteur
+    public final int worldWidth= tileSize*maxWorldCol;//^Idem mais en pixel
+    public final int worldHeight= tileSize*maxWorldRow;//^Idem mais en hauteur
 
 
-    int FPS=60;
+    int FPS=60;// Fps
 
     TileManager tileM= new TileManager(this);
     KeyHandler keyH= new KeyHandler();
@@ -56,7 +56,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
     @Override
     public void run() {
-        double drawInterval=1000000000/FPS;
+        double drawInterval=1000000000/FPS; //L'intervalle ou on va mettre a jour l'ecran en nansec
         double delta=0;
         long lastTime=System.nanoTime();
         long currentTime;
@@ -64,7 +64,7 @@ public class GamePanel extends JPanel implements  Runnable{
         int drawCount=0;
 
        while ( gameThread !=null){
-
+        //Gestion de la MAJ de l'ecran
            currentTime=System.nanoTime();
            delta +=(currentTime- lastTime)/drawInterval;
            timer+=(currentTime-lastTime);
@@ -78,7 +78,6 @@ public class GamePanel extends JPanel implements  Runnable{
            }
 
            if(timer>= 1000000000){
-               System.out.println("Fps :" +drawCount);
                timer=0;
                drawCount=0;
            }

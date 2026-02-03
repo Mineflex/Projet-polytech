@@ -7,14 +7,14 @@ public class Entity {
     public  int worldx,worldy; //position des entitées en fonction de la map, et pas de l'ecran
     public int speed; //vitesse des entitées
 
-    public BufferedImage up1, up2, up3,up4,down1,down2,down3,down4,left1,left2,left3,left4,right1,right2,right3,right4;
-    public String direction;
+    public BufferedImage up1, up2, up3,up4,down1,down2,down3,down4,left1,left2,left3,left4,right1,right2,right3,right4; //L'ensembles des sprites pour chaque animation de chaque entitées
+    public String direction;//Savoir ou il va
 
-    public int spriteCounter =0;
+    public int spriteCounter =0;//Pour les animations, voir class player
     public int spriteNum=1;
-    public int sizeMultiplier;
+    public int sizeMultiplier;//Grossir si besoin
 
-    public Rectangle hitBox;
+    public Rectangle hitBox; //Definir sa hit box
     public int hitBoxDefaultX, hitBoxDefaultY;
     public  boolean collisionOn=false;
 }

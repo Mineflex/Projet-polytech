@@ -20,21 +20,20 @@ public class TileManager {
         this.gp=gp;
 
         //ecrire le nombre de tiles dans le jeux
-        tile= new Tile[15];
+        tile= new Tile[30];
         mapTileNumber= new int[gp.maxWorldCol][gp.maxWorldRow];
 
 
         getTileImage();
-        loadMap("/maps/mapV1.txt");
+        loadMap("/maps/mapV1.txt"); //La map qu'on veut generer
     }
 
     public void getTileImage( ){
 
         try {
 
-            //grass -------------------
+            // A faire pour chaque TIles faire tile[l'id].collision=true; pour ajouter une collision pour cette tile
 
-            //path---------------------
             tile[0]=new Tile();
             tile[0].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/00_grass_0.png"));
 
@@ -50,23 +49,6 @@ public class TileManager {
             tile[5].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/00_grass_5.png"));
             tile[6]=new Tile();
             tile[6].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/00_grass_6.png"));
-
-            tile[7]=new Tile();
-            tile[7].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/middle-dirt-path.png"));
-            //tile[7].collision=true;
-
-            tile[8]=new Tile();
-            tile[8].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/right-bottom-dirt-path.png"));
-
-            tile[9]=new Tile();
-            tile[9].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/right-dirt-path.png"));
-
-            tile[10]=new Tile();
-            tile[10].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/right-top-dirt-path.png"));
-
-            tile[11]=new Tile();
-            tile[11].image= ImageIO.read(getClass().getResourceAsStream("/mapTiles/top-dirt-path.png"));
-
 
 
 

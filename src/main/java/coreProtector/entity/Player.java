@@ -21,9 +21,11 @@ public class Player extends Entity{
         this.gp=gp;
         this.keyH=keyH;
 
+        //On gefinie ses coordonnées sur l'ecran, ici au centre /!\ Haut gauche = x:0 y:0, le 00 n'est pas au centre
         screenX = gp.screenWidth/2 - gp.tileSize*sizeMultiplier/2;
         screenY=gp.screenHeight/2 - gp.tileSize*sizeMultiplier/2;
 
+        //On fait une hitbox pour le joueur plus petite pour faciliter le mouvement entre deux tiles avec une collision
         hitBox=new Rectangle(0 + gp.scale *8*sizeMultiplier,0 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
         hitBoxDefaultX=hitBox.x;
         hitBoxDefaultY=hitBox.y;
@@ -34,6 +36,7 @@ public class Player extends Entity{
 
     public void setDefaultValues(){
 
+        //Ses coordonnées et propriétées lors du spawn
         worldx = gp.tileSize *25;
         worldy = gp.tileSize *25;
         speed = 4;
@@ -42,6 +45,7 @@ public class Player extends Entity{
 
     public void getPlayerImage(){
         try {
+            //On recupere tout le sprites pour chaque animation
             left1= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite04.png"));
             left2= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite05.png"));
             left3= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite06.png"));
@@ -68,6 +72,7 @@ public class Player extends Entity{
 
     public  void update(){
 
+        //On reagit si le joueur appuis sur une touche specfique liée au mouvement
         if (keyH.upPressed || keyH.downPressed|| keyH.leftPressed|| keyH.rightPressed){
             if(keyH.upPressed==true){
                 direction="up";
@@ -93,7 +98,7 @@ public class Player extends Entity{
             gp.collisionM.checkTile(this);
 
 
-
+            //si il n'est pas bloquer par un bloc avec collision, il avance /!\ 00: haut gauche de l'ecran
             if (collisionOn==false){
                 switch (direction){
                     case "up":
@@ -111,6 +116,7 @@ public class Player extends Entity{
                 }
             }
 
+            //Faire varié les sprites pour faire l'animation
             if(spriteCounter>10){
                 if(spriteNum==1){
                     spriteNum=2;
@@ -132,7 +138,7 @@ public class Player extends Entity{
 
 
 
-
+//Dessiner le joueur selon sa direction et le sprite actuelle de l'animation
     public void draw(Graphics2D g2){
 
         BufferedImage image=null;

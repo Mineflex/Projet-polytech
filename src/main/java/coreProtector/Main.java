@@ -8,10 +8,12 @@ import javax.swing.*;
 public class Main {
 
     public static  void  main(String[] args){
+        //Pas important, ca sert juste a evité le gap entre les tiles quand on bouge
         System.setProperty("sun.java2d.opengl", "true");
         JFrame window= new JFrame();
         // /!\ important pour que l'on puisse quitter le jeux, sinon on est bloqué...
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //Le nom de la fenetre, ici du jeux ducoup
         window.setTitle("Core Protector");
         window.setResizable(false);
 

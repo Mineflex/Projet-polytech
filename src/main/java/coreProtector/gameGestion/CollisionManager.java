@@ -8,7 +8,6 @@ public class CollisionManager {
 
     public CollisionManager(GamePanel gp){
         this.gp = gp;
-
     }
 
     public  void checkTile(Entity entity){
@@ -27,9 +26,9 @@ public class CollisionManager {
         switch (entity.direction){
             case "up":
                 entityTopRow = (entityTopWorldY-entity.speed)/gp.tileSize;
-                tileNum1=gp.tileM.mapTileNumber[entityLeftCol][entityTopRow];
-                tileNum2=gp.tileM.mapTileNumber[entityRightCol][entityTopRow];
-                if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision){
+                tileNum1=gp.tileM.mapTileNumber[entityLeftCol][entityTopRow];//on verifie les cases ou l'entité peu se heurter lorsqu'il avance dans une certaine directio,
+                tileNum2=gp.tileM.mapTileNumber[entityRightCol][entityTopRow];//idem
+                if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision){//Si il se heurte a une case avec une hitbox il y a colision
                     entity.collisionOn =true;
                 }
 

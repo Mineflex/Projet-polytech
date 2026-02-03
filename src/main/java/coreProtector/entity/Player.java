@@ -16,8 +16,21 @@ public class Player extends Entity{
     public final int screenY;
     int hasTestItem=0;
 
+    //Valeurs par defaut competence
+    int speedMultiplier=1;
+    int strangeMultiplier=1;
+    public int ressourcesFortune=1;
+    public int goldFortune=1;
+    boolean canViewHealthBar=false; //Voir la vie du core meme a distance
+    boolean repairKit=false; //Repare petit a petit les defenses si il est tres tres proche d'elles
+
     public Player(GamePanel gp, KeyHandler keyH){
         sizeMultiplier=1;
+
+
+
+
+
         this.gp=gp;
         this.keyH=keyH;
 
@@ -39,7 +52,7 @@ public class Player extends Entity{
         //Ses coordonnées et propriétées lors du spawn
         worldx = gp.tileSize *25;
         worldy = gp.tileSize *25;
-        speed = 4;
+        speed = 4 * speedMultiplier;
         direction= "up";
     }
 
@@ -86,16 +99,18 @@ public class Player extends Entity{
             }
 
             if (keyH.sprintPressed){
-                speed=8;
+                speed=8*speedMultiplier;
                 spriteCounter++;
             }else {
-                speed=4;
+                speed=4*speedMultiplier;
             }
 
             spriteCounter++;
 
             collisionOn=false;
             gp.collisionM.checkTile(this);
+            int itemIndex =gp.collisionM.checkItem(this,true);
+            pickupItem(itemIndex);
 
 
             //si il n'est pas bloquer par un bloc avec collision, il avance /!\ 00: haut gauche de l'ecran
@@ -136,6 +151,22 @@ public class Player extends Entity{
 
     }
 
+
+    public void pickupItem(int index){
+        if (index!=999){
+            String itemName= gp.itm[0].name;
+
+            switch (itemName){
+                case "Block":
+                    gp.itm[index]=null;
+
+
+                    break;
+            }
+
+        }
+
+    }
 
 
 //Dessiner le joueur selon sa direction et le sprite actuelle de l'animation

@@ -1,7 +1,9 @@
 package coreProtector.gameGestion;
 
 import coreProtector.entity.Player;
+import coreProtector.items.SuperItem;
 import coreProtector.tiles.TileManager;
+import coreProtector.userInterface.UI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +34,10 @@ public class GamePanel extends JPanel implements  Runnable{
     KeyHandler keyH= new KeyHandler();
     Thread gameThread;
     public CollisionManager collisionM= new CollisionManager(this);
+    public AssetSetter aSetter= new AssetSetter(this);
+    public  UI ui=new UI(this);
     public Player player= new Player(this, keyH);
+    public SuperItem itm[]=new  SuperItem[99];
 
 
 
@@ -46,6 +51,10 @@ public class GamePanel extends JPanel implements  Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+    }
+
+    public void setupGame(){
+        aSetter.setItem();
     }
 
 
@@ -99,10 +108,18 @@ public class GamePanel extends JPanel implements  Runnable{
 
         tileM.draw(g2);
 
-
+        for(int i=0;i<itm.length; i++){
+            if(itm[i]!=null){
+                itm[i].draw(g2,this);
+            }
+        }
 
         player.draw(g2);
+
+        ui.draw(g2);
         //Une fois afficher le pc peut y enlever de la memoire( c'est pour pas surcharger la ram)
         g2.dispose();
     }
+
+
 }

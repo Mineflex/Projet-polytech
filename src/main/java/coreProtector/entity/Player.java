@@ -17,7 +17,7 @@ public class Player extends Entity{
     int hasTestItem=0;
 
     public Player(GamePanel gp, KeyHandler keyH){
-        sizeMultiplier=2;
+        sizeMultiplier=1;
         this.gp=gp;
         this.keyH=keyH;
 

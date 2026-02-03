@@ -8,6 +8,7 @@ import javax.swing.*;
 public class Main {
 
     public static  void  main(String[] args){
+        System.setProperty("sun.java2d.opengl", "true");
         JFrame window= new JFrame();
         // /!\ important pour que l'on puisse quitter le jeux, sinon on est bloqué...
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

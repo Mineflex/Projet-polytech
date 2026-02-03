@@ -10,13 +10,13 @@ public class GamePanel extends JPanel implements  Runnable{
     //paramettres de l'ecran---------------
 
     final int originalTileSize=32; // la taille de chacun de nos sprites et tiles (pixel art)
-    public final int scale=2; // un multiplicateur pour augmenter la taille sur l'ecran car sinon tout est minuscule
+    public final int scale=4; // un multiplicateur pour augmenter la taille sur l'ecran car sinon tout est minuscule
     public final int tileSize= originalTileSize*scale; // La taille visible, donc agrandie, en pixel de chaque sprites
 
-    public final int maxScreenCol=16; //Le nombre max de tiles en largeur sur l'ecran
-    public final int maxSreenRow=12; // idem mais en longueurs
+    public final int maxScreenCol=12; //Le nombre max de tiles en largeur sur l'ecran
+    public final int maxScreenRow=6; // idem mais en longueurs
     public final int screenWidth=tileSize*maxScreenCol; // la taille final de l'ecran
-    public final int screenHeight=tileSize*maxSreenRow;//    ^
+    public final int screenHeight=tileSize*maxScreenRow;//    ^
     //-------------------------------------
 
     //parametre monde

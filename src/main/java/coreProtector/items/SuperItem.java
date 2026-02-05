@@ -14,6 +14,7 @@ public class SuperItem {
     public  Rectangle hitBox=new Rectangle(0,0,gp.tileSize,gp.tileSize);
     public int hitBoxDefaultX=0;
     public int hitBoxDefaultY=0;
+    public int coinValue=0;
 
 
     public void draw(Graphics2D g2, GamePanel gp){

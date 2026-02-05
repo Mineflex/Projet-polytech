@@ -14,7 +14,9 @@ public class Player extends Entity{
 
     public final int screenX;
     public final int screenY;
-    int hasTestItem=0;
+    public int goldCoin=0;
+
+
 
     //Valeurs par defaut competence
     int speedMultiplier=1;
@@ -154,10 +156,12 @@ public class Player extends Entity{
 
     public void pickupItem(int index){
         if (index!=999){
-            String itemName= gp.itm[0].name;
+            String itemName= gp.itm[index].name;
+
 
             switch (itemName){
                 case "Block":
+                    goldCoin+=gp.itm[index].coinValue*goldFortune;
                     gp.itm[index]=null;
 
 

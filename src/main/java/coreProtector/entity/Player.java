@@ -23,7 +23,7 @@ public class Player extends Entity{
     int strangeMultiplier=1;
     public int ressourcesFortune=1;
     public int goldFortune=1;
-    boolean canViewHealthBar=false; //Voir la vie du core meme a distance
+    public boolean canViewHealthBar=false; //Voir la vie du core meme a distance
     boolean repairKit=false; //Repare petit a petit les defenses si il est tres tres proche d'elles
 
     public Player(GamePanel gp, KeyHandler keyH){
@@ -87,6 +87,13 @@ public class Player extends Entity{
 
     public  void update(){
 
+        if (keyH.showUI){
+
+                gp.ui.uiPanel="competence";
+        }else {
+            gp.ui.uiPanel="basic";
+        }
+
         //On reagit si le joueur appuis sur une touche specfique liée au mouvement
         if (keyH.upPressed || keyH.downPressed|| keyH.leftPressed|| keyH.rightPressed){
             if(keyH.upPressed==true){
@@ -103,6 +110,7 @@ public class Player extends Entity{
             if (keyH.sprintPressed){
                 speed=8*speedMultiplier;
                 spriteCounter++;
+                canViewHealthBar=true;
             }else {
                 speed=4*speedMultiplier;
             }

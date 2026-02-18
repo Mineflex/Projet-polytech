@@ -28,5 +28,6 @@ public class AssetSetter {
         gp.itm[2].coinValue=3;
 
 
+
     }
 }

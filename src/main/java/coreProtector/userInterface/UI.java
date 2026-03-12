@@ -17,22 +17,30 @@ public class UI {
     BufferedImage image=null;
     public String uiPanel = "basic";
 
+    public Rectangle btnSeeHealthBar;
+    public Rectangle btnSpeedUpgrade;
+    private boolean mousePressed = false;
+
+
     public UI(GamePanel gp){
 
         this.gp=gp;
         arial_20=new Font("Arial",Font.PLAIN,20);
+
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/UI/gold_coinUI.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
+        btnSeeHealthBar = new Rectangle(50, 50, 200, 50); // x, y, largeur, hauteur
+        btnSpeedUpgrade = new Rectangle(300, 50, 200, 50); // x, y, largeur, hauteur
 
     }
     public void BasicUI(Graphics2D g2){
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        g2.drawString(" x"+gp.player.goldCoin, 675,130);
-        g2.drawImage(image,150+500,107,36,36,null);
+        g2.drawString(" x"+gp.player.goldCoin, 730,130);
+        g2.drawImage(image,200+500,107,36,36,null);
 
         if (gp.player.canViewHealthBar){
             g2.setColor(Color.black);
@@ -43,7 +51,11 @@ public class UI {
         g2.setColor(Color.black);
         g2.drawRoundRect(130, 115, 500, 15, 10, 10);
         g2.setColor(new Color(0, 100, 0));
-        g2.fillRoundRect(130, 116, 500, 14, 10, 10);
+        g2.fillRoundRect(130, 116, (int) (500*gp.playerXP.playerExPo/gp.playerXP.nextLevel), 14, 10, 10);
+
+        g2.setFont(arial_20);
+        g2.setColor(Color.white);
+        g2.drawString("Lvl: "+ gp.playerXP.playerLevel, 640, 130 );
 
 
     }
@@ -53,6 +65,42 @@ public class UI {
         g2.drawRoundRect(5,5,gp.screenWidth-20,gp.screenHeight-10,10,20);
         g2.setColor(new Color(138, 92, 7, 247));
         g2.fillRoundRect(6, 6, gp.screenWidth-21, gp.screenHeight-11, 20, 20);
+        g2.setColor(Color.WHITE);
+        g2.draw(btnSeeHealthBar);
+        g2.setFont(arial_20);
+        g2.setColor(Color.white);
+        g2.drawString("Point disponible: " + gp.playerXP.cPAvailable,  80, 750);
+        g2.setColor(Color.WHITE);
+        g2.draw(btnSpeedUpgrade);
+
+        if (gp.player.canViewHealthBar){
+
+
+            g2.setColor(new Color(97, 64, 4, 247));
+
+            g2.fillRect(50, 50, 200, 50);
+            g2.setFont(arial_20);
+            g2.setColor(Color.white);
+            g2.drawString("Debloqué !", btnSeeHealthBar.x + 40, btnSeeHealthBar.y + 32);
+
+
+        }else {
+            g2.setFont(arial_20);
+            g2.drawString("Voir la vie du Core", btnSeeHealthBar.x + 20, btnSeeHealthBar.y + 32);
+        }
+        if (gp.player.speedMultiplier<1.4){
+            g2.setFont(arial_20);
+            g2.drawString("Augmente la vitesse ( "+Math.round((gp.player.speedMultiplier -1)*10)+"/4 )", btnSpeedUpgrade.x + 20, btnSpeedUpgrade.y + 32);
+        }else {
+
+            g2.setColor(new Color(97, 64, 4, 247));
+
+            g2.fillRect(btnSpeedUpgrade.x, btnSpeedUpgrade.y, 200, 50);
+            g2.setFont(arial_20);
+            g2.setColor(Color.white);
+            g2.drawString("Debloqué !", btnSpeedUpgrade.x + 40, btnSpeedUpgrade.y + 32);
+        }
+
 
 
     }
@@ -64,5 +112,40 @@ public class UI {
             CompetenceUI(g2);
         }
 
+    }
+
+    public void update() {
+        if (uiPanel.equals("competence")) {
+            if (gp.mouseH.mousePressed) {
+                if (gp.playerXP.cPAvailable>0){
+                    Point mousePoint = new Point(gp.mouseH.x, gp.mouseH.y);
+
+                    if (btnSeeHealthBar.contains(mousePoint)) {
+
+
+                            if (gp.player.canViewHealthBar==false) {
+                                gp.mouseH.mousePressed = false;
+                                gp.playerXP.cPAvailable-=1;
+                                gp.playerXP.cPUsed+=1;
+                            }
+                        gp.player.canViewHealthBar=true;
+
+
+
+                    }
+                    if(btnSpeedUpgrade.contains(mousePoint) && gp.player.speedMultiplier<1.8){
+                        gp.player.speedMultiplier+=0.1;
+
+                         gp.mouseH.mousePressed = false;
+                         gp.playerXP.cPAvailable-=1;
+                         gp.playerXP.cPUsed+=1;
+
+                    }
+
+
+
+                }
+            }
+        }
     }
 }

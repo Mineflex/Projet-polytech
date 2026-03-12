@@ -4,6 +4,7 @@ import coreProtector.gameGestion.GamePanel;
 import coreProtector.gameGestion.KeyHandler;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -19,12 +20,17 @@ public class Player extends Entity{
 
 
     //Valeurs par defaut competence
-    int speedMultiplier=1;
+    public float speedMultiplier=1;
+    int frameCounter=0;
+    public int maxEndurance=5;
+    public int endurance = 5; // duree de la course
+    public int enduranceCooldown=5; //duree de la recuperation de l'endurance
     int strangeMultiplier=1;
     public int ressourcesFortune=1;
     public int goldFortune=1;
     public boolean canViewHealthBar=false; //Voir la vie du core meme a distance
     boolean repairKit=false; //Repare petit a petit les defenses si il est tres tres proche d'elles
+
 
     public Player(GamePanel gp, KeyHandler keyH){
         sizeMultiplier=1;
@@ -54,7 +60,7 @@ public class Player extends Entity{
         //Ses coordonnées et propriétées lors du spawn
         worldx = gp.tileSize *25;
         worldy = gp.tileSize *25;
-        speed = 4 * speedMultiplier;
+        speed = 4 ;
         direction= "up";
     }
 
@@ -106,14 +112,28 @@ public class Player extends Entity{
             }else if(keyH.rightPressed==true){
                 direction="right";
             }
-
-            if (keyH.sprintPressed){
-                speed=8*speedMultiplier;
+            if (keyH.sprintPressed && endurance>0){
+                speed=8;
                 spriteCounter++;
-                canViewHealthBar=true;
+
+                frameCounter++;
+                if(frameCounter >=60){
+                    endurance-=1;
+                    frameCounter=0;
+                }
+
+
             }else {
-                speed=4*speedMultiplier;
+                speed=4;
+                frameCounter++;
+                if (frameCounter == 3*60 +enduranceCooldown){
+                    endurance=maxEndurance;
+                    frameCounter=0;
+                }
             }
+
+
+
 
             spriteCounter++;
 
@@ -127,16 +147,16 @@ public class Player extends Entity{
             if (collisionOn==false){
                 switch (direction){
                     case "up":
-                        worldy-=speed;
+                        worldy-=speed*speedMultiplier;
                         break;
                     case "down":
-                        worldy+=speed;
+                        worldy+=speed*speedMultiplier;
                         break;
                     case "left":
-                        worldx-=speed;
+                        worldx-=speed*speedMultiplier;
                         break;
                     case "right":
-                        worldx+=speed;
+                        worldx+=speed*speedMultiplier;
                         break;
                 }
             }
@@ -169,7 +189,7 @@ public class Player extends Entity{
 
             switch (itemName){
                 case "Block":
-                    goldCoin+=gp.itm[index].coinValue*goldFortune;
+                    gp.playerXP.updateExperience(gp.itm[index].stack*goldFortune);
                     gp.itm[index]=null;
 
 
@@ -243,4 +263,6 @@ public class Player extends Entity{
 
 
     }
+
+
 }

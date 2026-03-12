@@ -1,6 +1,7 @@
 package coreProtector.gameGestion;
 
 import coreProtector.entity.Player;
+import coreProtector.entity.PlayerXP;
 import coreProtector.items.SuperItem;
 import coreProtector.tiles.TileManager;
 import coreProtector.userInterface.UI;
@@ -32,11 +33,13 @@ public class GamePanel extends JPanel implements  Runnable{
 
     TileManager tileM= new TileManager(this);
     KeyHandler keyH= new KeyHandler();
+    public MouseHandler mouseH=new MouseHandler();
     Thread gameThread;
     public CollisionManager collisionM= new CollisionManager(this);
     public AssetSetter aSetter= new AssetSetter(this);
     public  UI ui=new UI(this);
     public Player player= new Player(this, keyH);
+    public PlayerXP playerXP= new PlayerXP(this);
     public SuperItem itm[]=new  SuperItem[99];
 
 
@@ -50,6 +53,7 @@ public class GamePanel extends JPanel implements  Runnable{
         this.setBackground(Color.white);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
+        this.addMouseListener(mouseH);
         this.setFocusable(true);
     }
 
@@ -97,6 +101,8 @@ public class GamePanel extends JPanel implements  Runnable{
 
     public void update(){
         player.update();
+        ui.update();
+
     }
 
     //Methode pour dessiner avec Jpanel

@@ -8,6 +8,7 @@ import java.awt.*;
 
 public class Main {
 
+
     public static  void  main(String[] args){
         ImageIcon icon=new ImageIcon(Main.class.getResource("/UI/logo.png"));
         Image scaledImage = icon.getImage().getScaledInstance(128, 128, Image.SCALE_SMOOTH);
@@ -16,7 +17,7 @@ public class Main {
         JFrame window= new JFrame();
         // /!\ important pour que l'on puisse quitter le jeux, sinon on est bloqué...
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //Le nom de la fenetre, ici du jeux ducoup
+        //Le nom de la fenetre, ici du jeux du coup
         window.setTitle("Core Protector");
         window.setResizable(false);
 
@@ -28,7 +29,7 @@ public class Main {
         window.setIconImage(scaledImage);
 
 
-        window.pack(); // pour que le panel soit visible
+        window.pack(); // pour que le panel soit visible correctement
         window.setLocationRelativeTo(null); // pour que la fenetre soit au centre
         window.setVisible(true);//pour que la fenetre soit visible
 
@@ -36,6 +37,8 @@ public class Main {
         gamePanel.startGameThread();
 //
     }
+
+
 
 
 

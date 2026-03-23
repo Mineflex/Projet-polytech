@@ -23,7 +23,7 @@ public class Player extends Entity{
     public float speedMultiplier=1;
     int frameCounter=0;
     public int maxEndurance=5;
-    public int endurance = 5; // duree de la course
+    public int endurance = 3; // duree de la course
     public int enduranceCooldown=5; //duree de la recuperation de l'endurance
     int strangeMultiplier=1;
     public int ressourcesFortune=1;
@@ -126,7 +126,7 @@ public class Player extends Entity{
             }else {
                 speed=4;
                 frameCounter++;
-                if (frameCounter == 3*60 +enduranceCooldown){
+                if (frameCounter == 1*60 +enduranceCooldown*60){
                     endurance=maxEndurance;
                     frameCounter=0;
                 }

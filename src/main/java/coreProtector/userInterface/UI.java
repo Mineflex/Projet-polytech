@@ -2,6 +2,7 @@ package coreProtector.userInterface;
 
 import coreProtector.entity.Player;
 import coreProtector.gameGestion.GamePanel;
+import coreProtector.gameGestion.KeyHandler;
 import coreProtector.items.GoldCoin;
 
 import javax.imageio.ImageIO;
@@ -15,6 +16,7 @@ public class UI {
     GamePanel gp;
     Font arial_20;
     BufferedImage image=null;
+    KeyHandler keyH;
     public String uiPanel = "basic";
 
     public Rectangle btnSeeHealthBar;
@@ -37,6 +39,7 @@ public class UI {
 
     }
     public void BasicUI(Graphics2D g2){
+        this.keyH=keyH;
         g2.setFont(arial_20);
         g2.setColor(Color.white);
         g2.drawString(" x"+gp.player.goldCoin, 730,130);
@@ -58,6 +61,15 @@ public class UI {
         g2.drawString("Lvl: "+ gp.playerXP.playerLevel, 640, 130 );
 
 
+        if (gp.player.maxEndurance >gp.player.endurance){
+
+
+        g2.setColor(Color.black);
+        g2.drawRoundRect( gp.screenWidth/2 -24,gp.screenHeight/2 -48, 50,5,2,2);
+        g2.setColor(new Color(102, 255, 0, 219));
+        g2.fillRoundRect(gp.screenWidth/2 -24,gp.screenHeight/2 -48, (gp.player.endurance *50)/gp.player.maxEndurance,5,2,2);
+
+        }
     }
 
     public void CompetenceUI(Graphics2D g2){
@@ -88,9 +100,9 @@ public class UI {
             g2.setFont(arial_20);
             g2.drawString("Voir la vie du Core", btnSeeHealthBar.x + 20, btnSeeHealthBar.y + 32);
         }
-        if (gp.player.speedMultiplier<1.4){
+        if (gp.player.speedMultiplier<1.32){
             g2.setFont(arial_20);
-            g2.drawString("Augmente la vitesse ( "+Math.round((gp.player.speedMultiplier -1)*10)+"/4 )", btnSpeedUpgrade.x + 20, btnSpeedUpgrade.y + 32);
+            g2.drawString("Augmente la vitesse ( "+Math.round((gp.player.speedMultiplier -1)/0.08)+"/4 )", btnSpeedUpgrade.x + 20, btnSpeedUpgrade.y + 32);
         }else {
 
             g2.setColor(new Color(97, 64, 4, 247));
@@ -133,8 +145,8 @@ public class UI {
 
 
                     }
-                    if(btnSpeedUpgrade.contains(mousePoint) && gp.player.speedMultiplier<1.8){
-                        gp.player.speedMultiplier+=0.1;
+                    if(btnSpeedUpgrade.contains(mousePoint) && gp.player.speedMultiplier<1.32){
+                        gp.player.speedMultiplier+=0.08;
 
                          gp.mouseH.mousePressed = false;
                          gp.playerXP.cPAvailable-=1;

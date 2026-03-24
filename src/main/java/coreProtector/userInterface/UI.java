@@ -63,12 +63,26 @@ public class UI {
 
         if (gp.player.maxEndurance >gp.player.endurance){
 
+            if (gp.player.endurance >= gp.player.maxEndurance* 3/4){
+                g2.setColor(Color.black);
+                g2.drawRoundRect( gp.screenWidth/2 -24,gp.screenHeight/2 -48, 50,5,2,2);
+                g2.setColor(new Color(102, 255, 0, 219));
+                g2.fillRoundRect(gp.screenWidth/2 -24,gp.screenHeight/2 -48, (gp.player.endurance *50)/gp.player.maxEndurance,5,2,2);
 
-        g2.setColor(Color.black);
-        g2.drawRoundRect( gp.screenWidth/2 -24,gp.screenHeight/2 -48, 50,5,2,2);
-        g2.setColor(new Color(102, 255, 0, 219));
-        g2.fillRoundRect(gp.screenWidth/2 -24,gp.screenHeight/2 -48, (gp.player.endurance *50)/gp.player.maxEndurance,5,2,2);
+            } else if (gp.player.endurance >= gp.player.maxEndurance/2) {
+                g2.setColor(Color.black);
+                g2.drawRoundRect( gp.screenWidth/2 -24,gp.screenHeight/2 -48, 50,5,2,2);
+                g2.setColor(new Color(255, 115, 0, 219));
+                g2.fillRoundRect(gp.screenWidth/2 -24,gp.screenHeight/2 -48, (gp.player.endurance *50)/gp.player.maxEndurance,5,2,2);
 
+
+            }else  {
+                g2.setColor(Color.black);
+                g2.drawRoundRect( gp.screenWidth/2 -24,gp.screenHeight/2 -48, 50,5,2,2);
+                g2.setColor(new Color(133, 0, 0, 219));
+                g2.fillRoundRect(gp.screenWidth/2 -24,gp.screenHeight/2 -48, (gp.player.endurance *50)/gp.player.maxEndurance,5,2,2);
+
+                }
         }
     }
 

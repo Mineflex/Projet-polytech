@@ -23,8 +23,8 @@ public class Player extends Entity{
     public float speedMultiplier=1;
     int frameCounter=0;
     public int maxEndurance=5;
-    public int endurance = 3; // duree de la course
-    public int enduranceCooldown=5; //duree de la recuperation de l'endurance
+    public int endurance = 5; // duree de la course
+    public int enduranceCooldown=12; //duree de la recuperation de l'endurance
     int strangeMultiplier=1;
     public int ressourcesFortune=1;
     public int goldFortune=1;
@@ -123,13 +123,9 @@ public class Player extends Entity{
                 }
 
 
-            }else {
+            }else{
                 speed=4;
-                frameCounter++;
-                if (frameCounter == 1*60 +enduranceCooldown*60){
-                    endurance=maxEndurance;
-                    frameCounter=0;
-                }
+
             }
 
 
@@ -174,6 +170,14 @@ public class Player extends Entity{
                     spriteNum=1;
                 }
                 spriteCounter=0;
+            }
+        }
+
+        if (keyH.sprintPressed ==false){
+            frameCounter++;
+            if (frameCounter == enduranceCooldown*10  && maxEndurance>endurance){
+                endurance+=1;
+                frameCounter=0;
             }
         }
 

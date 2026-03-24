@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener {
 
     public boolean upPressed,downPressed,leftPressed,rightPressed,sprintPressed;
-    public boolean showUI =false;
+    public boolean showCompetenceUiBool =false;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -33,7 +33,7 @@ public class KeyHandler implements KeyListener {
             sprintPressed=true;
         }
         if (code==KeyEvent.VK_C){
-            showUI = !showUI;
+            showCompetenceUiBool = !showCompetenceUiBool;
         }
 
     }

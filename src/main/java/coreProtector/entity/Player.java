@@ -4,7 +4,6 @@ import coreProtector.gameGestion.GamePanel;
 import coreProtector.gameGestion.KeyHandler;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -93,7 +92,7 @@ public class Player extends Entity{
 
     public  void update(){
 
-        if (keyH.showUI){
+        if (keyH.showCompetenceUiBool){
 
                 gp.ui.uiPanel="competence";
         }else {

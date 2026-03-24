@@ -22,8 +22,8 @@ public class Player extends Entity{
     //Valeurs par defaut competence
     public float speedMultiplier=1;
     int frameCounter=0;
-    public int maxEndurance=5;
-    public int endurance = 5; // duree de la course
+    public int maxEndurance=4;
+    public int endurance = 4; // duree de la course
     public int enduranceCooldown=12; //duree de la recuperation de l'endurance
     int strangeMultiplier=1;
     public int ressourcesFortune=1;

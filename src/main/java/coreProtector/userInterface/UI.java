@@ -21,6 +21,7 @@ public class UI {
 
     public Rectangle btnSeeHealthBar;
     public Rectangle btnSpeedUpgrade;
+    public Rectangle btnEnduranceUpgrade;
     private boolean mousePressed = false;
 
 
@@ -36,6 +37,7 @@ public class UI {
         }
         btnSeeHealthBar = new Rectangle(50, 50, 200, 50); // x, y, largeur, hauteur
         btnSpeedUpgrade = new Rectangle(300, 50, 200, 50); // x, y, largeur, hauteur
+        btnEnduranceUpgrade = new Rectangle(550, 50, 200, 50); // x, y, largeur, hauteur
 
     }
     public void BasicUI(Graphics2D g2){
@@ -98,6 +100,8 @@ public class UI {
         g2.drawString("Point disponible: " + gp.playerXP.cPAvailable,  80, 750);
         g2.setColor(Color.WHITE);
         g2.draw(btnSpeedUpgrade);
+        g2.setColor(Color.WHITE);
+        g2.draw(btnEnduranceUpgrade);
 
         if (gp.player.canViewHealthBar){
 
@@ -125,6 +129,18 @@ public class UI {
             g2.setFont(arial_20);
             g2.setColor(Color.white);
             g2.drawString("Debloqué !", btnSpeedUpgrade.x + 40, btnSpeedUpgrade.y + 32);
+        }
+        if (gp.player.maxEndurance<8){
+            g2.setFont(arial_20);
+            g2.drawString("Augmente l'endurance MAX ( "+Math.round((gp.player.maxEndurance)-4)+"/4 )", btnEnduranceUpgrade.x + 20, btnEnduranceUpgrade.y + 32);
+        }else {
+
+            g2.setColor(new Color(97, 64, 4, 247));
+
+            g2.fillRect(btnEnduranceUpgrade.x, btnEnduranceUpgrade.y, 200, 50);
+            g2.setFont(arial_20);
+            g2.setColor(Color.white);
+            g2.drawString("Debloqué !", btnEnduranceUpgrade.x + 40, btnEnduranceUpgrade.y + 32);
         }
 
 
@@ -167,6 +183,15 @@ public class UI {
                          gp.playerXP.cPUsed+=1;
 
                     }
+                    if(btnEnduranceUpgrade.contains(mousePoint) && gp.player.maxEndurance<8){
+                        gp.player.maxEndurance+=1;
+
+                        gp.mouseH.mousePressed = false;
+                        gp.playerXP.cPAvailable-=1;
+                        gp.playerXP.cPUsed+=1;
+
+                    }
+
 
 
 

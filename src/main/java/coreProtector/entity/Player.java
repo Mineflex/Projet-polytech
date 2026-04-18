@@ -82,6 +82,14 @@ public class Player extends Entity{
             up2= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite13.png"));
             up3= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite14.png"));
             up4= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite15.png"));
+            hitDown1=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite16.png"));
+            hitDown2=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite17.png"));
+            hitUp1=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite18.png"));
+            hitUp2=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite19.png"));
+            hitLeft1=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite20.png"));
+            hitLeft2=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite21.png"));
+            hitRight1=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite22.png"));
+            hitRight2=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite23.png"));
 
 
 
@@ -97,6 +105,12 @@ public class Player extends Entity{
                 gp.ui.uiPanel="competence";
         }else {
             gp.ui.uiPanel="basic";
+        }
+        if (keyH.showControlMenu){
+            gp.ui.showControl=true;
+        }else {
+            gp.ui.showControl=false;
+
         }
 
         //On reagit si le joueur appuis sur une touche specfique liée au mouvement

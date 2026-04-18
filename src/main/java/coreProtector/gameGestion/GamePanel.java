@@ -52,7 +52,10 @@ public class GamePanel extends JPanel implements  Runnable{
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setBackground(Color.white);
         this.setDoubleBuffered(true);
+        this.setFocusable(true);
+        this.setFocusTraversalKeysEnabled(false);
         this.addKeyListener(keyH);
+
         this.addMouseListener(mouseH);
         this.setFocusable(true);
     }

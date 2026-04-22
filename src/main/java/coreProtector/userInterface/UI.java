@@ -168,6 +168,21 @@ public class UI {
 
     }
 
+    public void StatsUI(Graphics2D g2){
+        g2.setColor(new Color(97, 64, 4, 169));
+
+        g2.fillRect(15, 20, 380, gp.screenHeight-40);
+        g2.setColor(Color.white);
+        g2.setFont(arial_28_Bold);
+        g2.drawString("Endurance :"+gp.player.maxEndurance, 65,  60);
+        g2.drawString("Speed :"+gp.player.speedMultiplier,  65,  110);
+        g2.drawString("Gold Fortune x"+ gp.player.goldFortune, 65,  160);
+        g2.drawString("Ressources Fortune x"+gp.player.ressourcesFortune,  65,  210);
+        g2.drawString("Health"+gp.player.health,  65,  260);
+
+    }
+
+
     public void draw(Graphics2D g2){
         if (uiPanel == "basic"){
             BasicUI(g2);
@@ -177,6 +192,7 @@ public class UI {
         }
         if (showControl==true){
             ControllUI(g2);
+            StatsUI(g2);
         }
 
     }

@@ -48,8 +48,7 @@ public class UI {
         this.keyH=keyH;
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        g2.drawString(" x"+gp.player.goldCoin, 730,130);
-        g2.drawImage(image,200+500,107,36,36,null);
+        g2.drawString(" x"+(gp.player.worldx /gp.tileSize -gp.maxWorldCol/2) + " Y: " +(-gp.player.worldy /gp.tileSize +gp.maxWorldRow/2), 730,130);
 
         if (gp.player.canViewHealthBar){
             g2.setColor(Color.black);

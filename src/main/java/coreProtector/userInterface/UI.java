@@ -47,6 +47,10 @@ public class UI {
     public void BasicUI(Graphics2D g2){
         this.keyH=keyH;
 
+        //test pour la nuit, enlevez les // devant les 2 lignes puis lancer pour voir comment ca va ressembler la nuit ( c'est que un test, on y changera sans doute, mais au moin on en a une petite idee)
+        // g2.setColor(new Color(15, 3, 34, 224));
+        // g2.fillRect(0,0,10000,100000);
+
         g2.setColor(Color.white);
         g2.drawRect(1275, 20, 175, 25);
         g2.setColor(Color.gray);

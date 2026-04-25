@@ -132,7 +132,7 @@ public class Player extends Entity{
                 frameCounter++;
                 if(frameCounter >=60){
                     endurance-=1;
-                    frameCounter=0;
+                    frameCounter=0; //Nathan base toi sur cette variable pour le systeme d'heure, fait une classe DayCycle et puis bah bonne chance mdrr
                 }
 
 

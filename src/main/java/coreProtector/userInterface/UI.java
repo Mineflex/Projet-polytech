@@ -46,24 +46,51 @@ public class UI {
     }
     public void BasicUI(Graphics2D g2){
         this.keyH=keyH;
+
+        g2.setColor(Color.white);
+        g2.drawRect(1275, 20, 175, 25);
+        g2.setColor(Color.gray);
+        g2.fillRect(1275, 20, 175, 25);
+
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        g2.drawString(" x"+(gp.player.worldx /gp.tileSize -gp.maxWorldCol/2) + " Y: " +(-gp.player.worldy /gp.tileSize +gp.maxWorldRow/2), 730,130);
+        g2.drawString("XX:XX - XX/XX/XX", 1280, 40); // Heure et date
+
+
+
+        g2.setColor(Color.white);
+        g2.drawRect(1330, 46, 120, 25);
+        g2.setColor(Color.gray);
+        g2.fillRect(1330, 46, 120, 25);
+
+        g2.setFont(arial_20);
+        g2.setColor(Color.white);
+        g2.drawString(" X: "+(gp.player.worldx /gp.tileSize -gp.maxWorldCol/2) + " ; Y: " +(-gp.player.worldy /gp.tileSize +gp.maxWorldRow/2), 1330,66);
 
         if (gp.player.canViewHealthBar){
             g2.setColor(Color.black);
-            g2.drawRoundRect( 130, 75 , 750,35,20,20);
+            g2.drawRoundRect( 80, 35 , 500,50,20,20);
             g2.setColor(Color.red);
-            g2.fillRoundRect(130 ,76,749-gp.player.goldCoin,34,20,20);
+            g2.fillRoundRect(80 ,36,499-gp.player.goldCoin,49,20,20);
         }
         g2.setColor(Color.black);
-        g2.drawRoundRect(130, 115, 500, 15, 10, 10);
+        g2.drawRoundRect(100, 85, 300, 20, 10, 10);
         g2.setColor(new Color(0, 100, 0));
-        g2.fillRoundRect(130, 116, (int) (500*gp.playerXP.playerExPo/gp.playerXP.nextLevel), 14, 10, 10);
+        g2.fillRoundRect(100, 86, (int) (300*gp.playerXP.playerExPo/gp.playerXP.nextLevel), 19, 10, 10);
 
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        g2.drawString("Lvl: "+ gp.playerXP.playerLevel, 640, 130 );
+        g2.drawString("LVL: "+ gp.playerXP.playerLevel, 120, 102 );
+
+        g2.setColor(Color.black);
+        g2.drawOval(20, 20, 100, 100);
+        g2.setColor(Color.blue);
+        g2.fillOval(20, 20, 100, 100 );
+
+        g2.setFont(arial_20);
+        g2.setColor(Color.white);
+        g2.drawString("Core", 50, 75);
+
 
 
         if (gp.player.maxEndurance >gp.player.endurance){

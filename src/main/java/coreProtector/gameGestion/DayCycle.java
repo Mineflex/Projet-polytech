@@ -13,6 +13,7 @@ public class DayCycle{
     public  String realDay;
     public  String realHour;
     public  String realMin;
+    public boolean night;
 
 
     public  void date( ){
@@ -35,6 +36,12 @@ public class DayCycle{
 
             hour = 0;
             day += 1;
+        }
+
+        if (hour>=22 || hour<5){
+            night=true;
+        }else {
+            night=false;
         }
     }
 

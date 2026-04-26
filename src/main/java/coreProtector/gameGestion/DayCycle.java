@@ -5,21 +5,21 @@ import coreProtector.entity.Player;
 
 public class DayCycle{
 
-    public static int frameCounter = 0;
-    public static int day = 1;
-    public static int hour = 0;
-    public static int min = 0 ;
-    public static String realDay;
-    public static String realHour;
-    public static String realMin;
+    GamePanel gp;
+    public  int frameCounter = 0;
+    public  int day = 1;
+    public  int hour = 21;
+    public  int min = 25 ;
+    public  String realDay;
+    public  String realHour;
+    public  String realMin;
 
 
-    public static void date(){
+    public  void date( ){
 
-        frameCounter++;
 
-        // 7200 frame correspond à peu près à une min
-        if (frameCounter == 7200){
+
+        if (frameCounter == 60){
 
             frameCounter = 0;
             min += 1;
@@ -38,8 +38,15 @@ public class DayCycle{
         }
     }
 
+    public void update(){
+        frameCounter++;
+        date();
+        realDate();
+
+    }
+
     // valeur qui va etre affichée dans le jeu (pour afficher 09 au lieu de 9)
-    public static void realDate(){
+    public void realDate(){
         if(min < 10){
             realMin = "0" + min;
 
@@ -64,4 +71,6 @@ public class DayCycle{
             realDay = "" + day;
         }
     }
+
+
 }

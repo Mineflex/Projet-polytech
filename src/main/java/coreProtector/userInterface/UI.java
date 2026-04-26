@@ -25,6 +25,7 @@ public class UI {
     public Rectangle btnSpeedUpgrade;
     public Rectangle btnEnduranceUpgrade;
     private boolean mousePressed = false;
+    public int alpha;
 
     public int controlMenuX=0;
 
@@ -48,9 +49,32 @@ public class UI {
     public void BasicUI(Graphics2D g2){
         this.keyH=keyH;
 
-        //test pour la nuit, enlevez les // devant les 2 lignes puis lancer pour voir comment ca va ressembler la nuit ( c'est que un test, on y changera sans doute, mais au moin on en a une petite idee)
-        // g2.setColor(new Color(15, 3, 34, 224));
-        // g2.fillRect(0,0,10000,100000);
+
+
+
+
+        int totalMinutes = (gp.dayCycle.hour * 60) + gp.dayCycle.min;
+        int alpha = 0;
+
+        if (totalMinutes >= 18*60 || totalMinutes <= 6*60) {
+
+            if (totalMinutes >= 21*60+30 && totalMinutes < 22*60) {
+               alpha = (totalMinutes - (21*60+30)) * 180 / 30;
+            }
+            else if (totalMinutes >= 22*60 || totalMinutes < 5*60) {
+                alpha = 190;
+            }
+            else if (totalMinutes >= 5*60 && totalMinutes < 6*60) {
+                alpha = 190 - ((totalMinutes-5*60) * 190 / 60);
+            }
+
+        }
+
+
+            g2.setColor(new Color(10, 10, 35, alpha));
+            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+
 
         g2.setColor(Color.white);
         g2.drawRect(1275, 20, 175, 25);
@@ -59,12 +83,8 @@ public class UI {
 
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        DayCycle.date();
-        DayCycle.realDate();
-        g2.drawString(DayCycle.realHour + ":" + DayCycle.realMin + " - DAY : " + DayCycle.realDay, 1280, 40); // Heure et date
 
-
-
+        g2.drawString(gp.dayCycle.realHour + ":" + gp.dayCycle.realMin + " - DAY : " + gp.dayCycle.realDay, 1280, 40); // Heure et date
 
         g2.setColor(Color.white);
         g2.drawRect(1330, 46, 120, 25);

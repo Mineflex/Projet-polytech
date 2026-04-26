@@ -41,6 +41,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public Player player= new Player(this, keyH);
     public PlayerXP playerXP= new PlayerXP(this);
     public SuperItem itm[]=new  SuperItem[99];
+    public DayCycle dayCycle = new DayCycle();
 
 
 
@@ -105,6 +106,8 @@ public class GamePanel extends JPanel implements  Runnable{
     public void update(){
         player.update();
         ui.update();
+        dayCycle.update();
+
 
     }
 

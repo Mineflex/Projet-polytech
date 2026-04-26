@@ -80,11 +80,19 @@ public class UI {
         g2.drawRect(1275, 20, 175, 25);
         g2.setColor(Color.gray);
         g2.fillRect(1275, 20, 175, 25);
+        if (gp.dayCycle.hour>=22 || gp.dayCycle.hour<5){
+            g2.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
+            g2.setColor(Color.white);
 
-        g2.setFont(arial_20);
-        g2.setColor(Color.white);
+            g2.drawString(gp.dayCycle.realHour + ":" + gp.dayCycle.realMin + "-\uD83C\uDF19- DAY : " + gp.dayCycle.realDay, 1280, 40); // Heure et date
 
-        g2.drawString(gp.dayCycle.realHour + ":" + gp.dayCycle.realMin + " - DAY : " + gp.dayCycle.realDay, 1280, 40); // Heure et date
+        }else {
+            g2.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
+            g2.setColor(Color.white);
+
+            g2.drawString(gp.dayCycle.realHour + ":" + gp.dayCycle.realMin + "-\u2600- DAY : " + gp.dayCycle.realDay, 1280, 40); // Heure et date
+
+        }
 
         g2.setColor(Color.white);
         g2.drawRect(1330, 46, 120, 25);

@@ -4,6 +4,7 @@ import coreProtector.entity.Player;
 import coreProtector.gameGestion.GamePanel;
 import coreProtector.gameGestion.KeyHandler;
 import coreProtector.items.GoldCoin;
+import coreProtector.gameGestion.DayCycle;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -58,7 +59,10 @@ public class UI {
 
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        g2.drawString("XX:XX - XX/XX/XX", 1280, 40); // Heure et date
+        DayCycle.date();
+        DayCycle.realDate();
+        g2.drawString(DayCycle.realHour + ":" + DayCycle.realMin + " - DAY : " + DayCycle.realDay, 1280, 40); // Heure et date
+
 
 
 
@@ -125,7 +129,7 @@ public class UI {
     public void CompetenceUI(Graphics2D g2){
         g2.setColor(Color.black);
         g2.drawRoundRect(5,5,gp.screenWidth-20,gp.screenHeight-10,10,20);
-        g2.setColor(new Color(138, 92, 7, 247));
+        g2.setColor(new Color(138, 92, 7, 255));
         g2.fillRoundRect(6, 6, gp.screenWidth-21, gp.screenHeight-11, 20, 20);
         g2.setColor(Color.WHITE);
         g2.draw(btnSeeHealthBar);
@@ -199,7 +203,7 @@ public class UI {
     }
 
     public void StatsUI(Graphics2D g2){
-        g2.setColor(new Color(97, 64, 4, 169));
+        g2.setColor(new Color(97, 64, 4, 168));
 
         g2.fillRect(15, 20, 380, gp.screenHeight-40);
         g2.setColor(Color.white);
@@ -208,7 +212,7 @@ public class UI {
         g2.drawString("Speed :"+gp.player.speedMultiplier,  65,  110);
         g2.drawString("Gold Fortune x"+ gp.player.goldFortune, 65,  160);
         g2.drawString("Ressources Fortune x"+gp.player.ressourcesFortune,  65,  210);
-        g2.drawString("Health"+gp.player.health,  65,  260);
+        g2.drawString("Core Health "+gp.player.health,  65,  260);
 
     }
 

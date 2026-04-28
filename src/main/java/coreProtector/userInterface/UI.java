@@ -17,6 +17,7 @@ public class UI {
     GamePanel gp;
     Font arial_20;
     Font arial_28_Bold;
+    Font arial_40_Bold;
     BufferedImage image=null;
     KeyHandler keyH;
     public String uiPanel = "basic";
@@ -35,6 +36,7 @@ public class UI {
         this.gp=gp;
         arial_20=new Font("Arial",Font.PLAIN,20);
         arial_28_Bold = new Font("Arial", Font.BOLD,28);
+        arial_40_Bold = new Font("Arial", Font.BOLD, 40 );
 
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/UI/gold_coinUI.png"));
@@ -77,20 +79,20 @@ public class UI {
 
 
         g2.setColor(Color.white);
-        g2.drawRect(1275, 20, 175, 25);
+        g2.drawRect(1235, 20, 215, 25);
         g2.setColor(Color.gray);
-        g2.fillRect(1275, 20, 175, 25);
+        g2.fillRect(1235, 20, 215, 25);
         if (gp.dayCycle.hour>=22 || gp.dayCycle.hour<5){
             g2.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
             g2.setColor(Color.white);
 
-            g2.drawString(gp.dayCycle.realHour + ":" + gp.dayCycle.realMin + "-\uD83C\uDF19- DAY : " + gp.dayCycle.realDay, 1280, 40); // Heure et date
+            g2.drawString(gp.dayCycle.realHour + ":" + gp.dayCycle.realMin + "-\uD83C\uDF19- DAY : " + gp.dayCycle.realDay, 1240, 40); // Heure et date
 
         }else {
             g2.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
             g2.setColor(Color.white);
 
-            g2.drawString(gp.dayCycle.realHour + ":" + gp.dayCycle.realMin + "-\u2600- DAY : " + gp.dayCycle.realDay, 1280, 40); // Heure et date
+            g2.drawString(gp.dayCycle.realHour + ":" + gp.dayCycle.realMin + "-\u2600- DAY : " + gp.dayCycle.realDay, 1240, 40); // Heure et date
 
         }
 
@@ -159,15 +161,28 @@ public class UI {
         g2.drawRoundRect(5,5,gp.screenWidth-20,gp.screenHeight-10,10,20);
         g2.setColor(new Color(138, 92, 7, 255));
         g2.fillRoundRect(6, 6, gp.screenWidth-21, gp.screenHeight-11, 20, 20);
-        g2.setColor(Color.WHITE);
-        g2.draw(btnSeeHealthBar);
+
+        g2.setColor(Color.white);
+        g2.setFont(arial_40_Bold);
+        g2.drawString("Compétence", 600, 50);
+
+        g2.setColor(Color.white);
+        g2.drawRect(1215, 27, 200, 31);
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        g2.drawString("Point disponible: " + gp.playerXP.cPAvailable,  80, 750);
+        g2.drawString("Point disponible : " + gp.playerXP.cPAvailable,  1220, 50);
+
+
+        g2.setColor(Color.WHITE);
+        g2.draw(btnSeeHealthBar);
+
         g2.setColor(Color.WHITE);
         g2.draw(btnSpeedUpgrade);
+
         g2.setColor(Color.WHITE);
         g2.draw(btnEnduranceUpgrade);
+
+
 
         if (gp.player.canViewHealthBar){
 

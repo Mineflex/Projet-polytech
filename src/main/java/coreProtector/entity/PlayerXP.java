@@ -16,6 +16,7 @@ public class PlayerXP   {
 
         while (playerExPo >= nextLevel) {
             levelUp();
+
         }
     }
 

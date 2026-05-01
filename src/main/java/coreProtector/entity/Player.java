@@ -137,10 +137,14 @@ public class Player extends Entity{
                 }
 
 
-            }else{
-                speed=4;
-
+            }else if (keyH.spacePressed) {
+                speed = 0;
             }
+            else {
+                speed = 4;
+            }
+
+
             spriteCounter++;
 
             collisionOn=false;

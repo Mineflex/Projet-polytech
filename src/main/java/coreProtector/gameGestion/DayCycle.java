@@ -8,8 +8,8 @@ public class DayCycle{
     GamePanel gp;
     public  int frameCounter = 0;
     public  int day = 1;
-    public  int hour = 12;
-    public  int min = 59 ;
+    public  int hour = 21;
+    public  int min = 16 ;
     public  String realDay;
     public  String realHour;
     public  String realMin;
@@ -20,7 +20,7 @@ public class DayCycle{
 
 
 
-        if (frameCounter == 60){
+        if (frameCounter == 6){
 
             frameCounter = 0;
             min += 1;

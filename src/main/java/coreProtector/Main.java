@@ -7,8 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Main {
-
-
     public static  void  main(String[] args){
         ImageIcon icon=new ImageIcon(Main.class.getResource("/UI/logo.png"));
         Image scaledImage = icon.getImage().getScaledInstance(128, 128, Image.SCALE_SMOOTH);
@@ -35,12 +33,6 @@ public class Main {
 
         gamePanel.setupGame();
         gamePanel.startGameThread();
-//
+
     }
-
-
-
-
-
-
 }

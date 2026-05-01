@@ -8,13 +8,9 @@ public class PlayerXP   {
     public int playerLevel=0;
     public double playerExPo=0;
     public double nextLevel=100;
-    GamePanel gp;
     public  int cPAvailable=0;
     public int cPUsed=0;
 
-    public PlayerXP(GamePanel gp){
-        this.gp=gp;
-    }
     public void updateExperience(double amount) {
         playerExPo += amount;
 

@@ -113,8 +113,9 @@ public class Player extends Entity{
 
         }
 
+
         //On reagit si le joueur appuis sur une touche specfique liée au mouvement
-        if (keyH.upPressed || keyH.downPressed|| keyH.leftPressed|| keyH.rightPressed){
+        if (keyH.upPressed || keyH.downPressed|| keyH.leftPressed|| keyH.rightPressed|| keyH.spacePressed){
             if(keyH.upPressed==true){
                 direction="up";
             }
@@ -140,17 +141,12 @@ public class Player extends Entity{
                 speed=4;
 
             }
-
-
-
-
             spriteCounter++;
 
             collisionOn=false;
             gp.collisionM.checkTile(this);
             int itemIndex =gp.collisionM.checkItem(this,true);
             pickupItem(itemIndex);
-
 
             //si il n'est pas bloquer par un bloc avec collision, il avance /!\ 00: haut gauche de l'ecran
             if (collisionOn==false){
@@ -169,6 +165,8 @@ public class Player extends Entity{
                         break;
                 }
             }
+
+
 
             //Faire varié les sprites pour faire l'animation
             if(spriteCounter>10){
@@ -234,8 +232,20 @@ public class Player extends Entity{
                     image=up3;}
                 if(spriteNum==4){
                     image=up4;}
-
-
+                if(keyH.spacePressed){
+                    if(spriteNum==1) {
+                        image = up1;
+                    }
+                    if(spriteNum==2){
+                        image=hitUp1;
+                    }
+                    if(spriteNum==3){
+                        image=hitUp2;
+                    }
+                    if(spriteNum==4) {
+                        image = up4;
+                    }
+                }
 
                 break;
 
@@ -248,6 +258,20 @@ public class Player extends Entity{
                     image=down3;}
                 if(spriteNum==4){
                     image=down4;}
+                if(keyH.spacePressed) {
+                    if (spriteNum == 1) {
+                        image = down1;
+                    }
+                    if (spriteNum == 2) {
+                        image = hitDown1;
+                    }
+                    if (spriteNum == 3) {
+                        image = hitDown2;
+                    }
+                    if (spriteNum == 4) {
+                        image = down4;
+                    }
+                }
 
                 break;
 
@@ -260,6 +284,20 @@ public class Player extends Entity{
                     image=left3;}
                 if(spriteNum==4){
                     image=left4;}
+                if(keyH.spacePressed) {
+                    if (spriteNum == 1) {
+                        image = left1;
+                    }
+                    if (spriteNum == 2) {
+                        image = hitLeft1;
+                    }
+                    if (spriteNum == 3) {
+                        image = hitLeft2;
+                    }
+                    if (spriteNum == 4) {
+                        image = left4;
+                    }
+                }
                 break;
 
             case "right":
@@ -271,6 +309,20 @@ public class Player extends Entity{
                     image=right3;}
                 if(spriteNum==4){
                     image=right4;}
+                if(keyH.spacePressed) {
+                    if (spriteNum == 1) {
+                        image = right1;
+                    }
+                    if (spriteNum == 2) {
+                        image = hitRight1;
+                    }
+                    if (spriteNum == 3) {
+                        image = hitRight2;
+                    }
+                    if (spriteNum == 4) {
+                        image = right4;
+                    }
+                }
                 break;
         }
 

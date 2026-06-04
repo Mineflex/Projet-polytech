@@ -22,4 +22,7 @@ public class Entity {
     public Rectangle hitBox; //Definir sa hit box
     public int hitBoxDefaultX, hitBoxDefaultY;
     public  boolean collisionOn=false;
+
+    public Rectangle hitzone; //pour définire la zone de frappe
+    public int hitzoneDefaultX, hitzoneDefaultY;
 }

@@ -245,6 +245,11 @@ public class Player extends Entity{
                     }
                     if(spriteNum==3){
                         image=hitUp2;
+                        hitzone=new Rectangle(screenX + gp.scale *8*sizeMultiplier,screenY - 50 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
+                        g2.setColor(Color.white);
+                        g2.fillRect(screenX + gp.scale *8*sizeMultiplier,screenY - 50 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
+                        hitzoneDefaultX=hitzone.x;
+                        hitzoneDefaultY=hitzone.y;
                     }
                     if(spriteNum==4) {
                         image = up4;
@@ -271,6 +276,11 @@ public class Player extends Entity{
                     }
                     if (spriteNum == 3) {
                         image = hitDown2;
+                        hitzone=new Rectangle(screenX + gp.scale *8*sizeMultiplier,screenY + 75 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
+                        g2.setColor(Color.white);
+                        g2.fillRect(screenX + gp.scale *8*sizeMultiplier,screenY + 75 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
+                        hitzoneDefaultX=hitzone.x;
+                        hitzoneDefaultY=hitzone.y;
                     }
                     if (spriteNum == 4) {
                         image = down4;
@@ -297,6 +307,11 @@ public class Player extends Entity{
                     }
                     if (spriteNum == 3) {
                         image = hitLeft2;
+                        hitzone=new Rectangle(screenX - 50 + gp.scale *8*sizeMultiplier,screenY + 25 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
+                        g2.setColor(Color.white);
+                        g2.fillRect(screenX - 50 + gp.scale *8*sizeMultiplier,screenY+ 25 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
+                        hitzoneDefaultX=hitzone.x;
+                        hitzoneDefaultY=hitzone.y;
                     }
                     if (spriteNum == 4) {
                         image = left4;
@@ -322,6 +337,11 @@ public class Player extends Entity{
                     }
                     if (spriteNum == 3) {
                         image = hitRight2;
+                        hitzone=new Rectangle(screenX + 50 + gp.scale *8*sizeMultiplier,screenY + 25 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
+                        g2.setColor(Color.white);
+                        g2.fillRect(screenX + 50 + gp.scale *8*sizeMultiplier,screenY + 25 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
+                        hitzoneDefaultX=hitzone.x;
+                        hitzoneDefaultY=hitzone.y;
                     }
                     if (spriteNum == 4) {
                         image = right4;

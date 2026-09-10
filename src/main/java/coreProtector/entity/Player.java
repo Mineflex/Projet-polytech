@@ -14,7 +14,26 @@ public class Player extends Entity{
 
     public final int screenX;
     public final int screenY;
+
+    //Données inventaire
     public int goldCoin=0;
+    public int oak=10;
+    public int birch=0;
+    public int darkOak=0;
+    public int cherryWood=0;
+    public int woodBrazier=0;
+    public int chargedWood=0;
+    public int rock=10;
+    public int iron=0;
+    public int titane=0;
+    public int rubis=0;
+    public int onyx=0;
+    public int chargedRock=0;
+    public int volcanicRock=0;
+    public int sand=0;
+    public int runeBrazier=0;
+    public int chargedRune=0;
+    public int physicalRune=0;
 
 
 
@@ -126,7 +145,7 @@ public class Player extends Entity{
             }else if(keyH.rightPressed==true){
                 direction="right";
             }
-            if (keyH.sprintPressed && endurance>0){
+            if (keyH.sprintPressed && endurance>0 && (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) && keyH.spacePressed==false){
                 speed=8;
                 spriteCounter++;
 
@@ -207,7 +226,7 @@ public class Player extends Entity{
 
 
             switch (itemName){
-                case "Block":
+                case "ExperienceOrb":
                     gp.playerXP.updateExperience(gp.itm[index].stack*goldFortune);
                     gp.itm[index]=null;
 

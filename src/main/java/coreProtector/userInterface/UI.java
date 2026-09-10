@@ -276,7 +276,7 @@ public class UI {
 
     public void update() {
         if (uiPanel.equals("competence")) {
-            if (gp.mouseH.mousePressed) {
+            if (gp.mouseH.mousePressedVar) {
                 if (gp.playerXP.cPAvailable>0){
                     Point mousePoint = new Point(gp.mouseH.x, gp.mouseH.y);
 
@@ -284,7 +284,7 @@ public class UI {
 
 
                             if (gp.player.canViewHealthBar==false) {
-                                gp.mouseH.mousePressed = false;
+                                gp.mouseH.mousePressedVar = false;
                                 gp.playerXP.cPAvailable-=1;
                                 gp.playerXP.cPUsed+=1;
                             }
@@ -296,7 +296,7 @@ public class UI {
                     if(btnSpeedUpgrade.contains(mousePoint) && gp.player.speedMultiplier<1.32){
                         gp.player.speedMultiplier+=0.08;
 
-                         gp.mouseH.mousePressed = false;
+                         gp.mouseH.mousePressedVar = false;
                          gp.playerXP.cPAvailable-=1;
                          gp.playerXP.cPUsed+=1;
 
@@ -304,7 +304,7 @@ public class UI {
                     if(btnEnduranceUpgrade.contains(mousePoint) && gp.player.maxEndurance<8){
                         gp.player.maxEndurance+=1;
 
-                        gp.mouseH.mousePressed = false;
+                        gp.mouseH.mousePressedVar = false;
                         gp.playerXP.cPAvailable-=1;
                         gp.playerXP.cPUsed+=1;
 

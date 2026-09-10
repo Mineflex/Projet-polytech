@@ -51,7 +51,7 @@ public class Player extends Entity{
 
 
     public Player(GamePanel gp, KeyHandler keyH){
-        sizeMultiplier=1;
+        sizeMultiplier=2;
 
 
 
@@ -85,7 +85,7 @@ public class Player extends Entity{
     public void getPlayerImage(){
         try {
             //On recupere tout le sprites pour chaque animation
-            left1= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite04.png"));
+            left1= ImageIO.read(getClass().getResourceAsStream("/entities/ressource/tree_1.png"));
             left2= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite05.png"));
             left3= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite06.png"));
             left4= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite07.png"));

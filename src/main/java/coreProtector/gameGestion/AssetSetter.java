@@ -1,5 +1,6 @@
 package coreProtector.gameGestion;
 
+import coreProtector.entity.mobs.Goblin;
 import coreProtector.items.ExperienceOrb;
 import coreProtector.items.GoldCoin;
 
@@ -30,5 +31,10 @@ public class AssetSetter {
 
 
 
+    }
+    public void setMonster(){
+        gp.monster[0]= new Goblin(gp);
+        gp.monster[0].worldx=20*gp.tileSize;
+        gp.monster[0].worldy=25*gp.tileSize;
     }
 }

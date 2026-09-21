@@ -169,6 +169,8 @@ public class Player extends Entity{
             int itemIndex =gp.collisionM.checkItem(this,true);
             pickupItem(itemIndex);
 
+            int monsterIndex=gp.collisionM.checkEntity(this, gp.monster);
+
 
 
             //si il n'est pas bloquer par un bloc avec collision, il avance /!\ 00: haut gauche de l'ecran

@@ -16,15 +16,18 @@ public class Entity {
     public int speed; //vitesse des entitées
     public int health;
     public int strength;
+    public String name;
+    public int maxLife;
+    public int life;
 
 
     public BufferedImage up1, up2, up3,up4,down1,down2,down3,down4,left1,left2,left3,left4,right1,right2,right3,right4; //L'ensembles des sprites pour chaque animation de chaque entitées
     public BufferedImage hitUp1, hitUp2, hitDown1,hitDown2,hitLeft1,hitLeft2,hitRight1,hitRight2;
-    public String direction;//Savoir ou il va
+    public String direction = "down";//Savoir ou il va
 
     public int spriteCounter =0;//Pour les animations, voir class player
     public int spriteNum=1;
-    public int sizeMultiplier;//Grossir si besoin
+    public int sizeMultiplier =1;//Grossir si besoin
 
     public Rectangle hitBox = new Rectangle(0,0,48,48); //Definir sa hit box
     public int hitBoxDefaultX, hitBoxDefaultY;
@@ -48,7 +51,7 @@ public class Entity {
         gp.collisionM.checkTile(this);
         gp.collisionM.checkItem(this, false);
         gp.collisionM.checkPlayer(this);
-
+        gp.collisionM.checkEntity(this, gp.monster);
         if (collisionOn==false){
             switch (direction){
                 case "up":

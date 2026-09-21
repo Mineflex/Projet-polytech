@@ -1,5 +1,6 @@
 package coreProtector.gameGestion;
 
+import coreProtector.entity.Entity;
 import coreProtector.entity.Player;
 import coreProtector.entity.PlayerXP;
 import coreProtector.items.SuperItem;
@@ -8,6 +9,7 @@ import coreProtector.userInterface.UI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GamePanel extends JPanel implements  Runnable{
     //paramettres de l'ecran---------------
@@ -43,6 +45,8 @@ public class GamePanel extends JPanel implements  Runnable{
     public SuperItem itm[]=new  SuperItem[99];
     public DayCycle dayCycle = new DayCycle();
 
+    public Entity monster[] = new Entity[100];
+    ArrayList<Entity> entityList = new ArrayList<>();
 
 
 
@@ -63,6 +67,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
     public void setupGame(){
         aSetter.setItem();
+        aSetter.setMonster();
     }
 
 
@@ -108,6 +113,12 @@ public class GamePanel extends JPanel implements  Runnable{
         ui.update();
         dayCycle.update();
 
+        for (int i =0; i < monster.length; i++){
+            if (monster[i]!= null){
+                monster[i].update();
+            }
+        }
+
 
 
     }
@@ -124,6 +135,11 @@ public class GamePanel extends JPanel implements  Runnable{
         for(int i=0;i<itm.length; i++){
             if(itm[i]!=null){
                 itm[i].draw(g2,this);
+            }
+        }
+        for(int i=0;i<monster.length; i++){
+            if(monster[i]!=null){
+                monster[i].draw(g2);
             }
         }
 

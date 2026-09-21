@@ -109,6 +109,7 @@ public class GamePanel extends JPanel implements  Runnable{
         dayCycle.update();
 
 
+
     }
 
     //Methode pour dessiner avec Jpanel

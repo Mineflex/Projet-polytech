@@ -2,14 +2,15 @@ package coreProtector.entity;
 
 import coreProtector.gameGestion.GamePanel;
 import coreProtector.gameGestion.KeyHandler;
+import coreProtector.gameGestion.UtilityTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.IOException;
 
 public class Player extends Entity{
-    GamePanel gp;
     KeyHandler keyH;
 
     public final int screenX;
@@ -51,13 +52,14 @@ public class Player extends Entity{
 
 
     public Player(GamePanel gp, KeyHandler keyH){
-        sizeMultiplier=2;
 
 
 
 
+        super(gp);
+        sizeMultiplier=1;
 
-        this.gp=gp;
+
         this.keyH=keyH;
 
         //On gefinie ses coordonnées sur l'ecran, ici au centre /!\ Haut gauche = x:0 y:0, le 00 n'est pas au centre
@@ -83,38 +85,34 @@ public class Player extends Entity{
     }
 
     public void getPlayerImage(){
-        try {
-            //On recupere tout le sprites pour chaque animation
-            left1= ImageIO.read(getClass().getResourceAsStream("/entities/ressource/tree_1.png"));
-            left2= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite05.png"));
-            left3= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite06.png"));
-            left4= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite07.png"));
-            down1= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite00.png"));
-            down2= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite01.png"));
-            down3= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite02.png"));
-            down4= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite03.png"));
-            right1= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite08.png"));
-            right2= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite09.png"));
-            right3= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite10.png"));
-            right4= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite11.png"));
-            up1= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite12.png"));
-            up2= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite13.png"));
-            up3= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite14.png"));
-            up4= ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite15.png"));
-            hitDown1=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite16.png"));
-            hitDown2=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite17.png"));
-            hitUp1=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite18.png"));
-            hitUp2=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite19.png"));
-            hitLeft1=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite20.png"));
-            hitLeft2=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite21.png"));
-            hitRight1=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite22.png"));
-            hitRight2=ImageIO.read(getClass().getResourceAsStream("/playerSprites/player_sprite23.png"));
 
 
 
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+        up1=setup("/playerSprites/player_sprite12");
+        up2=setup("/playerSprites/player_sprite13");
+        up3=setup("/playerSprites/player_sprite14");
+        up4=setup("/playerSprites/player_sprite15");
+        left1=setup("/playerSprites/player_sprite04");
+        left2=setup("/playerSprites/player_sprite05");
+        left3=setup("/playerSprites/player_sprite06");
+        left4=setup("/playerSprites/player_sprite07");
+        down1=setup("/playerSprites/player_sprite00");
+        down2=setup("/playerSprites/player_sprite01");
+        down3=setup("/playerSprites/player_sprite02");
+        down4=setup("/playerSprites/player_sprite04");
+        right1=setup("/playerSprites/player_sprite08");
+        right2=setup("/playerSprites/player_sprite09");
+        right3=setup("/playerSprites/player_sprite10");
+        right4=setup("/playerSprites/player_sprite11");
+        hitDown1=setup("/playerSprites/player_sprite16");
+        hitDown2=setup("/playerSprites/player_sprite17");
+        hitUp1=setup("/playerSprites/player_sprite18");
+        hitUp2=setup("/playerSprites/player_sprite19");
+        hitLeft1=setup("/playerSprites/player_sprite20");
+        hitLeft2=setup("/playerSprites/player_sprite21");
+        hitRight1=setup("/playerSprites/player_sprite22");
+        hitRight2=setup("/playerSprites/player_sprite23");
+
     }
 
     public  void update(){
@@ -170,6 +168,8 @@ public class Player extends Entity{
             gp.collisionM.checkTile(this);
             int itemIndex =gp.collisionM.checkItem(this,true);
             pickupItem(itemIndex);
+
+
 
             //si il n'est pas bloquer par un bloc avec collision, il avance /!\ 00: haut gauche de l'ecran
             if (collisionOn==false){
@@ -373,7 +373,7 @@ public class Player extends Entity{
                 break;
         }
 
-        g2.drawImage(image,screenX,screenY,gp.tileSize *sizeMultiplier,gp.tileSize*sizeMultiplier,null);
+        g2.drawImage(image,screenX,screenY,null);
 
 
 

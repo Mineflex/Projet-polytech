@@ -1,6 +1,7 @@
 package coreProtector.items;
 
 import coreProtector.gameGestion.GamePanel;
+import coreProtector.gameGestion.UtilityTool;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -15,6 +16,7 @@ public class SuperItem {
     public int hitBoxDefaultX=0;
     public int hitBoxDefaultY=0;
     public int stack=1;
+    UtilityTool uTool= new UtilityTool();
 
 
     public void draw(Graphics2D g2, GamePanel gp){

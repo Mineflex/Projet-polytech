@@ -8,6 +8,7 @@ public class KeyHandler implements KeyListener {
     public boolean upPressed,downPressed,leftPressed,rightPressed,sprintPressed,spacePressed;
     public boolean showCompetenceUiBool =false;
     public boolean showControlMenu =true;
+    public boolean showInventaireMenu = false;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -51,6 +52,9 @@ public class KeyHandler implements KeyListener {
         }
         if (code==KeyEvent.VK_TAB){
             showControlMenu = !showControlMenu;
+        }
+        if (code==KeyEvent.VK_E){
+            showInventaireMenu = !showInventaireMenu;
         }
         //-----------------------------------------------
     }

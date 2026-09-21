@@ -22,6 +22,7 @@ public class UI {
     KeyHandler keyH;
     public String uiPanel = "basic";
     public boolean showControl;
+    public boolean uiInventaire = true; //Il est à true par défaut pour pouvoir coder plus rapidement, il faudra enlever true une fois le travail fini //
     public Rectangle btnSeeHealthBar;
     public Rectangle btnSpeedUpgrade;
     public Rectangle btnEnduranceUpgrade;
@@ -79,31 +80,31 @@ public class UI {
 
 
         g2.setColor(Color.white);
-        g2.drawRect(1235, 20, 215, 25);
+        g2.drawRect(1295, 20, 215, 25);
         g2.setColor(Color.gray);
-        g2.fillRect(1235, 20, 215, 25);
+        g2.fillRect(1295, 20, 215, 25);
         if (gp.dayCycle.hour>=22 || gp.dayCycle.hour<5){
             g2.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
             g2.setColor(Color.white);
 
-            g2.drawString(gp.dayCycle.realHour + ":" + gp.dayCycle.realMin + "-\uD83C\uDF19- DAY : " + gp.dayCycle.realDay, 1240, 40); // Heure et date
+            g2.drawString(gp.dayCycle.realHour + ":" + gp.dayCycle.realMin + "-\uD83C\uDF19- DAY : " + gp.dayCycle.realDay, 1300, 40); // Heure et date
 
         }else {
             g2.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
             g2.setColor(Color.white);
 
-            g2.drawString(gp.dayCycle.realHour + ":" + gp.dayCycle.realMin + "-\u2600- DAY : " + gp.dayCycle.realDay, 1240, 40); // Heure et date
+            g2.drawString(gp.dayCycle.realHour + ":" + gp.dayCycle.realMin + "-\u2600- DAY : " + gp.dayCycle.realDay, 1300, 40); // Heure et date
 
         }
 
         g2.setColor(Color.white);
-        g2.drawRect(1330, 46, 120, 25);
+        g2.drawRect(1295, 46, 215, 25);
         g2.setColor(Color.gray);
-        g2.fillRect(1330, 46, 120, 25);
+        g2.fillRect(1295, 46, 215, 25);
 
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        g2.drawString(" X: "+(gp.player.worldx /gp.tileSize -gp.maxWorldCol/2) + " ; Y: " +(-gp.player.worldy /gp.tileSize +gp.maxWorldRow/2), 1330,66);
+        g2.drawString(" X: "+(gp.player.worldx /gp.tileSize -gp.maxWorldCol/2) + " ; Y: " +(-gp.player.worldy /gp.tileSize +gp.maxWorldRow/2), 1300,66);
 
         if (gp.player.canViewHealthBar){
             g2.setColor(Color.black);
@@ -164,13 +165,15 @@ public class UI {
 
         g2.setColor(Color.white);
         g2.setFont(arial_40_Bold);
-        g2.drawString("Compétence", 600, 50);
+        g2.drawString("Compétence", gp.screenWidth/2 - 120, 50);
+
+
 
         g2.setColor(Color.white);
-        g2.drawRect(1215, 27, 200, 31);
+        g2.drawRect(1295, 27, 200, 31);
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        g2.drawString("Point disponible : " + gp.playerXP.cPAvailable,  1220, 50);
+        g2.drawString("Point disponible : " + gp.playerXP.cPAvailable,  1300, 50);
 
 
         g2.setColor(Color.WHITE);
@@ -245,6 +248,7 @@ public class UI {
 
     }
 
+
     public void StatsUI(Graphics2D g2){
         g2.setColor(new Color(97, 64, 4, 168));
 
@@ -260,6 +264,22 @@ public class UI {
     }
 
 
+    public void InventaireUI(Graphics2D g2){
+        // il faudra ajouter du code dans player.update pour pouvoir modifier la valeur de uiInventaire grace à showInventaireMenu dans KeyHandler //
+
+        g2.setColor(new Color(97, 64, 4, 255));
+        g2.fillRect(20, 20, gp.screenWidth/3, gp.screenHeight - 40);
+
+        g2.setFont(arial_40_Bold);
+        g2.setColor(Color.white);
+        g2.drawString("Inventaire", 180 , 70);
+
+
+    }
+
+
+
+
     public void draw(Graphics2D g2){
         if (uiPanel == "basic"){
             BasicUI(g2);
@@ -270,6 +290,9 @@ public class UI {
         if (showControl==true){
             ControllUI(g2);
             StatsUI(g2);
+        }
+        if (uiInventaire == true){
+            InventaireUI(g2);
         }
 
     }

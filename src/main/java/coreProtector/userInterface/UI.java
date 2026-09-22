@@ -1,5 +1,6 @@
 package coreProtector.userInterface;
 
+import coreProtector.entity.Entity;
 import coreProtector.entity.Player;
 import coreProtector.gameGestion.GamePanel;
 import coreProtector.gameGestion.KeyHandler;
@@ -22,7 +23,7 @@ public class UI {
     KeyHandler keyH;
     public String uiPanel = "basic";
     public boolean showControl;
-    public boolean uiInventaire = true; //Il est à true par défaut pour pouvoir coder plus rapidement, il faudra enlever true une fois le travail fini //
+    public boolean uiInventory;
     public Rectangle btnSeeHealthBar;
     public Rectangle btnSpeedUpgrade;
     public Rectangle btnEnduranceUpgrade;
@@ -274,7 +275,6 @@ public class UI {
         g2.setColor(Color.white);
         g2.drawString("Inventaire", 180 , 70);
 
-
     }
 
 
@@ -291,7 +291,7 @@ public class UI {
             ControllUI(g2);
             StatsUI(g2);
         }
-        if (uiInventaire == true){
+        if (uiInventory == true){
             InventaireUI(g2);
         }
 

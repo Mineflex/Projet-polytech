@@ -129,6 +129,11 @@ public class Player extends Entity{
             gp.ui.showControl=false;
 
         }
+        if (keyH.showInventoryMenu){
+            gp.ui.uiInventory=true;
+        }else {
+            gp.ui.uiInventory=false;
+        }
 
 
         //On reagit si le joueur appuis sur une touche specfique liée au mouvement

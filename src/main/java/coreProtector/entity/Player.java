@@ -99,7 +99,7 @@ public class Player extends Entity{
         down1=setup("/playerSprites/player_sprite00");
         down2=setup("/playerSprites/player_sprite01");
         down3=setup("/playerSprites/player_sprite02");
-        down4=setup("/playerSprites/player_sprite04");
+        down4=setup("/playerSprites/player_sprite03");
         right1=setup("/playerSprites/player_sprite08");
         right2=setup("/playerSprites/player_sprite09");
         right3=setup("/playerSprites/player_sprite10");

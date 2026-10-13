@@ -159,7 +159,7 @@ public class Entity {
                     break;
 
         }
-            g2.drawImage( image, screenX,screenY,gp.tileSize,gp.tileSize,null);
+            g2.drawImage( image, screenX,screenY,gp.tileSize*sizeMultiplier,gp.tileSize*sizeMultiplier,null);
 
         }}
 

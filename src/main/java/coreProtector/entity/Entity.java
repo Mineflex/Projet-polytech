@@ -17,8 +17,9 @@ public class Entity {
     public int health;
     public int strength;
     public String name;
-    public int maxLife;
-    public int life;
+    public int maxLife=1;
+    public int life=1;
+    public boolean hasHit=true;
 
 
     public BufferedImage up1, up2, up3,up4,down1,down2,down3,down4,left1,left2,left3,left4,right1,right2,right3,right4; //L'ensembles des sprites pour chaque animation de chaque entitées
@@ -33,8 +34,9 @@ public class Entity {
     public int hitBoxDefaultX, hitBoxDefaultY;
     public  boolean collisionOn=false;
 
-    public Rectangle hitzone; //pour définire la zone de frappe
-    public int hitzoneDefaultX, hitzoneDefaultY;
+    public Rectangle hitzone = new Rectangle(0,0,0,0); //pour définire la zone de frappe
+    public boolean attacking=false;
+
 
     public Entity(GamePanel gp){
         this.gp=gp;
@@ -52,6 +54,7 @@ public class Entity {
         gp.collisionM.checkItem(this, false);
         gp.collisionM.checkPlayer(this);
         gp.collisionM.checkEntity(this, gp.monster);
+
         if (collisionOn==false){
             switch (direction){
                 case "up":

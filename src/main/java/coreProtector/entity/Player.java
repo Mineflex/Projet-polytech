@@ -71,6 +71,10 @@ public class Player extends Entity{
         hitBoxDefaultX=hitBox.x;
         hitBoxDefaultY=hitBox.y;
 
+        hitzone.width=gp.scale*8*sizeMultiplier;
+        hitzone.height=gp.scale*8*sizeMultiplier;
+
+
         setDefaultValues();
         getPlayerImage();
     }
@@ -137,7 +141,7 @@ public class Player extends Entity{
 
 
         //On reagit si le joueur appuis sur une touche specfique liée au mouvement
-        if (keyH.upPressed || keyH.downPressed|| keyH.leftPressed|| keyH.rightPressed|| keyH.spacePressed){
+        if (keyH.upPressed || keyH.downPressed|| keyH.leftPressed|| keyH.rightPressed|| keyH.spacePressed ||attacking){
             if(keyH.upPressed==true){
                 direction="up";
             }
@@ -148,23 +152,32 @@ public class Player extends Entity{
             }else if(keyH.rightPressed==true){
                 direction="right";
             }
-            if (keyH.sprintPressed && endurance>0 && (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) && keyH.spacePressed==false){
-                speed=8;
+            if (keyH.sprintPressed && attacking==false && endurance>0 && (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) && keyH.spacePressed==false) {
+                speed = 8;
                 spriteCounter++;
 
                 frameCounter++;
-                if(frameCounter >=60){
-                    endurance-=1;
-                    frameCounter=0; //Nathan base toi sur cette variable pour le systeme d'heure, fait une classe DayCycle et puis bah bonne chance mdrr
+                if (frameCounter >= 60) {
+                    endurance -= 1;
+                    frameCounter = 0; //Nathan base toi sur cette variable pour le systeme d'heure, fait une classe DayCycle et puis bah bonne chance mdrr
                 }
 
 
-            }else if (keyH.spacePressed) {
-                speed = 0;
-            }
-            else {
+            }else if (keyH.spacePressed && !attacking) {
+                    speed = 0;
+                    attacking = true;
+                    spriteNum = 1;
+                    spriteCounter = 0;
+                    hasHit=true;
+                }
+            if ( !attacking && keyH.sprintPressed != true){
                 speed = 4;
             }
+
+            if (attacking && spriteNum == 3) {
+                attacking();
+            }
+
 
 
             spriteCounter++;
@@ -199,18 +212,23 @@ public class Player extends Entity{
 
 
             //Faire varié les sprites pour faire l'animation
-            if(spriteCounter>10){
-                if(spriteNum==1){
-                    spriteNum=2;
+            if (spriteCounter > 10) {
+                spriteCounter = 0;
+
+                if (attacking) {
+                    if (spriteNum < 4) {
+                        spriteNum++;
+                    } else {
+                        attacking = false;
+                        spriteNum = 1;
+                    }
+                } else {
+                    if (spriteNum < 4) {
+                        spriteNum++;
+                    } else {
+                        spriteNum = 1;
+                    }
                 }
-                else if (spriteNum==2){
-                    spriteNum=3;
-                }else if (spriteNum==3){
-                    spriteNum=4;
-                }else if (spriteNum==4){
-                    spriteNum=1;
-                }
-                spriteCounter=0;
             }
         }
 
@@ -224,8 +242,43 @@ public class Player extends Entity{
 
 
 
-    }
+    }public void attacking() {
+        if (spriteNum == 3 ) {
+            int oldX = hitBox.x;
+            int oldY = hitBox.y;
+            int oldWidth = hitBox.width;
+            int oldHeight = hitBox.height;
 
+            switch (direction) {
+                case "up":
+                    hitBox.y -= hitzone.height;
+                    break;
+                case "down":
+                    hitBox.y += hitBox.height;
+                    break;
+                case "left":
+                    hitBox.x -= hitzone.width;
+                    break;
+                case "right":
+                    hitBox.x += hitBox.width;
+                    break;
+            }
+
+            hitBox.width = hitzone.width;
+            hitBox.height = hitzone.height;
+
+            int monsterIndex = gp.collisionM.checkEntity(this, gp.monster);
+            hitEntity(monsterIndex);
+
+            hitBox.x = oldX;
+            hitBox.y = oldY;
+            hitBox.width = oldWidth;
+            hitBox.height = oldHeight;
+
+        }
+
+
+    }
 
     public void pickupItem(int index){
         if (index!=999){
@@ -244,6 +297,18 @@ public class Player extends Entity{
         }
 
     }
+    public void hitEntity( int i){
+
+        if (i !=999 && hasHit==true){
+                gp.monster[i].life-=1;
+                hasHit=false;
+
+
+
+        }
+
+
+    }
 
 
 //Dessiner le joueur selon sa direction et le sprite actuelle de l'animation
@@ -254,128 +319,114 @@ public class Player extends Entity{
         // comme un if mais on a pas a faire que ecrire direction == etc
         switch (direction){
             case "up":
-                if(spriteNum==1){
-                    image=up1;
-                }if(spriteNum==2){
-                image=up2;}
-                if(spriteNum==3){
-                    image=up3;}
-                if(spriteNum==4){
-                    image=up4;}
-                if(keyH.spacePressed){
-                    if(spriteNum==1) {
-                        image = up1;
-                    }
-                    if(spriteNum==2){
-                        image=hitUp1;
-                    }
+                if (attacking == false) {
+
+                    if(spriteNum==1){
+                        image=up1;
+                    }if(spriteNum==2){
+                        image=up2;}
                     if(spriteNum==3){
-                        image=hitUp2;
-                        //pour celui qui s'occupera de la zone de frape pour les mobs (peut-être moi) faites : postion du mob sur la carte + postion de la box - écart entre coordonées screen et postion du mob
-                        hitzone=new Rectangle(screenX + gp.scale *8*sizeMultiplier,screenY - 50 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
-                        g2.setColor(Color.white);
-                        g2.fillRect(screenX + gp.scale *8*sizeMultiplier,screenY - 50 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
-                        hitzoneDefaultX=hitzone.x;
-                        hitzoneDefaultY=hitzone.y;
-                    }
-                    if(spriteNum==4) {
-                        image = up4;
-                    }
+                        image=up3;}
+                    if(spriteNum==4){
+                        image=up4;}
+                }else {
+                    if(spriteNum==1){
+                        image=up1;
+                    }if(spriteNum==2){
+                        image=hitUp1;}
+                    if(spriteNum==3){
+                        image=hitUp2;}
+                    if(spriteNum==4){
+                        image=up4;}
                 }
+
+
 
                 break;
 
             case "down":
-                if(spriteNum==1){
-                    image=down1;
-                }if(spriteNum==2){
-                image=down2;}
-                if(spriteNum==3){
-                    image=down3;}
-                if(spriteNum==4){
-                    image=down4;}
-                if(keyH.spacePressed) {
+                if(attacking == false) {
+
+
                     if (spriteNum == 1) {
                         image = down1;
                     }
                     if (spriteNum == 2) {
-                        image = hitDown1;
+                        image = down2;
                     }
                     if (spriteNum == 3) {
-                        image = hitDown2;
-                        //pour celui qui s'occupera de la zone de frape pour les mobs (peut-être moi) faites : postion du mob sur la carte + postion de la box - écart entre coordonées screen et postion du mob
-                        hitzone=new Rectangle(screenX + gp.scale *8*sizeMultiplier,screenY + 75 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
-                        g2.setColor(Color.white);
-                        g2.fillRect(screenX + gp.scale *8*sizeMultiplier,screenY + 75 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
-                        hitzoneDefaultX=hitzone.x;
-                        hitzoneDefaultY=hitzone.y;
+                        image = down3;
                     }
                     if (spriteNum == 4) {
                         image = down4;
+                    }
+                }else {
+                    if(spriteNum==1){
+                        image=down1;
+                    }if(spriteNum==2){
+                        image=hitDown1;}
+                    if(spriteNum==3){
+                        image=hitDown2;}
+                    if(spriteNum==4){
+                        image=down4;
                     }
                 }
 
                 break;
 
             case "left":
-                if(spriteNum==1){
-                    image=left1;
-                }if(spriteNum==2){
-                image=left2;}
-                if(spriteNum==3){
-                    image=left3;}
-                if(spriteNum==4){
-                    image=left4;}
-                if(keyH.spacePressed) {
+                if(!attacking) {
+
+
                     if (spriteNum == 1) {
                         image = left1;
                     }
                     if (spriteNum == 2) {
-                        image = hitLeft1;
+                        image = left2;
                     }
                     if (spriteNum == 3) {
-                        image = hitLeft2;
-                        //pour celui qui s'occupera de la zone de frape pour les mobs (peut-être moi) faites : postion du mob sur la carte + postion de la box - écart entre coordonées screen et postion du mob
-                        hitzone=new Rectangle(screenX - 50 + gp.scale *8*sizeMultiplier,screenY + 25 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
-                        g2.setColor(Color.white);
-                        g2.fillRect(screenX - 50 + gp.scale *8*sizeMultiplier,screenY+ 25 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
-                        hitzoneDefaultX=hitzone.x;
-                        hitzoneDefaultY=hitzone.y;
+                        image = left3;
                     }
                     if (spriteNum == 4) {
                         image = left4;
                     }
+                }else {
+                    if(spriteNum==1){
+                        image=left1;
+                    }if(spriteNum==2){
+                        image=hitLeft1;}
+                    if(spriteNum==3){
+                        image=hitLeft2;}
+                    if(spriteNum==4){
+                        image=left2;}
                 }
                 break;
 
             case "right":
-                if(spriteNum==1){
-                    image=right1;
-                }if(spriteNum==2){
-                image=right2;}
-                if(spriteNum==3){
-                    image=right3;}
-                if(spriteNum==4){
-                    image=right4;}
-                if(keyH.spacePressed) {
+                if(!attacking) {
+
+
                     if (spriteNum == 1) {
                         image = right1;
                     }
                     if (spriteNum == 2) {
-                        image = hitRight1;
+                        image = right2;
                     }
                     if (spriteNum == 3) {
-                        image = hitRight2;
-                        //pour celui qui s'occupera de la zone de frape pour les mobs (peut-être moi) faites : postion du mob sur la carte + postion de la box - écart entre coordonées screen et postion du mob
-                        hitzone=new Rectangle(screenX + 50 + gp.scale *8*sizeMultiplier,screenY + 25 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
-                        g2.setColor(Color.white);
-                        g2.fillRect(screenX + 50 + gp.scale *8*sizeMultiplier,screenY + 25 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
-                        hitzoneDefaultX=hitzone.x;
-                        hitzoneDefaultY=hitzone.y;
+                        image = right3;
                     }
                     if (spriteNum == 4) {
                         image = right4;
                     }
+                }else {
+                    if(spriteNum==1){
+                        image=right1;
+                    }if(spriteNum==2){
+                        image=hitRight1;}
+                    if(spriteNum==3){
+                        image=hitRight2;}
+                    if(spriteNum==4){
+                        image=right4;}
                 }
                 break;
         }

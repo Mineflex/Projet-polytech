@@ -89,6 +89,7 @@ public class UI {
         g2.drawRect(1295, 20, 215, 25);
         g2.setColor(Color.gray);
         g2.fillRect(1295, 20, 215, 25);
+
         if (gp.dayCycle.hour>=22 || gp.dayCycle.hour<5){
             g2.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 20));
             g2.setColor(Color.white);

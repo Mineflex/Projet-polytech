@@ -4,6 +4,7 @@ import coreProtector.entity.Entity;
 import coreProtector.entity.Player;
 import coreProtector.gameGestion.GamePanel;
 import coreProtector.gameGestion.KeyHandler;
+import coreProtector.gameGestion.UtilityTool;
 import coreProtector.items.GoldCoin;
 import coreProtector.gameGestion.DayCycle;
 
@@ -13,13 +14,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class UI {
     GamePanel gp;
     Font arial_20;
     Font arial_28_Bold;
     Font arial_40_Bold;
-    BufferedImage image=null;
+    BufferedImage goldCoin=null;
+    BufferedImage oak=null;
     KeyHandler keyH;
     public String uiPanel = "basic";
     public boolean showControl;
@@ -41,7 +44,9 @@ public class UI {
         arial_40_Bold = new Font("Arial", Font.BOLD, 40 );
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/UI/gold_coinUI.png"));
+            goldCoin = ImageIO.read(getClass().getResourceAsStream("/UI/gold_coinUI.png"));
+            oak = ImageIO.read(getClass().getResourceAsStream("/entities/ressource/tree_1.png"));
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -266,7 +271,6 @@ public class UI {
 
 
     public void InventaireUI(Graphics2D g2){
-        // il faudra ajouter du code dans player.update pour pouvoir modifier la valeur de uiInventaire grace à showInventaireMenu dans KeyHandler //
 
         g2.setColor(new Color(97, 64, 4, 255));
         g2.fillRect(20, 20, gp.screenWidth/3, gp.screenHeight - 40);
@@ -274,6 +278,15 @@ public class UI {
         g2.setFont(arial_40_Bold);
         g2.setColor(Color.white);
         g2.drawString("Inventaire", 180 , 70);
+
+        g2.drawImage(oak, 10, 50, oak.getWidth() *2 ,oak.getHeight() *2,null);
+        g2.setFont(arial_20);
+        g2.drawString("Oak Tree", 10, 20);
+
+        g2.drawImage(goldCoin, 10, 100, oak.getWidth() ,oak.getHeight(),null);
+
+
+
 
     }
 

@@ -3,6 +3,10 @@ package coreProtector.gameGestion;
 import coreProtector.entity.Entity;
 import coreProtector.entity.Player;
 import coreProtector.entity.PlayerXP;
+import coreProtector.entity.mobs.Goblin;
+import coreProtector.items.ExperienceOrb;
+import coreProtector.items.GoldCoin;
+import coreProtector.items.OakWoodItem;
 import coreProtector.items.SuperItem;
 import coreProtector.tiles.TileManager;
 import coreProtector.userInterface.UI;
@@ -10,6 +14,7 @@ import coreProtector.userInterface.UI;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GamePanel extends JPanel implements  Runnable{
     //paramettres de l'ecran---------------
@@ -42,10 +47,10 @@ public class GamePanel extends JPanel implements  Runnable{
     public  UI ui=new UI(this);
     public Player player= new Player(this, keyH);
     public PlayerXP playerXP= new PlayerXP();
-    public SuperItem itm[]=new  SuperItem[99];
+    public SuperItem itm[]=new  SuperItem[1000];
     public DayCycle dayCycle = new DayCycle();
 
-    public Entity monster[] = new Entity[100];
+    public Entity monster[] = new Entity[1000];
     ArrayList<Entity> entityList = new ArrayList<>();
 
 
@@ -109,6 +114,7 @@ public class GamePanel extends JPanel implements  Runnable{
     }
 
     public void update(){
+        Random rd= new Random();
         player.update();
         ui.update();
         dayCycle.update();
@@ -118,8 +124,31 @@ public class GamePanel extends JPanel implements  Runnable{
                 monster[i].update();
             }
             if (monster[i] !=null && monster[i].life<=0){
-                playerXP.playerExPo +=10;
+                String mob = monster[i].name;
+
+                switch (mob){
+                    case "Oak Wood":
+                        playerXP.updateExperience(5);
+                        int stack= rd.nextInt(3,5);
+                        for (int j = 0; j < 9999; j++) {
+                            if (itm[j]==null){
+                                itm[0]=new OakWoodItem(this);
+                                itm[0].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
+                                itm[0].worldY=monster[i].worldy + monster[i].hitBox.height/2;
+                                itm[0].stack=stack;
+                                break;
+                            }
+                        }
+
+
+                        break;
+                    case "Goblin Lvl1":
+                        playerXP.updateExperience(25);
+
+                        break;
+                }
                 monster[i]=null;
+
 
             }
         }

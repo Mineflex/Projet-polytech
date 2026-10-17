@@ -67,7 +67,7 @@ public class Player extends Entity{
         screenY=gp.screenHeight/2 - gp.tileSize*sizeMultiplier/2;
 
         //On fait une hitbox pour le joueur plus petite pour faciliter le mouvement entre deux tiles avec une collision
-        hitBox=new Rectangle(0 + gp.scale *8*sizeMultiplier,0 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
+        hitBox=new Rectangle(0 + gp.scale *8*sizeMultiplier,0 + gp.scale *14*sizeMultiplier,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
         hitBoxDefaultX=hitBox.x;
         hitBoxDefaultY=hitBox.y;
 
@@ -251,23 +251,27 @@ public class Player extends Entity{
 
             switch (direction) {
                 case "up":
+                    hitBox.x += (hitBox.width - hitzone.width) / 2;
                     hitBox.y -= hitzone.height;
                     break;
                 case "down":
+                    hitBox.x += (hitBox.width - hitzone.width) / 2;
                     hitBox.y += hitBox.height;
                     break;
                 case "left":
                     hitBox.x -= hitzone.width;
+                    hitBox.y += (hitBox.height - hitzone.height) / 2;
                     break;
                 case "right":
                     hitBox.x += hitBox.width;
+                    hitBox.y += (hitBox.height - hitzone.height) / 2;
                     break;
             }
 
             hitBox.width = hitzone.width;
             hitBox.height = hitzone.height;
 
-            int monsterIndex = gp.collisionM.checkEntity(this, gp.monster);
+            int monsterIndex = gp.collisionM.checkAttack(this, gp.monster);
             hitEntity(monsterIndex);
 
             hitBox.x = oldX;
@@ -292,6 +296,9 @@ public class Player extends Entity{
 
 
                     break;
+                case "oakWoodItem":
+                    oak+=1*gp.itm[index].stack * ressourcesFortune;
+                    gp.itm[index]=null;
             }
 
         }
@@ -300,7 +307,7 @@ public class Player extends Entity{
     public void hitEntity( int i){
 
         if (i !=999 && hasHit==true){
-                gp.monster[i].life-=1;
+                gp.monster[i].life-=1*strengthMultiplier;
                 hasHit=false;
 
 
@@ -432,6 +439,51 @@ public class Player extends Entity{
         }
 
         g2.drawImage(image,screenX,screenY,null);
+        // Afficher la hitbox du joueur en rouge
+        g2.setColor(Color.RED);
+
+        g2.drawRect(
+                screenX + hitBox.x,
+                screenY + hitBox.y,
+                hitBox.width,
+                hitBox.height
+        );
+
+// Afficher la hitbox d'attaque en jaune
+        if (attacking && spriteNum == 3) {
+
+            int attackX = screenX + hitBox.x;
+            int attackY = screenY + hitBox.y;
+
+            switch (direction) {
+                    case "up":
+                        attackX += (hitBox.width - hitzone.width) / 2;
+                        attackY -= hitzone.height;
+                        break;
+                    case "down":
+                        attackX += (hitBox.width - hitzone.width) / 2;
+                        attackY += hitBox.height;
+                        break;
+                    case "left":
+                        attackX -= hitzone.width;
+                        attackY += (hitBox.height - hitzone.height) / 2;
+                        break;
+                    case "right":
+                        attackX += hitBox.width;
+                        attackY += (hitBox.height - hitzone.height) / 2;
+                        break;
+
+            }
+
+            g2.setColor(Color.YELLOW);
+
+            g2.drawRect(
+                    attackX,
+                    attackY,
+                    hitzone.width,
+                    hitzone.height
+            );
+        }
 
 
 

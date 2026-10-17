@@ -2,6 +2,8 @@ package coreProtector.gameGestion;
 
 import coreProtector.entity.Entity;
 
+import java.awt.*;
+
 public class CollisionManager {
 
     GamePanel gp;
@@ -78,7 +80,7 @@ public class CollisionManager {
                     case "up":
                         entity.hitBox.y-=entity.speed;
                         if (entity.hitBox.intersects(gp.itm[i].hitBox)){
-                            if(gp.itm[i].collision=true){
+                            if(gp.itm[i].collision==true){
                                 entity.collisionOn=true;
                             }
                             if(isPlayer == true){
@@ -90,7 +92,7 @@ public class CollisionManager {
                     case "down":
                         entity.hitBox.y+=entity.speed;
                         if (entity.hitBox.intersects(gp.itm[i].hitBox)){
-                            if(gp.itm[i].collision=true){
+                            if(gp.itm[i].collision==true){
                                 entity.collisionOn=true;
                             }
                             if(isPlayer == true){
@@ -101,7 +103,7 @@ public class CollisionManager {
                     case "left":
                         entity.hitBox.x-=entity.speed;
                         if (entity.hitBox.intersects(gp.itm[i].hitBox)){
-                            if(gp.itm[i].collision=true){
+                            if(gp.itm[i].collision==true){
                                 entity.collisionOn=true;
                             }
                             if(isPlayer == true){
@@ -112,7 +114,7 @@ public class CollisionManager {
                     case "right":
                         entity.hitBox.x+=entity.speed;
                         if (entity.hitBox.intersects(gp.itm[i].hitBox)){
-                            if(gp.itm[i].collision=true){
+                            if(gp.itm[i].collision==true){
                                 entity.collisionOn=true;
                             }
                             if(isPlayer == true){
@@ -241,6 +243,65 @@ public class CollisionManager {
     }}
 
 
+
+    public int checkAttack(Entity entity, Entity[] targets) {
+
+        Rectangle attackBox = new Rectangle(
+                entity.worldx + entity.hitBox.x,
+                entity.worldy + entity.hitBox.y,
+                entity.hitBox.width,
+                entity.hitBox.height
+        );
+
+        switch (entity.direction) {
+            case "up":
+                attackBox.x += (attackBox.width - entity.hitzone.width) / 2;
+                attackBox.y -= entity.hitzone.height;
+                attackBox.width = entity.hitzone.width;
+                attackBox.height = entity.hitzone.height;
+                break;
+
+            case "down":
+                attackBox.x += (attackBox.width - entity.hitzone.width) / 2;
+                attackBox.y += attackBox.height;
+                attackBox.width = entity.hitzone.width;
+                attackBox.height = entity.hitzone.height;
+                break;
+
+            case "left":
+                attackBox.x -= entity.hitzone.width;
+                attackBox.y += (attackBox.height - entity.hitzone.height) / 2;
+                attackBox.width = entity.hitzone.width;
+                attackBox.height = entity.hitzone.height;
+                break;
+
+            case "right":
+                attackBox.x += attackBox.width;
+                attackBox.y += (attackBox.height - entity.hitzone.height) / 2;
+                attackBox.width = entity.hitzone.width;
+                attackBox.height = entity.hitzone.height;
+                break;
+        }
+
+        for (int i = 0; i < targets.length; i++) {
+            if (targets[i] == null) {
+                continue;
+            }
+
+            Rectangle targetBox = new Rectangle(
+                    targets[i].worldx + targets[i].hitBox.x,
+                    targets[i].worldy + targets[i].hitBox.y,
+                    targets[i].hitBox.width,
+                    targets[i].hitBox.height
+            );
+
+            if (attackBox.intersects(targetBox)) {
+                return i;
+            }
+        }
+
+        return 999;
+    }
 
 
 }

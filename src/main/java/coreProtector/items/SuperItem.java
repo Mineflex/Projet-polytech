@@ -12,9 +12,9 @@ public class SuperItem {
     public String name;
     public boolean collision=false;
     public int worldX,worldY;
-    public  Rectangle hitBox=new Rectangle(0,0,gp.tileSize,gp.tileSize);
-    public int hitBoxDefaultX=0;
-    public int hitBoxDefaultY=0;
+    public  Rectangle hitBox=new Rectangle(gp.tileSize/4,gp.tileSize/4,gp.tileSize/2,gp.tileSize/2);
+    public int hitBoxDefaultX=gp.tileSize/4;
+    public int hitBoxDefaultY=gp.tileSize/4;
     public int stack=1;
     UtilityTool uTool= new UtilityTool();
 

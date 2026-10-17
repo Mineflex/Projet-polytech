@@ -282,7 +282,7 @@ public class UI {
 
         g2.drawImage(oak, 10, 50, oak.getWidth() *2 ,oak.getHeight() *2,null);
         g2.setFont(arial_20);
-        g2.drawString("Oak Tree", 10, 20);
+        g2.drawString("Oak Tree : " + gp.player.oak, 180, 100);
 
         g2.drawImage(goldCoin, 10, 100, oak.getWidth() ,oak.getHeight(),null);
 

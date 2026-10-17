@@ -15,7 +15,7 @@ public class OakWoodEntity extends Entity {
 
         name= "Oak Wood";
         speed =1;
-        maxLife=5;
+        maxLife=3;
         life=maxLife;
         sizeMultiplier=2;
 

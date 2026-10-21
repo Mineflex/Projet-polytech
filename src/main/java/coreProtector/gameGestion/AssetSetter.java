@@ -26,7 +26,7 @@ public class AssetSetter {
         gp.itm[1].worldY=20 * gp.tileSize;
         gp.itm[1].stack=100;
 
-        gp.itm[2]=new ExperienceOrb(gp);
+        gp.itm[2]=new OakWoodItem(gp);
         gp.itm[2].worldX= 20 * gp.tileSize;
         gp.itm[2].worldY=15 * gp.tileSize;
         gp.itm[2].stack=1000000000;

@@ -14,8 +14,8 @@ public class OakWoodItem extends SuperItem{
         this.gp=gp;
         name="oakWoodItem";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/items/gold_coin.png"));
-            uTool.scaledImage(image,gp.tileSize,gp.tileSize);
+            image = ImageIO.read(getClass().getResourceAsStream("/items/oak_wood_item.png"));
+            uTool.scaledImage(image,gp.tileSize ,gp.tileSize );
         }catch (IOException e){
             e.printStackTrace();
         }

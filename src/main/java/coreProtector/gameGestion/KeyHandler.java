@@ -1,14 +1,19 @@
 package coreProtector.gameGestion;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyHandler implements KeyListener {
 
+
+public class KeyHandler implements KeyListener {
+    GamePanel gp;
     public boolean upPressed,downPressed,leftPressed,rightPressed,sprintPressed,spacePressed;
     public boolean showCompetenceUiBool =false;
     public boolean showControlMenu =true;
     public boolean showInventoryMenu = false;
+
+    public KeyHandler(GamePanel gp){
+        this.gp=gp;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -51,12 +56,31 @@ public class KeyHandler implements KeyListener {
             showCompetenceUiBool = !showCompetenceUiBool;
         }
         if (code==KeyEvent.VK_TAB){
-            showControlMenu = !showControlMenu;
+            if (gp.GameState == gp.PlayState) {
+                showControlMenu = !showControlMenu;;
+            }
+            else if (gp.GameState == gp.GameOverState) {
+
+            }//quand le on est en gameover, ce menue ne s'ouvre plus
         }
         if (code==KeyEvent.VK_E){
-            showInventoryMenu = !showInventoryMenu;
+            if (gp.GameState == gp.PlayState) {
+                showInventoryMenu = !showInventoryMenu;
+            }
+            else if (gp.GameState == gp.GameOverState) {
+
+            }//quand le on est en gameover, ce menue ne s'ouvre plus
         }
-        //-----------------------------------------------
+        //test game over-----------------------------------------------
+        if (code==KeyEvent.VK_P){
+            if (gp.GameState == gp.PlayState) {
+                gp.GameState = gp.GameOverState;
+                gp.ui.uiGameover = true;
+            }
+            else {
+            }
+        }
+
     }
 
     @Override

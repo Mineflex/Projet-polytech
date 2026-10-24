@@ -21,15 +21,18 @@ public class UI {
     Font arial_20;
     Font arial_28_Bold;
     Font arial_40_Bold;
+    Font arial_80_Bold;
     BufferedImage goldCoin=null;
     BufferedImage oak=null;
     KeyHandler keyH;
     public String uiPanel = "basic";
     public boolean showControl;
     public boolean uiInventory;
+    public boolean uiGameover;
     public Rectangle btnSeeHealthBar;
     public Rectangle btnSpeedUpgrade;
     public Rectangle btnEnduranceUpgrade;
+    public Rectangle btnRetry;
     private boolean mousePressed = false;
     public int alpha;
 
@@ -42,6 +45,7 @@ public class UI {
         arial_20=new Font("Arial",Font.PLAIN,20);
         arial_28_Bold = new Font("Arial", Font.BOLD,28);
         arial_40_Bold = new Font("Arial", Font.BOLD, 40 );
+        arial_80_Bold = new Font("Arial", Font.BOLD, 80);
 
         try {
             goldCoin = ImageIO.read(getClass().getResourceAsStream("/UI/gold_coinUI.png"));
@@ -53,6 +57,7 @@ public class UI {
         btnSeeHealthBar = new Rectangle(50, 50, 200, 50); // x, y, largeur, hauteur
         btnSpeedUpgrade = new Rectangle(300, 50, 200, 50); // x, y, largeur, hauteur
         btnEnduranceUpgrade = new Rectangle(550, 50, 200, 50); // x, y, largeur, hauteur
+        btnRetry =new Rectangle(gp.screenWidth/2 - 100 ,365, 200, 50);
 
     }
     public void BasicUI(Graphics2D g2){
@@ -291,6 +296,23 @@ public class UI {
 
     }
 
+    public void GameOverUI(Graphics2D g2){
+        g2.setColor(new Color(0, 0, 0, 255));
+        String gameOver = "Game Over";
+        String Retry = "Retry";
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        g2.setColor(Color.white);
+        g2.setFont(arial_80_Bold);
+        g2.drawString(gameOver, gp.screenWidth/2  - gameOver.length()*20 - 40 ,  200);
+        g2.setColor(Color.WHITE);
+        g2.draw(btnRetry);
+        g2.setColor(new Color(250, 250, 250, 50));
+        g2.fillRect(gp.screenWidth/2 - 100, 365, 200, 50);
+        g2.setColor(Color.WHITE);
+        g2.setFont(arial_28_Bold);
+        g2.drawString(Retry, gp.screenWidth/2 -Retry.length()*7,  400);
+    }
+
 
 
 
@@ -307,6 +329,9 @@ public class UI {
         }
         if (uiInventory == true){
             InventaireUI(g2);
+        }
+        if (uiGameover == true){
+           GameOverUI(g2);
         }
 
     }
@@ -352,6 +377,16 @@ public class UI {
 
                 }
             }
+        }
+        if (uiGameover == true){
+            if (gp.mouseH.mousePressedVar) {
+                Point mousePoint = new Point(gp.mouseH.x, gp.mouseH.y);
+                if (btnRetry.contains(mousePoint)){
+                    gp.GameState = gp.PlayState;
+                    uiGameover = false;
+                }
+            }
+
         }
     }
 }

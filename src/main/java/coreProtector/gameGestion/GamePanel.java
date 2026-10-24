@@ -35,11 +35,18 @@ public class GamePanel extends JPanel implements  Runnable{
     public final int worldWidth= tileSize*maxWorldCol;//^Idem mais en pixel
     public final int worldHeight= tileSize*maxWorldRow;//^Idem mais en hauteur
 
+    //état du jeu
+    public int GameState;
+    final public int PlayState = 1;
+    final public int GameOverState = 2;
+    //l'intérêts des "gamestate" est de pouvoir changer le comportement du jeux en fonction des besoins, par exemple
+    //quand le jeu en en états de game over, certaine touche seront désactivée (on ne pourra par exemple plus ouvrir l'inventaire)
+
 
     int FPS=60;// Fps
 
     TileManager tileM= new TileManager(this);
-    KeyHandler keyH= new KeyHandler();
+    KeyHandler keyH= new KeyHandler(this);
     public MouseHandler mouseH=new MouseHandler();
     Thread gameThread;
     public CollisionManager collisionM= new CollisionManager(this);
@@ -73,6 +80,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public void setupGame(){
         aSetter.setItem();
         aSetter.setMonster();
+        GameState = PlayState;
     }
 
 

@@ -17,38 +17,38 @@ public class Player extends Entity{
     public final int screenY;
 
     //Données inventaire
-    public int goldCoin=0;
-    public int oak=10;
-    public int birch=0;
-    public int darkOak=0;
-    public int cherryWood=0;
-    public int woodBrazier=0;
-    public int chargedWood=0;
-    public int rock=10;
-    public int iron=0;
-    public int titane=0;
-    public int rubis=0;
-    public int onyx=0;
-    public int chargedRock=0;
-    public int volcanicRock=0;
-    public int sand=0;
-    public int runeBrazier=0;
-    public int chargedRune=0;
-    public int physicalRune=0;
+    public int goldCoin;
+    public int oak;
+    public int birch;
+    public int darkOak;
+    public int cherryWood;
+    public int woodBrazier;
+    public int chargedWood;
+    public int rock;
+    public int iron;
+    public int titane;
+    public int rubis;
+    public int onyx;
+    public int chargedRock;
+    public int volcanicRock;
+    public int sand;
+    public int runeBrazier;
+    public int chargedRune;
+    public int physicalRune;
 
 
 
     //Valeurs par defaut competence
-    public float speedMultiplier=1;
-    int frameCounter=0;
-    public int maxEndurance=4;
-    public int endurance = 4; // duree de la course
-    public int enduranceCooldown=12; //duree de la recuperation de l'endurance
-    int strengthMultiplier=1;
-    public int ressourcesFortune=1;
-    public int goldFortune=1;
-    public boolean canViewHealthBar=false; //Voir la vie du core meme a distance
-    boolean repairKit=false; //Repare petit a petit les defenses si il est tres tres proche d'elles
+    public float speedMultiplier;
+    int frameCounter;
+    public int maxEndurance;
+    public int endurance; // duree de la course
+    public int enduranceCooldown; //duree de la recuperation de l'endurance
+    int strengthMultiplier;
+    public int ressourcesFortune;
+    public int goldFortune;
+    public boolean canViewHealthBar; //Voir la vie du core meme a distance
+    boolean repairKit; //Repare petit a petit les defenses si il est tres tres proche d'elles
 
 
     public Player(GamePanel gp, KeyHandler keyH){
@@ -81,11 +81,43 @@ public class Player extends Entity{
 
     public void setDefaultValues(){
 
-        //Ses coordonnées et propriétées lors du spawn
+        //Ses coordonnées et propriétées lors du spawn ou après gameOver
         worldx = gp.tileSize *25;
         worldy = gp.tileSize *25;
         speed = 4 ;
         direction= "up";
+        //inventaire lors du spawn ou après gameOver
+        goldCoin = 0;
+        oak=10;
+        birch=10;
+        darkOak=0;
+        cherryWood=0;
+        woodBrazier=0;
+        chargedWood=0;
+        rock=10;
+        iron=0;
+        titane=0;
+        rubis=0;
+        onyx=0;
+        chargedRock=0;
+        volcanicRock=0;
+        sand=0;
+        runeBrazier=0;
+        chargedRune=0;
+        physicalRune=0;
+        //compétence lors du spawn ou après gameOver
+        speedMultiplier=1;
+        frameCounter=0;
+        maxEndurance=4;
+        endurance = 4; // duree de la course
+        enduranceCooldown=12; //duree de la recuperation de l'endurance
+        strengthMultiplier=1;
+        ressourcesFortune=1;
+        goldFortune=1;
+        canViewHealthBar=false; //Voir la vie du core meme a distance
+        repairKit=false; //Repare petit a petit les defenses si il est tres tres proche d'elles
+
+
     }
 
     public void getPlayerImage(){

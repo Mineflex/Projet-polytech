@@ -1,12 +1,8 @@
 package coreProtector.userInterface;
-
 import coreProtector.entity.Entity;
 import coreProtector.entity.Player;
-import coreProtector.gameGestion.GamePanel;
-import coreProtector.gameGestion.KeyHandler;
-import coreProtector.gameGestion.UtilityTool;
+import coreProtector.gameGestion.*;
 import coreProtector.items.GoldCoin;
-import coreProtector.gameGestion.DayCycle;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -18,6 +14,7 @@ import java.io.IOException;
 
 public class UI {
     GamePanel gp;
+    AssetSetter aSetter;
     Font arial_20;
     Font arial_28_Bold;
     Font arial_40_Bold;
@@ -42,6 +39,7 @@ public class UI {
     public UI(GamePanel gp){
 
         this.gp=gp;
+        this.aSetter = new AssetSetter(gp);
         arial_20=new Font("Arial",Font.PLAIN,20);
         arial_28_Bold = new Font("Arial", Font.BOLD,28);
         arial_40_Bold = new Font("Arial", Font.BOLD, 40 );
@@ -384,6 +382,11 @@ public class UI {
                 if (btnRetry.contains(mousePoint)){
                     gp.GameState = gp.PlayState;
                     uiGameover = false;
+                    gp.player.setDefaultValues();
+                    aSetter.setItem();
+                    aSetter.setMonster();
+                    gp.playerXP.setDefaultXP();
+                    gp.dayCycle.setDefaultTime();
                 }
             }
 

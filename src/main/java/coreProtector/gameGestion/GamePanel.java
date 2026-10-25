@@ -81,6 +81,8 @@ public class GamePanel extends JPanel implements  Runnable{
         aSetter.setItem();
         aSetter.setMonster();
         GameState = PlayState;
+        playerXP.setDefaultXP();
+        dayCycle.setDefaultTime();
     }
 
 

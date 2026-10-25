@@ -7,14 +7,20 @@ public class DayCycle{
 
     GamePanel gp;
     public  int frameCounter = 0;
-    public  int day = 0;
-    public  int hour = 21;
-    public  int min = 25 ;
+    public  int day;
+    public  int hour;
+    public  int min;
     public  String realDay;
     public  String realHour;
     public  String realMin;
     public boolean night;
 
+public void setDefaultTime(){
+    frameCounter = 0;
+    day = 0;
+    hour = 21;
+    min = 25 ;
+}
 
     public  void date( ){
 

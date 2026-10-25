@@ -6,7 +6,7 @@ import coreProtector.entity.Player;
 public class DayCycle{
 
     GamePanel gp;
-    public  int frameCounter = 0;
+    public  int frameCounter;
     public  int day;
     public  int hour;
     public  int min;
@@ -16,6 +16,7 @@ public class DayCycle{
     public boolean night;
 
 public void setDefaultTime(){
+    //ici qu'il faut changer les valeurs si jamais :)
     frameCounter = 0;
     day = 0;
     hour = 21;

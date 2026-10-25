@@ -101,7 +101,7 @@ public class GamePanel extends JPanel implements  Runnable{
         int drawCount=0;
 
        while ( gameThread !=null){
-        //Gestion de la MAJ de l'ecran
+        //Gestion de la MAJ de l'ecran.
            currentTime=System.nanoTime();
            delta +=(currentTime- lastTime)/drawInterval;
            timer+=(currentTime-lastTime);

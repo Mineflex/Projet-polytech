@@ -387,6 +387,7 @@ public class UI {
                     aSetter.setMonster();
                     gp.playerXP.setDefaultXP();
                     gp.dayCycle.setDefaultTime();
+                    //c'est mieux comme ça
                 }
             }
 

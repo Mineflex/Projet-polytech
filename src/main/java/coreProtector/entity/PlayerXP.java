@@ -12,6 +12,7 @@ public class PlayerXP   {
     public int cPUsed;
 
     public void setDefaultXP(){
+        //ici qu'il faut changer les valeurs si jamais :)
         playerLevel=0;
         playerExPo=0;
         nextLevel=100;

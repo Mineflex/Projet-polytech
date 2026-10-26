@@ -1,6 +1,5 @@
 package coreProtector.gameGestion;
 
-import coreProtector.entity.Defenses;
 import coreProtector.entity.Entity;
 import coreProtector.entity.Player;
 import coreProtector.entity.PlayerXP;
@@ -48,7 +47,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
     TileManager tileM= new TileManager(this);
     KeyHandler keyH= new KeyHandler(this);
-    public MouseHandler mouseH = new MouseHandler(this);
+    public MouseHandler mouseH=new MouseHandler();
     Thread gameThread;
     public CollisionManager collisionM= new CollisionManager(this);
     public AssetSetter aSetter= new AssetSetter(this);
@@ -57,8 +56,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public PlayerXP playerXP= new PlayerXP();
     public SuperItem itm[]=new  SuperItem[1000];
     public DayCycle dayCycle = new DayCycle();
-    public DefenseManager defenseManager= new DefenseManager(this);
-    public boolean isPlacingCannon = false;
+
     public Entity monster[] = new Entity[1000];
     ArrayList<Entity> entityList = new ArrayList<>();
 
@@ -130,7 +128,7 @@ public class GamePanel extends JPanel implements  Runnable{
         player.update();
         ui.update();
         dayCycle.update();
-        defenseManager.update();
+
         for (int i =0; i < monster.length; i++){
             if (monster[i]!= null){
                 monster[i].update();
@@ -170,21 +168,21 @@ public class GamePanel extends JPanel implements  Runnable{
     }
 
     //Methode pour dessiner avec Jpanel
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g){
         super.paintComponent(g);
 
         // on modifie car c'est mieux pour faire un jeux que en 2D
-        Graphics2D g2 = (Graphics2D) g;
+        Graphics2D g2= (Graphics2D) g;
 
         tileM.draw(g2);
 
-        for (int i = 0; i < itm.length; i++) {
-            if (itm[i] != null) {
-                itm[i].draw(g2, this);
+        for(int i=0;i<itm.length; i++){
+            if(itm[i]!=null){
+                itm[i].draw(g2,this);
             }
         }
-        for (int i = 0; i < monster.length; i++) {
-            if (monster[i] != null) {
+        for(int i=0;i<monster.length; i++){
+            if(monster[i]!=null){
                 monster[i].draw(g2);
             }
         }
@@ -192,8 +190,9 @@ public class GamePanel extends JPanel implements  Runnable{
         player.draw(g2);
 
         ui.draw(g2);
-
-        defenseManager.draw(g2);
         //Une fois afficher le pc peut y enlever de la memoire( c'est pour pas surcharger la ram)
         g2.dispose();
-    }}
+    }
+
+
+}

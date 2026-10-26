@@ -33,6 +33,6 @@ public class Main {
 
         gamePanel.setupGame();
         gamePanel.startGameThread();
-
+    //exemple, commentaire a ne pas prendre en compte
     }
 }

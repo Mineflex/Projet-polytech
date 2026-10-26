@@ -21,6 +21,7 @@ public class SuperItem {
 
     public void draw(Graphics2D g2, GamePanel gp){
         int screenX= worldX-gp.player.worldx +gp.player.screenX;
+
         int screenY= worldY-gp.player.worldy+gp.player.screenY;
 
         //afficher que la partie visible de la map sur l'ecran pour eviter le lag

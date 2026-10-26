@@ -21,6 +21,7 @@ public class UI {
     Font arial_80_Bold;
     BufferedImage goldCoin=null;
     BufferedImage oak=null;
+    BufferedImage cannon=null;
     KeyHandler keyH;
     public String uiPanel = "basic";
     public boolean showControl;
@@ -48,7 +49,7 @@ public class UI {
         try {
             goldCoin = ImageIO.read(getClass().getResourceAsStream("/UI/gold_coinUI.png"));
             oak = ImageIO.read(getClass().getResourceAsStream("/entities/ressource/tree_1.png"));
-
+            cannon =ImageIO.read(getClass().getResourceAsStream("/defense/canon/lvl1_canon_sprite00.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -288,6 +289,12 @@ public class UI {
         g2.drawString("Oak Tree : " + gp.player.oak, 180, 100);
 
         g2.drawImage(goldCoin, 10, 100, oak.getWidth() ,oak.getHeight(),null);
+
+        g2.drawImage(cannon, 20, 150, cannon.getWidth() *4 ,cannon.getHeight() *4,null);
+        g2.setFont(arial_20);
+        g2.drawString("Cannon : " + gp.player.cannon, 180, 200);
+
+
 
 
 

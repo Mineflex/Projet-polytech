@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class Entity {
+    public String cannon;
     GamePanel gp;
 
     public  int worldx,worldy; //position des entitées en fonction de la map, et pas de l'ecran

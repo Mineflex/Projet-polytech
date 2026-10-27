@@ -34,6 +34,23 @@ public class UI {
 
     BufferedImage goldCoin=null;
     BufferedImage oak=null;
+    BufferedImage birch=null;
+    BufferedImage darkOak=null;
+    BufferedImage cherryWood=null;
+    BufferedImage woodBrazier=null;
+    BufferedImage chargedWood=null;
+    BufferedImage rock=null;
+    BufferedImage iron=null;
+    BufferedImage titane=null;
+    BufferedImage rubis=null;
+    BufferedImage onyx=null;
+    BufferedImage chargedRock=null;
+    BufferedImage volcanicRock=null;
+    BufferedImage sand=null;
+    BufferedImage runeBrazier=null;
+    BufferedImage chargedRune=null;
+    BufferedImage physicalRune=null;
+
     BufferedImage canon=null;
     BufferedImage flamethrower=null;
     BufferedImage electricTower=null;
@@ -42,7 +59,8 @@ public class UI {
     BufferedImage DEF6 = null;
     BufferedImage DEF7 = null;
     BufferedImage DEF8 = null;
-    BufferedImage logo = null;
+    //il faudra changer les noms des défenses par celles qu on gardera
+
 
 
     public Rectangle btnCanon;
@@ -81,8 +99,7 @@ public class UI {
             //flamethrower =
             //electricTower =
             //catapult =
-            // il faudra compléter cette partie du code quand les images du reste des défences et ressources seront faites
-            logo = ImageIO.read(getClass().getResourceAsStream("/UI/logo.png"));
+            // il faudra compléter cette partie du code quand les images du reste des défenses et ressources seront faites
 
 
         } catch (Exception e) {
@@ -91,7 +108,7 @@ public class UI {
         btnSeeHealthBar = new Rectangle(50, 50, 200, 50); // x, y, largeur, hauteur
         btnSpeedUpgrade = new Rectangle(300, 50, 200, 50); // x, y, largeur, hauteur
         btnEnduranceUpgrade = new Rectangle(550, 50, 200, 50); // x, y, largeur, hauteur
-        btnRetry =new Rectangle(gp.screenWidth/2 - 100 ,565, 200, 50);
+        btnRetry =new Rectangle(gp.screenWidth/2 - 100 ,365, 200, 50);
 
         btnCanon = new Rectangle(30, 460, canon.getWidth()*3, canon.getHeight()*3); // x, y, largeur, hauteur
         btnFlameThrower = new Rectangle(140, 460, canon.getWidth()*3, canon.getHeight()*3);
@@ -101,7 +118,7 @@ public class UI {
         btnDEF6 = new Rectangle(140, 625, canon.getWidth()*3, canon.getHeight()*3);
         btnDEF7 = new Rectangle(250, 625, canon.getWidth()*3, canon.getHeight()*3);
         btnDEF8 = new Rectangle(360, 625, canon.getWidth()*3, canon.getHeight()*3);
-        // il faudra changer les wight et height quand les sprites seront fait pour chaque défences
+        // il faudra changer les wight et height quand les sprites seront fait pour chaque défenses
 
 
 
@@ -328,28 +345,53 @@ public class UI {
         //ressources
         g2.setColor(new Color(97, 64, 4, 169));
         g2.fillRoundRect(6, 6, gp.screenWidth/3 - 40, gp.screenHeight/2 - 9, 50, 50);
-
         g2.setFont(arial_28_Bold);
         g2.setColor(Color.white);
-        g2.drawString("Ressources", 180 , 40);
+        g2.drawString("Ressources", 150 , 40);
 
-        g2.drawImage(oak, 10, 50, oak.getWidth() *2 ,oak.getHeight() *2,null);
+
+        //gold
+        g2.drawImage(goldCoin, 380, 15, goldCoin.getWidth() ,goldCoin.getHeight(),null);
         g2.setFont(arial_20);
-        g2.drawString("Oak Tree : " + gp.player.oak, 180, 100);
+        g2.setColor(Color.white);
+        g2.drawString("×" + gp.player.goldCoin, goldCoin.getWidth() + 377, goldCoin.getHeight() + 7);
 
-        g2.drawImage(goldCoin, 10, 100, goldCoin.getWidth() ,goldCoin.getHeight(),null);
+        //bois (il faudra finir cette partie une fois les sprites finis)
+        g2.setColor(Color.white);
+        g2.drawRoundRect(16,55, gp.screenWidth/3 - 60, 150, 50, 50);
+        g2.setColor(new Color(97, 64, 4, 247));
+        g2.fillRoundRect(16,55, gp.screenWidth/3 - 60, 150, 50, 50);
+
+        g2.drawImage(oak, 25, 60, oak.getWidth() *2 ,oak.getHeight() *2,null);
+        g2.setFont(arial_20);
+        g2.setColor(Color.white);
+        g2.drawString("×" + gp.player.oak, oak.getWidth()*2 + 20, oak.getHeight()*2 + 40);
+
+
+        //minerais (il faudra finir cette partie une fois les sprites finis)
+        g2.setColor(Color.white);
+        g2.drawRoundRect(16,215, gp.screenWidth/3 - 60, 100, 50, 50);
+        g2.setColor(new Color(97, 64, 4, 247));
+        g2.fillRoundRect(16,215, gp.screenWidth/3 - 60, 100, 50, 50);
+
+
+        //runes (il faudra finir cette partie une fois les sprites finis)
+        g2.setColor(Color.white);
+        g2.drawRoundRect(16,325, gp.screenWidth/3 - 60, 50, 50, 50);
+        g2.setColor(new Color(97, 64, 4, 247));
+        g2.fillRoundRect(16,325, gp.screenWidth/3 - 60, 50, 50, 50);
+
 
 
 
 
 
         //défences
-
         g2.setColor(new Color(97, 64, 4, 169));
         g2.fillRoundRect(6, gp.screenHeight/2 + 3, gp.screenWidth/3 - 40, gp.screenHeight/2 - 9, 50, 50);
         g2.setColor(Color.white);
         g2.setFont(arial_28_Bold);
-        g2.drawString("Défences", 190 , 420);
+        g2.drawString("Défenses", 180 , 420);
 
 
         //canon
@@ -357,7 +399,7 @@ public class UI {
         g2.draw(btnCanon);
         g2.setColor(new Color(97, 64, 4, 247));
         g2.fillRect(btnCanon.x, btnCanon.y, btnCanon.width, btnCanon.height);
-        g2.drawImage(canon, btnCanon.x, btnCanon.y, btnCanon.width , btnCanon.height, null);
+        g2.drawImage(canon, btnCanon.x + 3, btnCanon.y - 10, btnCanon.width , btnCanon.height, null);
 
         //lance flamme
         g2.setColor(Color.WHITE);
@@ -419,20 +461,16 @@ public class UI {
         String gameOver = "Game Over";
         String Retry = "Retry";
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
-        g2.setColor(new Color(0, 15, 55, 255));
-        g2.fillRect(0, 25, gp.screenWidth,btnCanon.height*3+25 );
         g2.setColor(Color.white);
         g2.setFont(arial_80_Bold);
         g2.drawString(gameOver, gp.screenWidth/2  - gameOver.length()*20 - 40 ,  200);
         g2.setColor(Color.WHITE);
         g2.draw(btnRetry);
         g2.setColor(new Color(250, 250, 250, 50));
-        g2.fillRect(gp.screenWidth/2 - 100, 565, 200, 50);
+        g2.fillRect(gp.screenWidth/2 - 100, 365, 200, 50);
         g2.setColor(Color.WHITE);
         g2.setFont(arial_28_Bold);
-        g2.drawString(Retry, gp.screenWidth/2 -Retry.length()*7,  600);
-        g2.drawImage(logo, gp.screenWidth - 50 - btnCanon.width*3, 50, btnCanon.width*3 , btnCanon.height*3, null);
-        g2.drawImage(logo, 50, 50, btnCanon.width*3 , btnCanon.height*3, null);
+        g2.drawString(Retry, gp.screenWidth/2 -Retry.length()*7,  400);
     }
 
 
@@ -514,9 +552,6 @@ public class UI {
                     aSetter.setMonster();
                     gp.playerXP.setDefaultXP();
                     gp.dayCycle.setDefaultTime();
-                    for (int i = 0; i < gp.defense.length; i++) {
-                        gp.defense[i] = null;
-                    }
                     //c'est mieux comme ça
                 }
             }

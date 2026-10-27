@@ -20,12 +20,10 @@ public class UI {
     Font arial_28_Bold;
     Font arial_40_Bold;
     Font arial_80_Bold;
-    BufferedImage goldCoin=null;
-    BufferedImage oak=null;
     KeyHandler keyH;
     public String uiPanel = "basic";
-public boolean isPlacingDef=false;
-public boolean showControl;
+    public boolean isPlacingDef=false;
+    public boolean showControl;
     public boolean uiInventory;
     public boolean uiGameover;
     public Rectangle btnSeeHealthBar;
@@ -34,7 +32,30 @@ public boolean showControl;
     public Rectangle btnRetry;
 
 
+    BufferedImage goldCoin=null;
+    BufferedImage oak=null;
+    BufferedImage canon=null;
+    BufferedImage flamethrower=null;
+    BufferedImage electricTower=null;
+    BufferedImage catapult=null;
+    BufferedImage DEF5 = null;
+    BufferedImage DEF6 = null;
+    BufferedImage DEF7 = null;
+    BufferedImage DEF8 = null;
+
+
     public Rectangle btnCanon;
+    public Rectangle btnFlameThrower;
+    public Rectangle btnElectricTower;
+    public Rectangle btnCatapult;
+    public Rectangle btnDEF5;
+    public Rectangle btnDEF6;
+    public Rectangle btnDEF7;
+    public Rectangle btnDEF8;
+
+
+
+
 
     private boolean mousePressed = false;
     public int alpha;
@@ -54,7 +75,13 @@ public boolean showControl;
 
         try {
             goldCoin = ImageIO.read(getClass().getResourceAsStream("/UI/gold_coinUI.png"));
-            oak = ImageIO.read(getClass().getResourceAsStream("/entities/ressource/tree_1.png"));
+            oak = ImageIO.read(getClass().getResourceAsStream("/UI/oak_woodUI.png"));
+            canon = ImageIO.read(getClass().getResourceAsStream("/defense/canon/lvl1_canon_sprite05.png"));
+            //flamethrower =
+            //electricTower =
+            //catapult =
+            // il faudra compléter cette partie du code quand les images du reste des défences et ressources seront faites
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,8 +89,19 @@ public boolean showControl;
         btnSeeHealthBar = new Rectangle(50, 50, 200, 50); // x, y, largeur, hauteur
         btnSpeedUpgrade = new Rectangle(300, 50, 200, 50); // x, y, largeur, hauteur
         btnEnduranceUpgrade = new Rectangle(550, 50, 200, 50); // x, y, largeur, hauteur
-        btnCanon = new Rectangle(10, 150, 200, 50); // x, y, largeur, hauteur
         btnRetry =new Rectangle(gp.screenWidth/2 - 100 ,365, 200, 50);
+
+        btnCanon = new Rectangle(30, 460, canon.getWidth()*3, canon.getHeight()*3); // x, y, largeur, hauteur
+        btnFlameThrower = new Rectangle(140, 460, canon.getWidth()*3, canon.getHeight()*3);
+        btnElectricTower = new Rectangle(250, 460, canon.getWidth()*3, canon.getHeight()*3);
+        btnCatapult = new Rectangle(360, 460, canon.getWidth()*3, canon.getHeight()*3);
+        btnDEF5 = new Rectangle(30, 625, canon.getWidth()*3, canon.getHeight()*3);
+        btnDEF6 = new Rectangle(140, 625, canon.getWidth()*3, canon.getHeight()*3);
+        btnDEF7 = new Rectangle(250, 625, canon.getWidth()*3, canon.getHeight()*3);
+        btnDEF8 = new Rectangle(360, 625, canon.getWidth()*3, canon.getHeight()*3);
+        // il faudra changer les wight et height quand les sprites seront fait pour chaque défences
+
+
 
     }
     public void BasicUI(Graphics2D g2){
@@ -285,26 +323,91 @@ public boolean showControl;
     public void InventaireUI(Graphics2D g2){
 
 
-        g2.setColor(new Color(97, 64, 4, 255));
-        g2.fillRect(20, 20, gp.screenWidth/3, gp.screenHeight - 40);
+        //ressources
+        g2.setColor(new Color(97, 64, 4, 169));
+        g2.fillRoundRect(6, 6, gp.screenWidth/3 - 40, gp.screenHeight/2 - 9, 50, 50);
 
-        g2.setFont(arial_40_Bold);
+        g2.setFont(arial_28_Bold);
         g2.setColor(Color.white);
-        g2.drawString("Inventaire", 180 , 70);
+        g2.drawString("Ressources", 180 , 40);
 
         g2.drawImage(oak, 10, 50, oak.getWidth() *2 ,oak.getHeight() *2,null);
         g2.setFont(arial_20);
         g2.drawString("Oak Tree : " + gp.player.oak, 180, 100);
 
-        g2.drawImage(goldCoin, 10, 100, oak.getWidth() ,oak.getHeight(),null);
+        g2.drawImage(goldCoin, 10, 100, goldCoin.getWidth() ,goldCoin.getHeight(),null);
 
+
+
+
+
+        //défences
+
+        g2.setColor(new Color(97, 64, 4, 169));
+        g2.fillRoundRect(6, gp.screenHeight/2 + 3, gp.screenWidth/3 - 40, gp.screenHeight/2 - 9, 50, 50);
+        g2.setColor(Color.white);
+        g2.setFont(arial_28_Bold);
+        g2.drawString("Défences", 190 , 420);
+
+
+        //canon
         g2.setColor(Color.WHITE);
         g2.draw(btnCanon);
         g2.setColor(new Color(97, 64, 4, 247));
-        g2.fillRect(btnCanon.x, btnCanon.y, 200, 50);
-        g2.setFont(arial_20);
-        g2.setColor(Color.white);
-        g2.drawString("Canon !", btnCanon.x + 40, btnCanon.y + 32);
+        g2.fillRect(btnCanon.x, btnCanon.y, btnCanon.width, btnCanon.height);
+        g2.drawImage(canon, btnCanon.x, btnCanon.y, btnCanon.width , btnCanon.height, null);
+
+        //lance flamme
+        g2.setColor(Color.WHITE);
+        g2.draw(btnFlameThrower);
+        g2.setColor(new Color(97, 64, 4, 247));
+        g2.fillRect(btnFlameThrower.x, btnFlameThrower.y, btnFlameThrower.width, btnFlameThrower.height);
+        g2.drawImage(flamethrower, btnFlameThrower.x, btnFlameThrower.y, btnFlameThrower.width , btnFlameThrower.height, null);
+
+        //tour électrique
+        g2.setColor(Color.WHITE);
+        g2.draw(btnElectricTower);
+        g2.setColor(new Color(97, 64, 4, 247));
+        g2.fillRect(btnElectricTower.x, btnElectricTower.y, btnElectricTower.width, btnElectricTower.height);
+        g2.drawImage(electricTower, btnElectricTower.x, btnElectricTower.y, btnElectricTower.width , btnElectricTower.height, null);
+
+        //catapulte
+        g2.setColor(Color.WHITE);
+        g2.draw(btnCatapult);
+        g2.setColor(new Color(97, 64, 4, 247));
+        g2.fillRect(btnCatapult.x, btnCatapult.y, btnCatapult.width, btnCatapult.height);
+        g2.drawImage(catapult, btnCatapult.x, btnCatapult.y, btnCatapult.width , btnCatapult.height, null);
+
+        //DEF5
+        g2.setColor(Color.WHITE);
+        g2.draw(btnDEF5);
+        g2.setColor(new Color(97, 64, 4, 247));
+        g2.fillRect(btnDEF5.x, btnDEF5.y, btnDEF5.width, btnDEF5.height);
+        g2.drawImage(DEF5, btnDEF5.x, btnDEF5.y, btnDEF5.width , btnDEF5.height, null);
+
+        //DEF6
+        g2.setColor(Color.WHITE);
+        g2.draw(btnDEF6);
+        g2.setColor(new Color(97, 64, 4, 247));
+        g2.fillRect(btnDEF6.x, btnDEF6.y, btnDEF6.width, btnDEF6.height);
+        g2.drawImage(DEF6, btnDEF6.x, btnDEF6.y, btnDEF6.width , btnDEF6.height, null);
+
+        //DEF7
+        g2.setColor(Color.WHITE);
+        g2.draw(btnDEF7);
+        g2.setColor(new Color(97, 64, 4, 247));
+        g2.fillRect(btnDEF7.x, btnDEF7.y, btnDEF7.width, btnDEF7.height);
+        g2.drawImage(DEF7, btnDEF7.x, btnDEF7.y, btnDEF7.width , btnDEF7.height, null);
+
+        //DEF8
+        g2.setColor(Color.WHITE);
+        g2.draw(btnDEF8);
+        g2.setColor(new Color(97, 64, 4, 247));
+        g2.fillRect(btnDEF8.x, btnDEF8.y, btnDEF8.width, btnDEF8.height);
+        g2.drawImage(DEF8, btnDEF8.x, btnDEF8.y, btnDEF8.width , btnDEF8.height, null);
+
+
+
 
 
     }

@@ -42,6 +42,7 @@ public class UI {
     BufferedImage DEF6 = null;
     BufferedImage DEF7 = null;
     BufferedImage DEF8 = null;
+    BufferedImage logo = null;
 
 
     public Rectangle btnCanon;
@@ -81,6 +82,7 @@ public class UI {
             //electricTower =
             //catapult =
             // il faudra compléter cette partie du code quand les images du reste des défences et ressources seront faites
+            logo = ImageIO.read(getClass().getResourceAsStream("/UI/logo.png"));
 
 
         } catch (Exception e) {
@@ -89,7 +91,7 @@ public class UI {
         btnSeeHealthBar = new Rectangle(50, 50, 200, 50); // x, y, largeur, hauteur
         btnSpeedUpgrade = new Rectangle(300, 50, 200, 50); // x, y, largeur, hauteur
         btnEnduranceUpgrade = new Rectangle(550, 50, 200, 50); // x, y, largeur, hauteur
-        btnRetry =new Rectangle(gp.screenWidth/2 - 100 ,365, 200, 50);
+        btnRetry =new Rectangle(gp.screenWidth/2 - 100 ,565, 200, 50);
 
         btnCanon = new Rectangle(30, 460, canon.getWidth()*3, canon.getHeight()*3); // x, y, largeur, hauteur
         btnFlameThrower = new Rectangle(140, 460, canon.getWidth()*3, canon.getHeight()*3);
@@ -417,16 +419,20 @@ public class UI {
         String gameOver = "Game Over";
         String Retry = "Retry";
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        g2.setColor(new Color(0, 15, 55, 255));
+        g2.fillRect(0, 25, gp.screenWidth,btnCanon.height*3+25 );
         g2.setColor(Color.white);
         g2.setFont(arial_80_Bold);
         g2.drawString(gameOver, gp.screenWidth/2  - gameOver.length()*20 - 40 ,  200);
         g2.setColor(Color.WHITE);
         g2.draw(btnRetry);
         g2.setColor(new Color(250, 250, 250, 50));
-        g2.fillRect(gp.screenWidth/2 - 100, 365, 200, 50);
+        g2.fillRect(gp.screenWidth/2 - 100, 565, 200, 50);
         g2.setColor(Color.WHITE);
         g2.setFont(arial_28_Bold);
-        g2.drawString(Retry, gp.screenWidth/2 -Retry.length()*7,  400);
+        g2.drawString(Retry, gp.screenWidth/2 -Retry.length()*7,  600);
+        g2.drawImage(logo, gp.screenWidth - 50 - btnCanon.width*3, 50, btnCanon.width*3 , btnCanon.height*3, null);
+        g2.drawImage(logo, 50, 50, btnCanon.width*3 , btnCanon.height*3, null);
     }
 
 
@@ -508,6 +514,9 @@ public class UI {
                     aSetter.setMonster();
                     gp.playerXP.setDefaultXP();
                     gp.dayCycle.setDefaultTime();
+                    for (int i = 0; i < gp.defense.length; i++) {
+                        gp.defense[i] = null;
+                    }
                     //c'est mieux comme ça
                 }
             }

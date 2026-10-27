@@ -45,9 +45,11 @@ public class GamePanel extends JPanel implements  Runnable{
 
     int FPS=60;// Fps
 
-    TileManager tileM= new TileManager(this);
+    public TileManager tileM= new TileManager(this);
     KeyHandler keyH= new KeyHandler(this);
     public MouseHandler mouseH=new MouseHandler();
+
+
     Thread gameThread;
     public CollisionManager collisionM= new CollisionManager(this);
     public AssetSetter aSetter= new AssetSetter(this);
@@ -58,6 +60,10 @@ public class GamePanel extends JPanel implements  Runnable{
     public DayCycle dayCycle = new DayCycle();
 
     public Entity monster[] = new Entity[1000];
+    public Entity defense[] = new Entity[1000];
+
+
+
     ArrayList<Entity> entityList = new ArrayList<>();
 
 
@@ -80,6 +86,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public void setupGame(){
         aSetter.setItem();
         aSetter.setMonster();
+        aSetter.setDefense();
         GameState = PlayState;
         playerXP.setDefaultXP();
         dayCycle.setDefaultTime();
@@ -128,6 +135,13 @@ public class GamePanel extends JPanel implements  Runnable{
         player.update();
         ui.update();
         dayCycle.update();
+
+        for (int i =0; i < defense.length; i++) {
+            if (defense[i] != null) {
+                defense[i].update();
+            }
+        }
+
 
         for (int i =0; i < monster.length; i++){
             if (monster[i]!= null){
@@ -184,6 +198,11 @@ public class GamePanel extends JPanel implements  Runnable{
         for(int i=0;i<monster.length; i++){
             if(monster[i]!=null){
                 monster[i].draw(g2);
+            }
+        }
+        for(int i=0;i<defense.length; i++){
+            if(defense[i]!=null){
+                defense[i].draw(g2);
             }
         }
 

@@ -15,6 +15,7 @@ import java.io.IOException;
 public class UI {
     GamePanel gp;
     AssetSetter aSetter;
+    DefenseManager dManager;
     Font arial_20;
     Font arial_28_Bold;
     Font arial_40_Bold;
@@ -23,23 +24,29 @@ public class UI {
     BufferedImage oak=null;
     KeyHandler keyH;
     public String uiPanel = "basic";
-    public boolean showControl;
+public boolean isPlacingDef=false;
+public boolean showControl;
     public boolean uiInventory;
     public boolean uiGameover;
     public Rectangle btnSeeHealthBar;
     public Rectangle btnSpeedUpgrade;
     public Rectangle btnEnduranceUpgrade;
     public Rectangle btnRetry;
+
+
+    public Rectangle btnCanon;
+
     private boolean mousePressed = false;
     public int alpha;
 
     public int controlMenuX=0;
-
+    public String defType="";
 
     public UI(GamePanel gp){
 
         this.gp=gp;
         this.aSetter = new AssetSetter(gp);
+        this.dManager=new DefenseManager(gp);
         arial_20=new Font("Arial",Font.PLAIN,20);
         arial_28_Bold = new Font("Arial", Font.BOLD,28);
         arial_40_Bold = new Font("Arial", Font.BOLD, 40 );
@@ -55,6 +62,7 @@ public class UI {
         btnSeeHealthBar = new Rectangle(50, 50, 200, 50); // x, y, largeur, hauteur
         btnSpeedUpgrade = new Rectangle(300, 50, 200, 50); // x, y, largeur, hauteur
         btnEnduranceUpgrade = new Rectangle(550, 50, 200, 50); // x, y, largeur, hauteur
+        btnCanon = new Rectangle(10, 150, 200, 50); // x, y, largeur, hauteur
         btnRetry =new Rectangle(gp.screenWidth/2 - 100 ,365, 200, 50);
 
     }
@@ -276,6 +284,7 @@ public class UI {
 
     public void InventaireUI(Graphics2D g2){
 
+
         g2.setColor(new Color(97, 64, 4, 255));
         g2.fillRect(20, 20, gp.screenWidth/3, gp.screenHeight - 40);
 
@@ -289,7 +298,13 @@ public class UI {
 
         g2.drawImage(goldCoin, 10, 100, oak.getWidth() ,oak.getHeight(),null);
 
-
+        g2.setColor(Color.WHITE);
+        g2.draw(btnCanon);
+        g2.setColor(new Color(97, 64, 4, 247));
+        g2.fillRect(btnCanon.x, btnCanon.y, 200, 50);
+        g2.setFont(arial_20);
+        g2.setColor(Color.white);
+        g2.drawString("Canon !", btnCanon.x + 40, btnCanon.y + 32);
 
 
     }
@@ -335,51 +350,54 @@ public class UI {
     }
 
     public void update() {
+
+        if (isPlacingDef) {
+            gp.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+        } else {
+            gp.setCursor(Cursor.getDefaultCursor());
+        }
         if (uiPanel.equals("competence")) {
             if (gp.mouseH.mousePressedVar) {
-                if (gp.playerXP.cPAvailable>0){
+                if (gp.playerXP.cPAvailable > 0) {
                     Point mousePoint = new Point(gp.mouseH.x, gp.mouseH.y);
 
                     if (btnSeeHealthBar.contains(mousePoint)) {
 
 
-                            if (gp.player.canViewHealthBar==false) {
-                                gp.mouseH.mousePressedVar = false;
-                                gp.playerXP.cPAvailable-=1;
-                                gp.playerXP.cPUsed+=1;
-                            }
-                        gp.player.canViewHealthBar=true;
-
+                        if (gp.player.canViewHealthBar == false) {
+                            gp.mouseH.mousePressedVar = false;
+                            gp.playerXP.cPAvailable -= 1;
+                            gp.playerXP.cPUsed += 1;
+                        }
+                        gp.player.canViewHealthBar = true;
 
 
                     }
-                    if(btnSpeedUpgrade.contains(mousePoint) && gp.player.speedMultiplier<1.32){
-                        gp.player.speedMultiplier+=0.08;
-
-                         gp.mouseH.mousePressedVar = false;
-                         gp.playerXP.cPAvailable-=1;
-                         gp.playerXP.cPUsed+=1;
-
-                    }
-                    if(btnEnduranceUpgrade.contains(mousePoint) && gp.player.maxEndurance<8){
-                        gp.player.maxEndurance+=1;
+                    if (btnSpeedUpgrade.contains(mousePoint) && gp.player.speedMultiplier < 1.32) {
+                        gp.player.speedMultiplier += 0.08;
 
                         gp.mouseH.mousePressedVar = false;
-                        gp.playerXP.cPAvailable-=1;
-                        gp.playerXP.cPUsed+=1;
+                        gp.playerXP.cPAvailable -= 1;
+                        gp.playerXP.cPUsed += 1;
 
                     }
+                    if (btnEnduranceUpgrade.contains(mousePoint) && gp.player.maxEndurance < 8) {
+                        gp.player.maxEndurance += 1;
 
+                        gp.mouseH.mousePressedVar = false;
+                        gp.playerXP.cPAvailable -= 1;
+                        gp.playerXP.cPUsed += 1;
 
+                    }
 
 
                 }
             }
         }
-        if (uiGameover == true){
+        if (uiGameover == true) {
             if (gp.mouseH.mousePressedVar) {
                 Point mousePoint = new Point(gp.mouseH.x, gp.mouseH.y);
-                if (btnRetry.contains(mousePoint)){
+                if (btnRetry.contains(mousePoint)) {
                     gp.GameState = gp.PlayState;
                     uiGameover = false;
                     gp.player.setDefaultValues();
@@ -392,5 +410,46 @@ public class UI {
             }
 
         }
+
+
+
+        if (uiInventory == true) {
+            if (gp.mouseH.mousePressedVar) {
+                Point mousePoint = new Point(gp.mouseH.x, gp.mouseH.y);
+                if (btnCanon.contains(mousePoint)) {
+                    isPlacingDef = true;
+                    gp.mouseH.mousePressedVar = false;
+                    defType="canon";
+                }
+            }
+
+        }
+        if (isPlacingDef == true) {
+            if (gp.mouseH.mousePressedVar) {
+
+
+                Point mousePoint = new Point(gp.mouseH.x, gp.mouseH.y);
+                int mouseX = mousePoint.x;
+                int mouseY = mousePoint.y;
+
+                int worldMouseX = mouseX + gp.player.worldx - gp.player.screenX;
+                int worldMouseY = mouseY + gp.player.worldy - gp.player.screenY;
+
+                int col = worldMouseX / gp.tileSize;
+                int row = worldMouseY / gp.tileSize;
+                    if (col >= 0 && row >= 0 && col < gp.tileM.mapTileNumber.length && row < gp.tileM.mapTileNumber[0].length) {
+                        int clickedTileID = 0;
+                        if (clickedTileID == 0) {
+
+                            dManager.addDefense(defType, col * gp.tileSize, row * gp.tileSize);
+
+                            isPlacingDef = false;
+                            gp.mouseH.mousePressedVar = false;
+
+
+                        }
+                    }
+                }
+            }
+        }
     }
-}

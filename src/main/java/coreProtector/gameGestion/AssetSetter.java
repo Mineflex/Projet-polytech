@@ -1,5 +1,6 @@
 package coreProtector.gameGestion;
 
+import coreProtector.entity.defenses.Canon;
 import coreProtector.entity.mobs.Goblin;
 import coreProtector.entity.naturalResources.OakWoodEntity;
 import coreProtector.items.ExperienceOrb;
@@ -46,6 +47,13 @@ public class AssetSetter {
 
 
 
+
+    }
+
+    public  void  setDefense(){
+        gp.defense[0]= new Canon(gp);
+        gp.defense[0].worldx=15*gp.tileSize;
+        gp.defense[0].worldy=15*gp.tileSize;
 
     }
 }

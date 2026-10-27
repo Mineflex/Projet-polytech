@@ -82,8 +82,8 @@ public class Player extends Entity{
     public void setDefaultValues(){
         //ici qu'il faut changer les valeurs si jamais :)
         //Ses coordonnées et propriétées lors du spawn ou après gameOver
-        worldx = gp.tileSize *25;
-        worldy = gp.tileSize *25;
+        worldx = gp.tileSize *125;
+        worldy = gp.tileSize *125;
         speed = 4 ;
         direction= "up";
         //inventaire lors du spawn ou après gameOver

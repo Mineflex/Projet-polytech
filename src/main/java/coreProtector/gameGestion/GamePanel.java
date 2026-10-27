@@ -30,8 +30,8 @@ public class GamePanel extends JPanel implements  Runnable{
     //-------------------------------------
 
     //parametre monde
-    public final int maxWorldCol=50; // nombre max de tile en longueur
-    public final int maxWorldRow=50;//^Idem mais en hauteur
+    public final int maxWorldCol=250; // nombre max de tile en longueur
+    public final int maxWorldRow=250;//^Idem mais en hauteur
     public final int worldWidth= tileSize*maxWorldCol;//^Idem mais en pixel
     public final int worldHeight= tileSize*maxWorldRow;//^Idem mais en hauteur
 
@@ -156,10 +156,10 @@ public class GamePanel extends JPanel implements  Runnable{
                         int stack= rd.nextInt(3,5);
                         for (int j = 0; j < 9999; j++) {
                             if (itm[j]==null){
-                                itm[0]=new OakWoodItem(this);
-                                itm[0].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
-                                itm[0].worldY=monster[i].worldy + monster[i].hitBox.height/2;
-                                itm[0].stack=stack;
+                                itm[j]=new OakWoodItem(this);
+                                itm[j].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
+                                itm[j].worldY=monster[i].worldy + monster[i].hitBox.height/2;
+                                itm[j].stack=stack;
                                 break;
                             }
                         }

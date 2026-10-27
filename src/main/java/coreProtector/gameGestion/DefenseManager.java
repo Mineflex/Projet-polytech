@@ -23,24 +23,90 @@ public class DefenseManager {
         for (int i = 0; i < gp.defense.length; i++) {
             if (gp.defense[i] == null) {
 
-                switch (type){
-                    case "canon":
-                        gp.defense[i] = new Canon(gp);
-
-                        break;
-
-                    case "flameThrower":
 
 
-                        break;
+                if (x/gp.tileSize -gp.maxWorldCol/2 <-1 && (y/gp.tileSize -gp.maxWorldRow/2 >=-1 && y/gp.tileSize -gp.maxWorldRow/2 <=1)){
+
+                    switch (type){
+                        case "canon":
+                            gp.defense[i] = new Canon(gp);
+
+                            break;
+
+                        case "flameThrower":
+
+
+                            break;
+                    }
+
+
+                    gp.defense[i].worldx = x;
+                    gp.defense[i].worldy=y;
+
+
+                    gp.defense[i].direction="right";
+                }else if (x/gp.tileSize -gp.maxWorldCol/2 >1 && (y/gp.tileSize -gp.maxWorldRow/2 >=-1 && y/gp.tileSize -gp.maxWorldRow/2 <=1)){
+                    switch (type){
+                        case "canon":
+                            gp.defense[i] = new Canon(gp);
+
+                            break;
+
+                        case "flameThrower":
+
+
+                            break;
+                    }
+
+
+                    gp.defense[i].worldx = x;
+                    gp.defense[i].worldy=y;
+
+
+                    gp.defense[i].direction="left";
                 }
+                if (y/gp.tileSize -gp.maxWorldRow/2 >1 && (x/gp.tileSize -gp.maxWorldCol/2 >=-1 && x/gp.tileSize -gp.maxWorldCol/2 <=1)){
+                    switch (type){
+                        case "canon":
+                            gp.defense[i] = new Canon(gp);
+
+                            break;
+
+                        case "flameThrower":
 
 
-                gp.defense[i].worldx = x;
-                gp.defense[i].worldy=y;
-                System.out.println(
-                        "Canon créé : x=" + x + ", y=" + y
-                );
+                            break;
+                    }
+
+
+                    gp.defense[i].worldx = x;
+                    gp.defense[i].worldy=y;
+
+
+                    gp.defense[i].direction="down";
+
+                } else if (y/gp.tileSize -gp.maxWorldRow/2 <-1 && (x/gp.tileSize -gp.maxWorldCol/2 >=-1 && x/gp.tileSize -gp.maxWorldCol/2 <=1) ){
+                    switch (type){
+                        case "canon":
+                            gp.defense[i] = new Canon(gp);
+
+                            break;
+
+                        case "flameThrower":
+
+
+                            break;
+                    }
+
+
+                    gp.defense[i].worldx = x;
+                    gp.defense[i].worldy=y;
+
+
+                    gp.defense[i].direction="up";
+
+
+                }
 
                 break;
             }

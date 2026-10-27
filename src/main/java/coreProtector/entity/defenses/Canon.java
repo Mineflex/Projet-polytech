@@ -28,22 +28,22 @@ public class Canon extends Entity {
     }
     public void getImage(){
 
-        up1=setup("/defense/canon/lvl1_canon_sprite00");
-        up2=setup("/defense/canon/lvl1_canon_sprite00");
-        up3=setup("/defense/canon/lvl1_canon_sprite00");
-        up4=setup("/defense/canon/lvl1_canon_sprite00");
-        down1=setup("/defense/canon/lvl1_canon_sprite00");
-        down2=setup("/defense/canon/lvl1_canon_sprite00");
-        down3=setup("/defense/canon/lvl1_canon_sprite00");
-        down4=setup("/defense/canon/lvl1_canon_sprite00");
-        left1=setup("/defense/canon/lvl1_canon_sprite00");
-        left2=setup("/defense/canon/lvl1_canon_sprite00");
-        left3=setup("/defense/canon/lvl1_canon_sprite00");
-        left4=setup("/defense/canon/lvl1_canon_sprite00");
+        up1=setup("/defense/canon/lvl1_canon_sprite08");
+        up2=setup("/defense/canon/lvl1_canon_sprite09");
+        up3=setup("/defense/canon/lvl1_canon_sprite10");
+        up4=setup("/defense/canon/lvl1_canon_sprite11");
+        down1=setup("/defense/canon/lvl1_canon_sprite12");
+        down2=setup("/defense/canon/lvl1_canon_sprite13");
+        down3=setup("/defense/canon/lvl1_canon_sprite14");
+        down4=setup("/defense/canon/lvl1_canon_sprite15");
+        left1=setup("/defense/canon/lvl1_canon_sprite04");
+        left2=setup("/defense/canon/lvl1_canon_sprite05");
+        left3=setup("/defense/canon/lvl1_canon_sprite06");
+        left4=setup("/defense/canon/lvl1_canon_sprite07");
         right1=setup("/defense/canon/lvl1_canon_sprite00");
-        right2=setup("/defense/canon/lvl1_canon_sprite00");
-        right3=setup("/defense/canon/lvl1_canon_sprite00");
-        right4=setup("/defense/canon/lvl1_canon_sprite00");
+        right2=setup("/defense/canon/lvl1_canon_sprite01");
+        right3=setup("/defense/canon/lvl1_canon_sprite02");
+        right4=setup("/defense/canon/lvl1_canon_sprite03");
         hitDown1=setup("/playerSprites/player_sprite16");
         hitDown2=setup("/playerSprites/player_sprite17");
         hitUp1=setup("/playerSprites/player_sprite18");

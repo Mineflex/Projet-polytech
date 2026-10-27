@@ -27,7 +27,7 @@ public class TileManager {
 
 
         getTileImage();
-        loadMap("/maps/mapV1.txt"); //La map qu'on veut generer
+        loadMap("/maps/mapV2.txt"); //La map qu'on veut generer
     }
 
     public void getTileImage( ){
@@ -44,6 +44,19 @@ public class TileManager {
             setup(4, "00_grass_4", false);
             setup(5, "00_grass_5", false);
             setup(6, "00_grass_6", false);
+            setup(7,"01_path_00", false);
+             setup(8,"01_path_01", false);
+        setup(9,"01_path_02", false);
+        setup(10,"01_path_03", false);
+        setup(11,"01_path_04", false);
+        setup(12,"01_path_05", false);
+        setup(13,"01_path_06", false);
+        setup(14,"01_path_07", false);
+        setup(15,"01_path_08", false);
+        setup(16,"01_path_09", false);
+        setup(17,"01_path_10", false);
+        setup(18,"01_path_11", false);
+        setup(19,"01_path_12", false);
 
 
 
@@ -80,7 +93,9 @@ public class TileManager {
 
                 String numbers[] = line.split(" ");
 
-
+                System.out.println(
+                        "Ligne " + row + " : " + numbers.length + " tiles"
+                );
                 while (col < gp.maxWorldCol) {
                     int num = Integer.parseInt(numbers[col]);
 

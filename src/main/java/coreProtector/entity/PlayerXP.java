@@ -25,7 +25,7 @@ public class PlayerXP   {
         cPUsed=0;
     }
     public void updateExperience(double amount) {
-        playerExPo += amount * gp.player.goldFortune;
+        playerExPo += amount;
 
         while (playerExPo >= nextLevel) {
             levelUp();

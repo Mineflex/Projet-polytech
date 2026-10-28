@@ -30,6 +30,7 @@ public class UI {
     public Rectangle btnSpeedUpgrade;
     public Rectangle btnEnduranceUpgrade;
     public Rectangle btnStrengthUpgrade;
+    public Rectangle btnRFortune;
 
 
     public Rectangle btnRetry;
@@ -116,6 +117,7 @@ public class UI {
         btnSpeedUpgrade = new Rectangle(300, 60, 200, 50); // x, y, largeur, hauteur
         btnEnduranceUpgrade = new Rectangle(550, 60, 200, 50); // x, y, largeur, hauteur
         btnStrengthUpgrade = new Rectangle(800 , 60 ,200,50);
+        btnRFortune = new Rectangle(1050,60,200,50);
 
         btnRetry =new Rectangle(gp.screenWidth/2 - 100 ,465, 200, 50);
 
@@ -272,6 +274,9 @@ public class UI {
         g2.setColor(Color.WHITE);
         g2.draw(btnStrengthUpgrade);
 
+        g2.setColor(Color.WHITE);
+        g2.draw(btnRFortune);
+
 
 
         if (gp.player.canViewHealthBar){
@@ -324,6 +329,18 @@ public class UI {
             g2.setFont(arial_20);
             g2.setColor(Color.white);
             g2.drawString("Max !", btnStrengthUpgrade.x + 40, btnStrengthUpgrade.y + 32);
+        }
+        if (gp.player.ressourcesFortune<3){
+            g2.setFont(arial_20);
+            g2.drawString("ressource + ( "+Math.round((gp.player.ressourcesFortune)-1)+"/2 )", btnRFortune.x + 20, btnRFortune.y + 32);
+        }else {
+
+            g2.setColor(new Color(97, 64, 4, 247));
+
+            g2.fillRect(btnRFortune.x, btnRFortune.y, 200, 50);
+            g2.setFont(arial_20);
+            g2.setColor(Color.white);
+            g2.drawString("Max !", btnRFortune.x + 40, btnRFortune.y + 32);
         }
 
 
@@ -566,6 +583,14 @@ public class UI {
                     }
                     if (btnStrengthUpgrade.contains(mousePoint) && gp.player.strengthMultiplier < 5) {
                         gp.player.strengthMultiplier += 1;
+
+                        gp.mouseH.mousePressedVar = false;
+                        gp.playerXP.cPAvailable -= 1;
+                        gp.playerXP.cPUsed += 1;
+
+                    }
+                    if (btnRFortune.contains(mousePoint) && gp.player.ressourcesFortune < 3) {
+                        gp.player.ressourcesFortune += 1;
 
                         gp.mouseH.mousePressedVar = false;
                         gp.playerXP.cPAvailable -= 1;

@@ -40,10 +40,10 @@ public class Canon extends Entity {
         left2=setup("/defense/canon/lvl1_canon_sprite05");
         left3=setup("/defense/canon/lvl1_canon_sprite06");
         left4=setup("/defense/canon/lvl1_canon_sprite07");
-        right1=setup("/defense/Flamethrower/lvl1_flameT_sprite_01");
-        right2=setup("/defense/Flamethrower/lvl1_flameT_sprite_02");
-        right3=setup("/defense/Flamethrower/lvl1_flameT_sprite_03");
-        right4=setup("/defense/Flamethrower/lvl1_flameT_sprite_01");
+        right1=setup("/defense/canon/lvl1_canon_sprite00");
+        right2=setup("/defense/canon/lvl1_canon_sprite01");
+        right3=setup("/defense/canon/lvl1_canon_sprite02");
+        right4=setup("/defense/canon/lvl1_canon_sprite03");
         hitDown1=setup("/playerSprites/player_sprite16");
         hitDown2=setup("/playerSprites/player_sprite17");
         hitUp1=setup("/playerSprites/player_sprite18");

@@ -1,6 +1,7 @@
 package coreProtector.gameGestion;
 
 import coreProtector.entity.defenses.Canon;
+import coreProtector.entity.defenses.FlameThrower;
 
 import javax.imageio.ImageIO;
 import java.awt.Graphics ;
@@ -34,7 +35,7 @@ public class DefenseManager {
                             break;
 
                         case "flameThrower":
-
+                            gp.defense[i] = new FlameThrower(gp);
 
                             break;
                     }
@@ -53,7 +54,7 @@ public class DefenseManager {
                             break;
 
                         case "flameThrower":
-
+                            gp.defense[i] = new FlameThrower(gp);
 
                             break;
                     }
@@ -73,7 +74,7 @@ public class DefenseManager {
                             break;
 
                         case "flameThrower":
-
+                            gp.defense[i] = new FlameThrower(gp);
 
                             break;
                     }
@@ -93,7 +94,7 @@ public class DefenseManager {
                             break;
 
                         case "flameThrower":
-
+                            gp.defense[i] = new FlameThrower(gp);
 
                             break;
                     }

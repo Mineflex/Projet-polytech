@@ -59,7 +59,7 @@ public class UI {
     BufferedImage logo=null;
 
     BufferedImage canon=null;
-    BufferedImage flamethrower=null;
+    BufferedImage flameThrower=null;
     BufferedImage electricTower=null;
     BufferedImage catapult=null;
     BufferedImage DEF5 = null;
@@ -103,7 +103,7 @@ public class UI {
             goldCoin = ImageIO.read(getClass().getResourceAsStream("/UI/gold_coinUI.png"));
             oak = ImageIO.read(getClass().getResourceAsStream("/UI/oak_woodUI.png"));
             canon = ImageIO.read(getClass().getResourceAsStream("/defense/canon/lvl1_canon_sprite05.png"));
-            //flamethrower =
+            flameThrower = ImageIO.read(getClass().getResourceAsStream("/defense/Flamethrower/lvl1_flameT_sprite_06.png"));
             //electricTower =
             //catapult =
             // il faudra compléter cette partie du code quand les images du reste des défenses et ressources seront faites
@@ -404,7 +404,7 @@ public class UI {
         g2.fillRoundRect(6, 6, gp.screenWidth/3 - 40, gp.screenHeight/2 - 9, 50, 50);
         g2.setFont(arial_28_Bold);
         g2.setColor(Color.white);
-        g2.drawString("Ressources", 150 , 40);
+        g2.drawString("Resources", 150 , 40);
 
 
         //gold
@@ -448,7 +448,7 @@ public class UI {
         g2.fillRoundRect(6, gp.screenHeight/2 + 3, gp.screenWidth/3 - 40, gp.screenHeight/2 - 9, 50, 50);
         g2.setColor(Color.white);
         g2.setFont(arial_28_Bold);
-        g2.drawString("Défenses", 180 , 420);
+        g2.drawString("Defenses", 180 , 420);
 
 
         //canon
@@ -463,7 +463,7 @@ public class UI {
         g2.draw(btnFlameThrower);
         g2.setColor(new Color(97, 64, 4, 247));
         g2.fillRect(btnFlameThrower.x, btnFlameThrower.y, btnFlameThrower.width, btnFlameThrower.height);
-        g2.drawImage(flamethrower, btnFlameThrower.x, btnFlameThrower.y, btnFlameThrower.width , btnFlameThrower.height, null);
+        g2.drawImage(flameThrower, btnFlameThrower.x, btnFlameThrower.y, btnFlameThrower.width , btnFlameThrower.height, null);
 
         //tour électrique
         g2.setColor(Color.WHITE);
@@ -655,6 +655,11 @@ public class UI {
                     isPlacingDef = true;
                     gp.mouseH.mousePressedVar = false;
                     defType="canon";
+                } else if (btnFlameThrower.contains(mousePoint)) {
+                    isPlacingDef = true;
+                    gp.mouseH.mousePressedVar = false;
+                    defType="flameThrower";
+
                 }
             }
 

@@ -31,6 +31,7 @@ public class UI {
     public Rectangle btnEnduranceUpgrade;
     public Rectangle btnStrengthUpgrade;
     public Rectangle btnRFortune;
+    public Rectangle btnGoldFortune;
 
 
     public Rectangle btnRetry;
@@ -118,6 +119,7 @@ public class UI {
         btnEnduranceUpgrade = new Rectangle(550, 60, 200, 50); // x, y, largeur, hauteur
         btnStrengthUpgrade = new Rectangle(800 , 60 ,200,50);
         btnRFortune = new Rectangle(1050,60,200,50);
+        btnGoldFortune = new Rectangle(1300, 60, 200, 50);
 
         btnRetry =new Rectangle(gp.screenWidth/2 - 100 ,465, 200, 50);
 
@@ -277,6 +279,8 @@ public class UI {
         g2.setColor(Color.WHITE);
         g2.draw(btnRFortune);
 
+        g2.setColor(Color.WHITE);
+        g2.draw(btnGoldFortune);
 
 
         if (gp.player.canViewHealthBar){
@@ -341,6 +345,18 @@ public class UI {
             g2.setFont(arial_20);
             g2.setColor(Color.white);
             g2.drawString("Max !", btnRFortune.x + 40, btnRFortune.y + 32);
+        }
+        if (gp.player.goldFortune<2){
+            g2.setFont(arial_20);
+            g2.drawString("gold/exp + ( "+Math.round(((gp.player.goldFortune)-1)/0.25)+"/4 )", btnGoldFortune.x + 20, btnGoldFortune.y + 32);
+        }else {
+
+            g2.setColor(new Color(97, 64, 4, 247));
+
+            g2.fillRect(btnGoldFortune.x, btnGoldFortune.y, 200, 50);
+            g2.setFont(arial_20);
+            g2.setColor(Color.white);
+            g2.drawString("Max !", btnGoldFortune.x + 40, btnGoldFortune.y + 32);
         }
 
 
@@ -591,6 +607,14 @@ public class UI {
                     }
                     if (btnRFortune.contains(mousePoint) && gp.player.ressourcesFortune < 3) {
                         gp.player.ressourcesFortune += 1;
+
+                        gp.mouseH.mousePressedVar = false;
+                        gp.playerXP.cPAvailable -= 1;
+                        gp.playerXP.cPUsed += 1;
+
+                    }
+                    if (btnGoldFortune.contains(mousePoint) && gp.player.goldFortune < 2) {
+                        gp.player.goldFortune += 0.25;
 
                         gp.mouseH.mousePressedVar = false;
                         gp.playerXP.cPAvailable -= 1;

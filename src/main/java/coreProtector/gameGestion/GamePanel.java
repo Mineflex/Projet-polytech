@@ -55,7 +55,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public AssetSetter aSetter= new AssetSetter(this);
     public  UI ui=new UI(this);
     public Player player= new Player(this, keyH);
-    public PlayerXP playerXP= new PlayerXP();
+    public PlayerXP playerXP= new PlayerXP(this);
     public SuperItem itm[]=new  SuperItem[1000];
     public DayCycle dayCycle = new DayCycle();
 

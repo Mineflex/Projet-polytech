@@ -25,7 +25,7 @@ public class AssetSetter {
         gp.itm[1]=new ExperienceOrb(gp);
         gp.itm[1].worldX= 115 * gp.tileSize;
         gp.itm[1].worldY=120 * gp.tileSize;
-        gp.itm[1].stack=1000;
+        gp.itm[1].stack=20000;
 
         gp.itm[2]=new ExperienceOrb(gp);
         gp.itm[2].worldX= 120 * gp.tileSize;

@@ -46,7 +46,7 @@ public class Player extends Entity{
     public int enduranceCooldown; //duree de la recuperation de l'endurance
     public int strengthMultiplier;
     public int ressourcesFortune;
-    public int goldFortune;
+    public float goldFortune;
     public boolean canViewHealthBar; //Voir la vie du core meme a distance
     boolean repairKit; //Repare petit a petit les defenses si il est tres tres proche d'elles
 
@@ -323,7 +323,7 @@ public class Player extends Entity{
 
             switch (itemName){
                 case "ExperienceOrb":
-                    gp.playerXP.updateExperience(gp.itm[index].stack*goldFortune);
+                    gp.playerXP.updateExperience(gp.itm[index].stack);
                     gp.itm[index]=null;
 
 

@@ -5,11 +5,16 @@ import coreProtector.gameGestion.GamePanel;
 import java.awt.image.renderable.RenderableImage;
 
 public class PlayerXP   {
+    GamePanel gp;
     public int playerLevel;
     public double playerExPo;
     public double nextLevel;
     public  int cPAvailable;
     public int cPUsed;
+
+    public PlayerXP(GamePanel gp){
+        this.gp=gp;
+    }
 
     public void setDefaultXP(){
         //ici qu'il faut changer les valeurs si jamais :)
@@ -20,7 +25,7 @@ public class PlayerXP   {
         cPUsed=0;
     }
     public void updateExperience(double amount) {
-        playerExPo += amount;
+        playerExPo += amount * gp.player.goldFortune;
 
         while (playerExPo >= nextLevel) {
             levelUp();

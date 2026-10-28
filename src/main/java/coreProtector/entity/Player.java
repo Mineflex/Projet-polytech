@@ -44,7 +44,7 @@ public class Player extends Entity{
     public int maxEndurance;
     public int endurance; // duree de la course
     public int enduranceCooldown; //duree de la recuperation de l'endurance
-    int strengthMultiplier;
+    public int strengthMultiplier;
     public int ressourcesFortune;
     public int goldFortune;
     public boolean canViewHealthBar; //Voir la vie du core meme a distance

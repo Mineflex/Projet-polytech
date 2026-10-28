@@ -29,6 +29,9 @@ public class UI {
     public Rectangle btnSeeHealthBar;
     public Rectangle btnSpeedUpgrade;
     public Rectangle btnEnduranceUpgrade;
+    public Rectangle btnStrengthUpgrade;
+
+
     public Rectangle btnRetry;
 
 
@@ -109,9 +112,11 @@ public class UI {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        btnSeeHealthBar = new Rectangle(50, 50, 200, 50); // x, y, largeur, hauteur
-        btnSpeedUpgrade = new Rectangle(300, 50, 200, 50); // x, y, largeur, hauteur
-        btnEnduranceUpgrade = new Rectangle(550, 50, 200, 50); // x, y, largeur, hauteur
+        btnSeeHealthBar = new Rectangle(50, 60, 200, 50); // x, y, largeur, hauteur
+        btnSpeedUpgrade = new Rectangle(300, 60, 200, 50); // x, y, largeur, hauteur
+        btnEnduranceUpgrade = new Rectangle(550, 60, 200, 50); // x, y, largeur, hauteur
+        btnStrengthUpgrade = new Rectangle(800 , 60 ,200,50);
+
         btnRetry =new Rectangle(gp.screenWidth/2 - 100 ,465, 200, 50);
 
         btnCanon = new Rectangle(30, 460, canon.getWidth()*3, canon.getHeight()*3); // x, y, largeur, hauteur
@@ -264,6 +269,9 @@ public class UI {
         g2.setColor(Color.WHITE);
         g2.draw(btnEnduranceUpgrade);
 
+        g2.setColor(Color.WHITE);
+        g2.draw(btnStrengthUpgrade);
+
 
 
         if (gp.player.canViewHealthBar){
@@ -274,7 +282,7 @@ public class UI {
             g2.fillRect(50, 50, 200, 50);
             g2.setFont(arial_20);
             g2.setColor(Color.white);
-            g2.drawString("Debloqué !", btnSeeHealthBar.x + 40, btnSeeHealthBar.y + 32);
+            g2.drawString("débloqué !", btnSeeHealthBar.x + 40, btnSeeHealthBar.y + 32);
 
 
         }else {
@@ -283,7 +291,7 @@ public class UI {
         }
         if (gp.player.speedMultiplier<1.32){
             g2.setFont(arial_20);
-            g2.drawString("Augmente la vitesse ( "+Math.round((gp.player.speedMultiplier -1)/0.08)+"/4 )", btnSpeedUpgrade.x + 20, btnSpeedUpgrade.y + 32);
+            g2.drawString("Vitesse + ( "+Math.round((gp.player.speedMultiplier -1)/0.08)+"/4 )", btnSpeedUpgrade.x + 20, btnSpeedUpgrade.y + 32);
         }else {
 
             g2.setColor(new Color(97, 64, 4, 247));
@@ -291,11 +299,11 @@ public class UI {
             g2.fillRect(btnSpeedUpgrade.x, btnSpeedUpgrade.y, 200, 50);
             g2.setFont(arial_20);
             g2.setColor(Color.white);
-            g2.drawString("Debloqué !", btnSpeedUpgrade.x + 40, btnSpeedUpgrade.y + 32);
+            g2.drawString("Max !", btnSpeedUpgrade.x + 40, btnSpeedUpgrade.y + 32);
         }
         if (gp.player.maxEndurance<8){
             g2.setFont(arial_20);
-            g2.drawString("Augmente l'endurance MAX ( "+Math.round((gp.player.maxEndurance)-4)+"/4 )", btnEnduranceUpgrade.x + 20, btnEnduranceUpgrade.y + 32);
+            g2.drawString("Endurance + ( "+Math.round((gp.player.maxEndurance)-4)+"/4 )", btnEnduranceUpgrade.x + 20, btnEnduranceUpgrade.y + 32);
         }else {
 
             g2.setColor(new Color(97, 64, 4, 247));
@@ -303,7 +311,19 @@ public class UI {
             g2.fillRect(btnEnduranceUpgrade.x, btnEnduranceUpgrade.y, 200, 50);
             g2.setFont(arial_20);
             g2.setColor(Color.white);
-            g2.drawString("Debloqué !", btnEnduranceUpgrade.x + 40, btnEnduranceUpgrade.y + 32);
+            g2.drawString("Max !", btnEnduranceUpgrade.x + 40, btnEnduranceUpgrade.y + 32);
+        }
+        if (gp.player.strengthMultiplier<5){
+            g2.setFont(arial_20);
+            g2.drawString("force + ( "+Math.round((gp.player.strengthMultiplier)-1)+"/4 )", btnStrengthUpgrade.x + 20, btnStrengthUpgrade.y + 32);
+        }else {
+
+            g2.setColor(new Color(97, 64, 4, 247));
+
+            g2.fillRect(btnStrengthUpgrade.x, btnStrengthUpgrade.y, 200, 50);
+            g2.setFont(arial_20);
+            g2.setColor(Color.white);
+            g2.drawString("Max !", btnStrengthUpgrade.x + 40, btnStrengthUpgrade.y + 32);
         }
 
 
@@ -538,6 +558,14 @@ public class UI {
                     }
                     if (btnEnduranceUpgrade.contains(mousePoint) && gp.player.maxEndurance < 8) {
                         gp.player.maxEndurance += 1;
+
+                        gp.mouseH.mousePressedVar = false;
+                        gp.playerXP.cPAvailable -= 1;
+                        gp.playerXP.cPUsed += 1;
+
+                    }
+                    if (btnStrengthUpgrade.contains(mousePoint) && gp.player.strengthMultiplier < 5) {
+                        gp.player.strengthMultiplier += 1;
 
                         gp.mouseH.mousePressedVar = false;
                         gp.playerXP.cPAvailable -= 1;

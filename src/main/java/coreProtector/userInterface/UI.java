@@ -279,7 +279,7 @@ public class UI {
 
             g2.setColor(new Color(97, 64, 4, 247));
 
-            g2.fillRect(50, 50, 200, 50);
+            g2.fillRect(50, 60, 200, 50);
             g2.setFont(arial_20);
             g2.setColor(Color.white);
             g2.drawString("débloqué !", btnSeeHealthBar.x + 40, btnSeeHealthBar.y + 32);

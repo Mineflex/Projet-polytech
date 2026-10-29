@@ -25,30 +25,30 @@ public class Slime extends Entity {
     }
     public void getImage(){
 
-        up1=setup("/entities/mob/Slime/Sprite/Slime.png");
-        up2=setup("/entities/mob/Slime/Sprite/Slime 2.png");
-        up3=setup("/entities/mob/Slime/Sprite/Slime 3.png");
-        up4=setup("/entities/mob/Slime/Sprite/Slime 4.png");
-        down1=setup("/entities/mob/Slime/Sprite/Slime 1.png");
-        down2=setup("/entities/mob/Slime/Sprite/Slime 2.png");
-        down3=setup("/entities/mob/Slime/Sprite/Slime 3.png");
-        down4=setup("/entities/mob/Slime/Sprite/Slime 4.png");
-        left1=setup("/entities/mob/Slime/Sprite/Slime 1.png");
-        left2=setup("/entities/mob/Slime/Sprite/Slime 2.png");
-        left3=setup("/entities/mob/Slime/Sprite/Slime 3.png");
-        left4=setup("/entities/mob/Slime/Sprite/Slime 4.png");
-        right1=setup("/entities/mob/Slime/Sprite/Slime 1.png");
-        right2=setup("/entities/mob/Slime/Sprite/Slime 2.png");
-        right3=setup("/entities/mob/Slime/Sprite/Slime 3.png");
-        right4=setup("/entities/mob/Slime/Sprite/Slime 4.png");
-        hitDown1=setup("/entities/mob/Slime/Sprite/Slime attack 9.png");
-        hitDown2=setup("/entities/mob/Slime/Sprite/Slime attack 10.png");
-        hitUp1=setup("/entities/mob/Slime/Sprite/Slime attack 7.png");
-        hitUp2=setup("/entities/mob/Slime/Sprite/Slime attack 8.png");
-        hitLeft1=setup("/entities/mob/Slime/Sprite/Slime attack 3.png");
-        hitLeft2=setup("/entities/mob/Slime/Sprite/Slime attack 4.png");
-        hitRight1=setup("/entities/mob/Slime/Sprite/Slime attack 5.png");
-        hitRight2=setup("/entities/mob/Slime/Sprite/Slime attack 6.png");
+        up1=setup("/entities/mob/Slime/Sprite/slime_1_sprite_00");
+        up2=setup("/entities/mob/Slime/Sprite/slime_1_sprite_01");
+        up3=setup("/entities/mob/Slime/Sprite/slime_1_sprite_02");
+        up4=setup("/entities/mob/Slime/Sprite/slime_1_sprite_03");
+        down1=setup("/entities/mob/Slime/Sprite/slime_1_sprite_00");
+        down2=setup("/entities/mob/Slime/Sprite/slime_1_sprite_01");
+        down3=setup("/entities/mob/Slime/Sprite/slime_1_sprite_02");
+        down4=setup("/entities/mob/Slime/Sprite/slime_1_sprite_03");
+        left1=setup("/entities/mob/Slime/Sprite/slime_1_sprite_00");
+        left2=setup("/entities/mob/Slime/Sprite/slime_1_sprite_01");
+        left3=setup("/entities/mob/Slime/Sprite/slime_1_sprite_02");
+        left4=setup("/entities/mob/Slime/Sprite/slime_1_sprite_03");
+        right1=setup("/entities/mob/Slime/Sprite/slime_1_sprite_00");
+        right2=setup("/entities/mob/Slime/Sprite/slime_1_sprite_01");
+        right3=setup("/entities/mob/Slime/Sprite/slime_1_sprite_02");
+        right4=setup("/entities/mob/Slime/Sprite/slime_1_sprite_03");
+        hitDown1=setup("/entities/mob/Slime/Sprite/slime_1_sprite_attack_06");
+        hitDown2=setup("/entities/mob/Slime/Sprite/slime_1_sprite_attack_07");
+        hitUp1=setup("/entities/mob/Slime/Sprite/slime_1_sprite_attack_04");
+        hitUp2=setup("/entities/mob/Slime/Sprite/slime_1_sprite_attack_05");
+        hitLeft1=setup("/entities/mob/Slime/Sprite/slime_1_sprite_attack_02");
+        hitLeft2=setup("/entities/mob/Slime/Sprite/slime_1_sprite_attack_03");
+        hitRight1=setup("/entities/mob/Slime/Sprite/slime_1_sprite_attack_00");
+        hitRight2=setup("/entities/mob/Slime/Sprite/slime_1_sprite_attack_01");
 
 
     }public void setAction(){

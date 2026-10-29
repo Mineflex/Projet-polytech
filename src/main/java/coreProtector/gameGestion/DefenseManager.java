@@ -31,11 +31,13 @@ public class DefenseManager {
                     switch (type){
                         case "canon":
                             gp.defense[i] = new Canon(gp);
+                            gp.player.oak -= 10;
 
                             break;
 
                         case "flameThrower":
                             gp.defense[i] = new FlameThrower(gp);
+                            gp.player.woodBrazier -= 10;
 
                             break;
                     }
@@ -50,11 +52,13 @@ public class DefenseManager {
                     switch (type){
                         case "canon":
                             gp.defense[i] = new Canon(gp);
+                            gp.player.oak -= 10;
 
                             break;
 
                         case "flameThrower":
                             gp.defense[i] = new FlameThrower(gp);
+                            gp.player.woodBrazier -= 10;
 
                             break;
                     }
@@ -70,11 +74,13 @@ public class DefenseManager {
                     switch (type){
                         case "canon":
                             gp.defense[i] = new Canon(gp);
+                            gp.player.oak -= 10;
 
                             break;
 
                         case "flameThrower":
                             gp.defense[i] = new FlameThrower(gp);
+                            gp.player.woodBrazier -= 10;
 
                             break;
                     }
@@ -90,11 +96,13 @@ public class DefenseManager {
                     switch (type){
                         case "canon":
                             gp.defense[i] = new Canon(gp);
+                            gp.player.oak -= 10;
 
                             break;
 
                         case "flameThrower":
                             gp.defense[i] = new FlameThrower(gp);
+                            gp.player.woodBrazier -= 10;
 
                             break;
                     }

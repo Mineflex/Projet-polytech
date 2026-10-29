@@ -16,6 +16,7 @@ public class UI {
     GamePanel gp;
     AssetSetter aSetter;
     DefenseManager dManager;
+    Font arial_15;
     Font arial_20;
     Font arial_28_Bold;
     Font arial_40_Bold;
@@ -94,6 +95,7 @@ public class UI {
         this.gp=gp;
         this.aSetter = new AssetSetter(gp);
         this.dManager=new DefenseManager(gp);
+        arial_15=new Font("Arial",Font.PLAIN,15);
         arial_20=new Font("Arial",Font.PLAIN,20);
         arial_28_Bold = new Font("Arial", Font.BOLD,28);
         arial_40_Bold = new Font("Arial", Font.BOLD, 40 );
@@ -129,14 +131,14 @@ public class UI {
 
         btnRetry =new Rectangle(gp.screenWidth/2 - 100 ,465, 200, 50);
 
-        btnCanon = new Rectangle(30, 460, canon.getWidth()*3, canon.getHeight()*3); // x, y, largeur, hauteur
-        btnFlameThrower = new Rectangle(140, 460, canon.getWidth()*3, canon.getHeight()*3);
-        btnElectricTower = new Rectangle(250, 460, canon.getWidth()*3, canon.getHeight()*3);
-        btnCatapult = new Rectangle(360, 460, canon.getWidth()*3, canon.getHeight()*3);
-        btnDEF5 = new Rectangle(30, 625, canon.getWidth()*3, canon.getHeight()*3);
-        btnDEF6 = new Rectangle(140, 625, canon.getWidth()*3, canon.getHeight()*3);
-        btnDEF7 = new Rectangle(250, 625, canon.getWidth()*3, canon.getHeight()*3);
-        btnDEF8 = new Rectangle(360, 625, canon.getWidth()*3, canon.getHeight()*3);
+        btnCanon = new Rectangle(30, 440, canon.getWidth()*3, canon.getHeight()*3); // x, y, largeur, hauteur
+        btnFlameThrower = new Rectangle(140, 440, canon.getWidth()*3, canon.getHeight()*3);
+        btnElectricTower = new Rectangle(250, 440, canon.getWidth()*3, canon.getHeight()*3);
+        btnCatapult = new Rectangle(360, 440, canon.getWidth()*3, canon.getHeight()*3);
+        btnDEF5 = new Rectangle(30, 605, canon.getWidth()*3, canon.getHeight()*3);
+        btnDEF6 = new Rectangle(140, 605, canon.getWidth()*3, canon.getHeight()*3);
+        btnDEF7 = new Rectangle(250, 605, canon.getWidth()*3, canon.getHeight()*3);
+        btnDEF8 = new Rectangle(360, 605, canon.getWidth()*3, canon.getHeight()*3);
         // il faudra changer les wight et height quand les sprites seront fait pour chaque défenses
 
 
@@ -477,6 +479,10 @@ public class UI {
         g2.setColor(new Color(97, 64, 4, 247));
         g2.fillRect(btnCanon.x, btnCanon.y, btnCanon.width, btnCanon.height);
         g2.drawImage(canon, btnCanon.x + 3, btnCanon.y - 10, btnCanon.width , btnCanon.height, null);
+        g2.drawImage(oak, btnCanon.x + 3, btnCanon.y + 100 , oak.getWidth() ,oak.getHeight(),null); //coût
+        g2.setFont(arial_15);
+        g2.setColor(Color.white);
+        g2.drawString("×10", btnCanon.x + 30, btnCanon.y + 125);
 
         //lance flamme
         g2.setColor(Color.WHITE);
@@ -484,6 +490,10 @@ public class UI {
         g2.setColor(new Color(97, 64, 4, 247));
         g2.fillRect(btnFlameThrower.x, btnFlameThrower.y, btnFlameThrower.width, btnFlameThrower.height);
         g2.drawImage(flameThrower, btnFlameThrower.x, btnFlameThrower.y, btnFlameThrower.width , btnFlameThrower.height, null);
+        g2.drawImage(woodBrazier, btnFlameThrower.x + 3, btnFlameThrower.y + 100 , woodBrazier.getWidth() ,woodBrazier.getHeight(),null); //coût
+        g2.setFont(arial_15);
+        g2.setColor(Color.white);
+        g2.drawString("×10", btnFlameThrower.x + 30, btnFlameThrower.y + 125);
 
         //tour électrique
         g2.setColor(Color.WHITE);
@@ -671,11 +681,11 @@ public class UI {
         if (uiInventory == true) {
             if (gp.mouseH.mousePressedVar) {
                 Point mousePoint = new Point(gp.mouseH.x, gp.mouseH.y);
-                if (btnCanon.contains(mousePoint)) {
+                if (btnCanon.contains(mousePoint) && gp.player.oak >= 10) {
                     isPlacingDef = true;
                     gp.mouseH.mousePressedVar = false;
                     defType="canon";
-                } else if (btnFlameThrower.contains(mousePoint)) {
+                } else if (btnFlameThrower.contains(mousePoint) && gp.player.woodBrazier >= 10) {
                     isPlacingDef = true;
                     gp.mouseH.mousePressedVar = false;
                     defType="flameThrower";

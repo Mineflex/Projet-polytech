@@ -90,11 +90,11 @@ public class Player extends Entity{
         direction= "up";
         //inventaire lors du spawn ou après gameOver
         goldCoin = 0;
-        oak=10;
+        oak=100;
         birch=10;
         darkOak=0;
         cherryWood=0;
-        woodBrazier=0;
+        woodBrazier=100;
         chargedWood=0;
         rock=10;
         iron=0;

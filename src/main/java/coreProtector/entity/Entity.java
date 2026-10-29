@@ -1,5 +1,6 @@
 package coreProtector.entity;
 
+import coreProtector.entity.projectiles.Projectile;
 import coreProtector.gameGestion.GamePanel;
 import coreProtector.gameGestion.UtilityTool;
 
@@ -20,7 +21,7 @@ public class Entity {
     public int maxLife=1;
     public int life=1;
     public boolean hasHit=false;
-
+    public boolean alive=true;
 
     public BufferedImage up1, up2, up3,up4,down1,down2,down3,down4,left1,left2,left3,left4,right1,right2,right3,right4; //L'ensembles des sprites pour chaque animation de chaque entitées
     public BufferedImage hitUp1, hitUp2, hitDown1,hitDown2,hitLeft1,hitLeft2,hitRight1,hitRight2;
@@ -37,7 +38,9 @@ public class Entity {
     public Rectangle hitzone = new Rectangle(0,0,0,0); //pour définire la zone de frappe
     public boolean attacking=false;
 
-
+    public Projectile projectile;
+    public int cooldown=0;
+    public int maxCooldown=0;
     public Entity(GamePanel gp){
         this.gp=gp;
 

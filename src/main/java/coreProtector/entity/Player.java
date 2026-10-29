@@ -1,5 +1,6 @@
 package coreProtector.entity;
 
+import coreProtector.entity.projectiles.CanonBall;
 import coreProtector.gameGestion.GamePanel;
 import coreProtector.gameGestion.KeyHandler;
 import coreProtector.gameGestion.UtilityTool;
@@ -75,6 +76,7 @@ public class Player extends Entity{
         hitzone.height=gp.scale*8*sizeMultiplier;
 
 
+
         setDefaultValues();
         getPlayerImage();
     }
@@ -116,7 +118,7 @@ public class Player extends Entity{
         goldFortune=1;
         canViewHealthBar=false; //Voir la vie du core meme a distance
         repairKit=false; //Repare petit a petit les defenses si il est tres tres proche d'elles
-
+        projectile=  new CanonBall(gp);
 
     }
 
@@ -201,6 +203,9 @@ public class Player extends Entity{
                     spriteNum = 1;
                     spriteCounter = 0;
                     hasHit=true;
+
+                    projectile.set(worldx,worldy,direction,true,this);
+                    gp.projectileList.add(projectile);
                 }
             if ( !attacking && keyH.sprintPressed != true){
                 speed = 4;
@@ -331,6 +336,19 @@ public class Player extends Entity{
                 case "oakWoodItem":
                     oak+=1*gp.itm[index].stack * ressourcesFortune;
                     gp.itm[index]=null;
+                    break;
+                case "darkOakWoodItem":
+                    darkOak+=1*gp.itm[index].stack * ressourcesFortune;
+                    gp.itm[index]=null;
+                    break;
+                case "cherryWoodItem":
+                    cherryWood+=1*gp.itm[index].stack * ressourcesFortune;
+                    gp.itm[index]=null;
+                    break;
+                case "blazingWoodItem":
+                    woodBrazier+=1*gp.itm[index].stack * ressourcesFortune;
+                    gp.itm[index]=null;
+                    break;
             }
 
         }

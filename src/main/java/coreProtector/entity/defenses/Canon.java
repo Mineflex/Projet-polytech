@@ -1,6 +1,7 @@
 package coreProtector.entity.defenses;
 
 import coreProtector.entity.Entity;
+import coreProtector.entity.projectiles.CanonBall;
 import coreProtector.gameGestion.GamePanel;
 
 import java.awt.*;
@@ -10,19 +11,24 @@ public class Canon extends Entity {
 
 
 
-
-
+    GamePanel gp;
     public Canon(GamePanel gp) {
         super(gp);
+
+
 
         name= "Canon";
         speed =0;
         maxLife=5;
         life=maxLife;
         int defenseLevel=1;
-
+        maxCooldown=60*5;
+        cooldown=60*5;
+        this.gp=gp;
         hitBox=new Rectangle(0 + gp.scale *8*sizeMultiplier,0 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
         hitBoxDefaultY=hitBox.y;
+        projectile=  new CanonBall(gp);
+
 
         getImage();
     }
@@ -57,7 +63,14 @@ public class Canon extends Entity {
 
 
     }public void setAction(){
-
+        cooldown--;
+        if (cooldown<=0){
+            System.out.println("Direction du canon : " + direction);
+            System.out.println("Vitesse du boulet : " + projectile.speed);
+            projectile.set(worldx,worldy,direction,true,this);
+            gp.projectileList.add(projectile);
+            cooldown=maxCooldown;
+        }
 
     }
 

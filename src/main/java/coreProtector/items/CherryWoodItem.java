@@ -12,7 +12,7 @@ public class CherryWoodItem extends SuperItem{
     public CherryWoodItem(GamePanel gp){
 
         this.gp=gp;
-        name="CherryWoodItem";
+        name="cherryWoodItem";
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/items/cherry_wood_item.png"));
             uTool.scaledImage(image,gp.tileSize ,gp.tileSize );

@@ -4,10 +4,7 @@ import coreProtector.entity.Entity;
 import coreProtector.entity.Player;
 import coreProtector.entity.PlayerXP;
 import coreProtector.entity.mobs.Goblin;
-import coreProtector.items.ExperienceOrb;
-import coreProtector.items.GoldCoin;
-import coreProtector.items.OakWoodItem;
-import coreProtector.items.SuperItem;
+import coreProtector.items.*;
 import coreProtector.tiles.TileManager;
 import coreProtector.userInterface.UI;
 
@@ -65,6 +62,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
 
     ArrayList<Entity> entityList = new ArrayList<>();
+    public ArrayList<Entity> projectileList = new ArrayList<>();
 
 
 
@@ -136,12 +134,22 @@ public class GamePanel extends JPanel implements  Runnable{
         ui.update();
         dayCycle.update();
 
+        for (int i = 0; i <projectileList.size();i++){
+            if (projectileList.get(i) !=null){
+                if (projectileList.get(i).alive==true){
+                    projectileList.get(i).update();
+                }if (projectileList.get(i).alive==false){
+                    projectileList.remove(i);
+                }
+
+            }
+        }
+
         for (int i =0; i < defense.length; i++) {
             if (defense[i] != null) {
                 defense[i].update();
             }
         }
-
 
         for (int i =0; i < monster.length; i++){
             if (monster[i]!= null){
@@ -149,11 +157,12 @@ public class GamePanel extends JPanel implements  Runnable{
             }
             if (monster[i] !=null && monster[i].life<=0){
                 String mob = monster[i].name;
-
+                int stack;
                 switch (mob){
+
                     case "Oak Wood":
                         playerXP.updateExperience(5);
-                        int stack= rd.nextInt(3,5);
+                        stack= rd.nextInt(3,5);
                         for (int j = 0; j < 9999; j++) {
                             if (itm[j]==null){
                                 itm[j]=new OakWoodItem(this);
@@ -166,6 +175,150 @@ public class GamePanel extends JPanel implements  Runnable{
 
 
                         break;
+
+
+                    case "Dark Oak Wood":
+                        playerXP.updateExperience(5);
+                        stack= rd.nextInt(3,5);
+                        for (int j = 0; j < 9999; j++) {
+                            if (itm[j]==null){
+                                itm[j]=new DarkOakWoodItem(this);
+                                itm[j].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
+                                itm[j].worldY=monster[i].worldy + monster[i].hitBox.height/2;
+                                itm[j].stack=stack;
+                                break;
+                            }
+                        }
+
+
+                        break;
+
+
+                    case "Cherry Wood":
+                        playerXP.updateExperience(5);
+                        stack= rd.nextInt(3,5);
+                        for (int j = 0; j < 9999; j++) {
+                            if (itm[j]==null){
+                                itm[j]=new CherryWoodItem(this);
+                                itm[j].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
+                                itm[j].worldY=monster[i].worldy + monster[i].hitBox.height/2;
+                                itm[j].stack=stack;
+                                break;
+                            }
+                        }
+
+
+                        break;
+
+
+
+                    case "Blazing Wood":
+                        playerXP.updateExperience(5);
+                        stack= rd.nextInt(3,5);
+                        for (int j = 0; j < 9999; j++) {
+                            if (itm[j]==null){
+                                itm[j]=new BlazingWoodItem(this);
+                                itm[j].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
+                                itm[j].worldY=monster[i].worldy + monster[i].hitBox.height/2;
+                                itm[j].stack=stack;
+                                break;
+                            }
+                        }
+
+
+                        break;
+
+
+                    case "Goblin Lvl1":
+                        playerXP.updateExperience(25);
+
+                        break;
+                }
+                monster[i]=null;
+
+
+            }
+        }
+
+
+        for (int i =0; i < monster.length; i++){
+            if (monster[i]!= null){
+                monster[i].update();
+            }
+            if (monster[i] !=null && monster[i].life<=0){
+                String mob = monster[i].name;
+                int stack;
+                switch (mob){
+
+                    case "Oak Wood":
+                        playerXP.updateExperience(5);
+                         stack= rd.nextInt(3,5);
+                        for (int j = 0; j < 9999; j++) {
+                            if (itm[j]==null){
+                                itm[j]=new OakWoodItem(this);
+                                itm[j].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
+                                itm[j].worldY=monster[i].worldy + monster[i].hitBox.height/2;
+                                itm[j].stack=stack;
+                                break;
+                            }
+                        }
+
+
+                        break;
+
+
+                    case "Dark Oak Wood":
+                        playerXP.updateExperience(5);
+                         stack= rd.nextInt(3,5);
+                        for (int j = 0; j < 9999; j++) {
+                            if (itm[j]==null){
+                                itm[j]=new DarkOakWoodItem(this);
+                                itm[j].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
+                                itm[j].worldY=monster[i].worldy + monster[i].hitBox.height/2;
+                                itm[j].stack=stack;
+                                break;
+                            }
+                        }
+
+
+                        break;
+
+
+                    case "Cherry Wood":
+                        playerXP.updateExperience(5);
+                        stack= rd.nextInt(3,5);
+                        for (int j = 0; j < 9999; j++) {
+                            if (itm[j]==null){
+                                itm[j]=new CherryWoodItem(this);
+                                itm[j].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
+                                itm[j].worldY=monster[i].worldy + monster[i].hitBox.height/2;
+                                itm[j].stack=stack;
+                                break;
+                            }
+                        }
+
+
+                        break;
+
+
+
+                    case "Blazing Wood":
+                        playerXP.updateExperience(5);
+                        stack= rd.nextInt(3,5);
+                        for (int j = 0; j < 9999; j++) {
+                            if (itm[j]==null){
+                                itm[j]=new BlazingWoodItem(this);
+                                itm[j].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
+                                itm[j].worldY=monster[i].worldy + monster[i].hitBox.height/2;
+                                itm[j].stack=stack;
+                                break;
+                            }
+                        }
+
+
+                        break;
+
+
                     case "Goblin Lvl1":
                         playerXP.updateExperience(25);
 
@@ -203,6 +356,11 @@ public class GamePanel extends JPanel implements  Runnable{
         for(int i=0;i<defense.length; i++){
             if(defense[i]!=null){
                 defense[i].draw(g2);
+            }
+        }
+        for(int i=0;i<projectileList.size(); i++){
+            if(projectileList.get(i) !=null){
+                projectileList.get(i).draw(g2);
             }
         }
 

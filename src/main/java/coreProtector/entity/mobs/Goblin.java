@@ -15,7 +15,7 @@ public class Goblin extends Entity {
 
         name= "Goblin Lvl1";
         speed =1;
-        maxLife=5;
+        maxLife=25;
         life=maxLife;
 
         hitBox=new Rectangle(0 + gp.scale *8*sizeMultiplier,0 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);

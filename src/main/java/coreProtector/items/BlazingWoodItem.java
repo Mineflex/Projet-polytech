@@ -12,7 +12,7 @@ public class BlazingWoodItem extends SuperItem{
     public BlazingWoodItem(GamePanel gp){
 
         this.gp=gp;
-        name="BlazingWoodItem";
+        name="blazingWoodItem";
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/items/blazing_wood_item.png"));
             uTool.scaledImage(image,gp.tileSize ,gp.tileSize );

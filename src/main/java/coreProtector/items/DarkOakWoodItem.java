@@ -10,7 +10,7 @@ public class DarkOakWoodItem extends SuperItem{
     public DarkOakWoodItem(GamePanel gp){
 
         this.gp=gp;
-        name="DarkOakWoodItem";
+        name="darkOakWoodItem";
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/items/darkoak_wood_item.png"));
             uTool.scaledImage(image,gp.tileSize ,gp.tileSize );

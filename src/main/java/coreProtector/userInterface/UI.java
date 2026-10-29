@@ -100,8 +100,14 @@ public class UI {
         arial_80_Bold = new Font("Arial", Font.BOLD, 80);
 
         try {
+            //ressources
             goldCoin = ImageIO.read(getClass().getResourceAsStream("/UI/gold_coinUI.png"));
             oak = ImageIO.read(getClass().getResourceAsStream("/UI/oak_woodUI.png"));
+            darkOak = ImageIO.read(getClass().getResourceAsStream("/UI/darkoak_wood_ui.png"));
+            cherryWood = ImageIO.read(getClass().getResourceAsStream("/UI/cherry_wood_ui.png"));
+            woodBrazier = ImageIO.read(getClass().getResourceAsStream("/UI/blazing_wood_ui.png"));
+
+            //défenses
             canon = ImageIO.read(getClass().getResourceAsStream("/defense/canon/lvl1_canon_sprite05.png"));
             flameThrower = ImageIO.read(getClass().getResourceAsStream("/defense/Flamethrower/lvl1_flameT_sprite_06.png"));
             //electricTower =
@@ -415,28 +421,42 @@ public class UI {
 
         //bois (il faudra finir cette partie une fois les sprites finis)
         g2.setColor(Color.white);
-        g2.drawRoundRect(16,55, gp.screenWidth/3 - 60, 150, 50, 50);
+        g2.drawRoundRect(16,195, gp.screenWidth/3 - 60, 115, 50, 50);
         g2.setColor(new Color(97, 64, 4, 247));
-        g2.fillRoundRect(16,55, gp.screenWidth/3 - 60, 150, 50, 50);
+        g2.fillRoundRect(16,195, gp.screenWidth/3 - 60, 115, 50, 50);
 
-        g2.drawImage(oak, 25, 60, oak.getWidth() *2 ,oak.getHeight() *2,null);
+        g2.drawImage(oak, 45, 195, oak.getWidth() *2 ,oak.getHeight() *2,null);
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        g2.drawString("×" + gp.player.oak, oak.getWidth()*2 + 20, oak.getHeight()*2 + 40);
+        g2.drawString("×" + gp.player.oak, 105, 240);
+
+        g2.drawImage(darkOak, 45, 250, darkOak.getWidth() *2 ,darkOak.getHeight() *2,null);
+        g2.setFont(arial_20);
+        g2.setColor(Color.white);
+        g2.drawString("×" + gp.player.darkOak, 105, 295);
+
+        g2.drawImage(cherryWood, 190, 195, cherryWood.getWidth() *2 ,cherryWood.getHeight() *2,null);
+        g2.setFont(arial_20);
+        g2.setColor(Color.white);
+        g2.drawString("×" + gp.player.cherryWood, 250, 240);
+
+        g2.drawImage(woodBrazier, 330, 195, woodBrazier.getWidth() *2 ,woodBrazier.getHeight() *2,null);
+        g2.setFont(arial_20);
+        g2.setColor(Color.white);
+        g2.drawString("×" + gp.player.woodBrazier, 390, 240);
 
 
         //minerais (il faudra finir cette partie une fois les sprites finis)
         g2.setColor(Color.white);
-        g2.drawRoundRect(16,215, gp.screenWidth/3 - 60, 100, 50, 50);
+        g2.drawRoundRect(16,50, gp.screenWidth/3 - 60, 140, 50, 50);
         g2.setColor(new Color(97, 64, 4, 247));
-        g2.fillRoundRect(16,215, gp.screenWidth/3 - 60, 100, 50, 50);
-
+        g2.fillRoundRect(16,50, gp.screenWidth/3 - 60, 140, 50, 50);
 
         //runes (il faudra finir cette partie une fois les sprites finis)
         g2.setColor(Color.white);
-        g2.drawRoundRect(16,325, gp.screenWidth/3 - 60, 50, 50, 50);
+        g2.drawRoundRect(16,315, gp.screenWidth/3 - 60, 60, 50, 50);
         g2.setColor(new Color(97, 64, 4, 247));
-        g2.fillRoundRect(16,325, gp.screenWidth/3 - 60, 50, 50, 50);
+        g2.fillRoundRect(16,315, gp.screenWidth/3 - 60, 60, 50, 50);
 
 
 

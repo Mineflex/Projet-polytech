@@ -2,6 +2,7 @@ package coreProtector.entity.defenses;
 
 import coreProtector.entity.Entity;
 import coreProtector.entity.projectiles.CanonBall;
+import coreProtector.entity.projectiles.Fire;
 import coreProtector.gameGestion.GamePanel;
 
 import java.awt.*;
@@ -65,8 +66,7 @@ public class Canon extends Entity {
     }public void setAction(){
         cooldown--;
         if (cooldown<=0){
-            System.out.println("Direction du canon : " + direction);
-            System.out.println("Vitesse du boulet : " + projectile.speed);
+
             projectile.set(worldx,worldy,direction,true,this);
             gp.projectileList.add(projectile);
             cooldown=maxCooldown;

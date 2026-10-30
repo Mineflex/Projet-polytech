@@ -15,8 +15,9 @@ public class Goblin extends Entity {
 
         name= "Goblin Lvl1";
         speed =1;
-        maxLife=25;
+        maxLife=10;
         life=maxLife;
+        direction="right";
 
         hitBox=new Rectangle(0 + gp.scale *8*sizeMultiplier,0 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
         hitBoxDefaultX=hitBox.x;
@@ -53,25 +54,6 @@ public class Goblin extends Entity {
 
 
     }public void setAction(){
-        Random random= new Random();
-        int i = random.nextInt(4);
-        if (i==0){
-            direction="up";
-            speed=0;
-
-        }if (i==1){
-            direction="down";
-            speed=0;
-
-        }if (i==2){
-            direction="left";
-            speed=0;
-
-        }if (i==3){
-            direction="right";
-            speed=0;
-
-        }
 
     }
 }

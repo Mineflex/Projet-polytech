@@ -1,6 +1,8 @@
 package coreProtector.entity.defenses;
 
 import coreProtector.entity.Entity;
+import coreProtector.entity.projectiles.CanonBall;
+import coreProtector.entity.projectiles.Fire;
 import coreProtector.gameGestion.GamePanel;
 
 import java.awt.*;
@@ -8,16 +10,21 @@ import java.awt.*;
 public class FlameThrower extends Entity{
 
 
+    GamePanel gp;
+
 
     public FlameThrower(GamePanel gp) {
         super(gp);
+        projectile=  new Fire(gp);
 
         name= "Flame Thrower";
         speed =0;
         maxLife=5;
         life=maxLife;
         int defenseLevel=1;
-
+        maxCooldown=65*3;
+        cooldown=65*3;
+        this.gp=gp;
         hitBox=new Rectangle(0 + gp.scale *8*sizeMultiplier,0 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
         hitBoxDefaultY=hitBox.y;
 
@@ -54,7 +61,13 @@ public class FlameThrower extends Entity{
 
 
     }public void setAction(){
+        cooldown--;
+        if (cooldown<=0){
 
+            projectile.set(worldx,worldy,direction,true,this);
+            gp.projectileList.add(projectile);
+            cooldown=maxCooldown;
+        }
 
     }
 

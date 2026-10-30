@@ -3,11 +3,16 @@ package coreProtector.entity.projectiles;
 import coreProtector.entity.Entity;
 import coreProtector.gameGestion.GamePanel;
 
-public class Projectile extends Entity {
+import java.util.ArrayList;
 
+public class Projectile extends Entity {
+    GamePanel gp;
     Entity user;
+    ArrayList<Integer> mobInFire;
+
     public Projectile(GamePanel gp) {
         super(gp);
+        this.gp=gp;
 
     }
 
@@ -18,9 +23,37 @@ public class Projectile extends Entity {
         this.user=defense;
         this.direction=direction;
         this.life=this.maxLife;
+
+        mobInFire=new ArrayList<>();
     }
 
     public void update(){
+
+
+        int monsterIndex= gp.collisionM.checkEntity(this, gp.monster);
+
+         if (monsterIndex !=999){
+
+                if (name=="Fire") {
+                    if (!mobInFire.contains(monsterIndex)) {
+
+                        mobInFire.add(monsterIndex);
+                        gp.monster[monsterIndex].life -= strength;
+                    }
+
+                }else {
+                    gp.monster[monsterIndex].life-=strength;
+                    alive=false;
+                }
+
+
+
+
+
+
+        }
+
+
         switch (direction){
             case "up":
                 worldy-=speed;

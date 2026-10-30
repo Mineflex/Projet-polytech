@@ -137,7 +137,7 @@ public class CollisionManager {
         int index=999;
 
         for (int i=0;i<target.length;i++){
-            if(target[i]!=null){
+            if(target[i]!=null && target[i] != entity){
                 entity.hitBox.x=entity.worldx+entity.hitBox.x;
                 entity.hitBox.y=entity.worldy+entity.hitBox.y;
 

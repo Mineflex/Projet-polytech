@@ -57,6 +57,7 @@ public class Entity {
         gp.collisionM.checkItem(this, false);
         gp.collisionM.checkPlayer(this);
         gp.collisionM.checkEntity(this, gp.monster);
+        gp.collisionM.checkEntity(this,gp.defense);
 
         if (collisionOn==false){
             switch (direction){

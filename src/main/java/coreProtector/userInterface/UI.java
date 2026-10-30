@@ -374,15 +374,17 @@ public class UI {
     public void ControllUI(Graphics2D g2){
         g2.setColor(new Color(97, 64, 4, 169));
 
-        g2.fillRect(controlMenuX+ gp.screenWidth-400, 20, 380, gp.screenHeight-40);
+        g2.fillRect(controlMenuX+ gp.screenWidth-400, 150, 380, gp.screenHeight-170);
         g2.setColor(Color.white);
+        g2.setFont(arial_40_Bold);
+        g2.drawString("Touches", controlMenuX+ gp.screenWidth-290,  200);
         g2.setFont(arial_28_Bold);
-        g2.drawString("Controls :", controlMenuX+ gp.screenWidth-350,  60);
-        g2.drawString("Z/Q/S/D : Bouger",  controlMenuX+ gp.screenWidth-340,  110);
-        g2.drawString("C : Competence", controlMenuX+ gp.screenWidth-340,  160);
-        g2.drawString("Z/Q/S/D : Bouger",  controlMenuX+ gp.screenWidth-340,  210);
-        g2.drawString("Espace : Taper",  controlMenuX+ gp.screenWidth-340,  260);
-        g2.drawString("Tab : Ouvrir/Fermer",  controlMenuX+ gp.screenWidth-340,  310);
+        g2.drawString("Z/Q/S/D : Bouger",  controlMenuX+ gp.screenWidth-370,  260);
+        g2.drawString("Maj : Sprinter", controlMenuX+ gp.screenWidth-370,  310);
+        g2.drawString("Espace : Taper",  controlMenuX+ gp.screenWidth-370,  360);
+        g2.drawString("C : Compétences",  controlMenuX+ gp.screenWidth-370,  410);
+        g2.drawString("Tab : Menu des touches",  controlMenuX+ gp.screenWidth-370,  460);
+        g2.drawString("E : Inventaire",  controlMenuX+ gp.screenWidth-370,  510);
 
 
 
@@ -392,14 +394,16 @@ public class UI {
     public void StatsUI(Graphics2D g2){
         g2.setColor(new Color(97, 64, 4, 168));
 
-        g2.fillRect(15, 20, 380, gp.screenHeight-40);
+        g2.fillRect(15, 150, 380, gp.screenHeight-170);
         g2.setColor(Color.white);
+        g2.setFont(arial_40_Bold);
+        g2.drawString("Statistique", 100,  200);
         g2.setFont(arial_28_Bold);
-        g2.drawString("Endurance :"+gp.player.maxEndurance, 65,  60);
-        g2.drawString("Speed :"+gp.player.speedMultiplier,  65,  110);
-        g2.drawString("Gold Fortune x"+ gp.player.goldFortune, 65,  160);
-        g2.drawString("Ressources Fortune x"+gp.player.ressourcesFortune,  65,  210);
-        g2.drawString("Core Health "+gp.player.health,  65,  260);
+        g2.drawString("Endurance : "+gp.player.maxEndurance, 40,  260);
+        g2.drawString("Speed : "+gp.player.speedMultiplier,  40,  310);
+        g2.drawString("Gold Fortune : × "+ gp.player.goldFortune, 40,  360);
+        g2.drawString("Ressources Fortune : × "+gp.player.ressourcesFortune,  40,  410);
+        g2.drawString("Core Health : "+gp.player.health,  40,  460);
 
     }
 
@@ -412,7 +416,7 @@ public class UI {
         g2.fillRoundRect(6, 6, gp.screenWidth/3 - 40, gp.screenHeight/2 - 9, 50, 50);
         g2.setFont(arial_28_Bold);
         g2.setColor(Color.white);
-        g2.drawString("Resources", 150 , 40);
+        g2.drawString("Ressources", 150 , 40);
 
 
         //gold
@@ -470,7 +474,7 @@ public class UI {
         g2.fillRoundRect(6, gp.screenHeight/2 + 3, gp.screenWidth/3 - 40, gp.screenHeight/2 - 9, 50, 50);
         g2.setColor(Color.white);
         g2.setFont(arial_28_Bold);
-        g2.drawString("Defenses", 180 , 420);
+        g2.drawString("Défenses", 180 , 420);
 
 
         //canon

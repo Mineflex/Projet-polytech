@@ -481,7 +481,11 @@ public class UI {
         g2.drawImage(canon, btnCanon.x + 3, btnCanon.y - 10, btnCanon.width , btnCanon.height, null);
         g2.drawImage(oak, btnCanon.x + 3, btnCanon.y + 100 , oak.getWidth() ,oak.getHeight(),null); //coût
         g2.setFont(arial_15);
-        g2.setColor(Color.white);
+        if (gp.player.oak < 10){
+            g2.setColor(Color.red);
+        }else{
+            g2.setColor(Color.white);
+        }
         g2.drawString("×10", btnCanon.x + 30, btnCanon.y + 125);
 
         //lance flamme
@@ -492,7 +496,11 @@ public class UI {
         g2.drawImage(flameThrower, btnFlameThrower.x, btnFlameThrower.y, btnFlameThrower.width , btnFlameThrower.height, null);
         g2.drawImage(woodBrazier, btnFlameThrower.x + 3, btnFlameThrower.y + 100 , woodBrazier.getWidth() ,woodBrazier.getHeight(),null); //coût
         g2.setFont(arial_15);
-        g2.setColor(Color.white);
+        if (gp.player.woodBrazier < 10){
+            g2.setColor(Color.red);
+        }else{
+            g2.setColor(Color.white);
+        }
         g2.drawString("×10", btnFlameThrower.x + 30, btnFlameThrower.y + 125);
 
         //tour électrique

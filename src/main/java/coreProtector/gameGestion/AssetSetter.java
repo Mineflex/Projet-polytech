@@ -50,22 +50,30 @@ public class AssetSetter {
         gp.monster[1]= new Slime(gp);
         gp.monster[1].worldx=116*gp.tileSize;
         gp.monster[1].worldy=125*gp.tileSize;
+
         gp.monster[2]= new DarkOakWoodEntity(gp);
         gp.monster[2].worldx=110*gp.tileSize;
         gp.monster[2].worldy=115*gp.tileSize;
+
         gp.monster[3]= new CherryWoodEntity(gp);
         gp.monster[3].worldx=115*gp.tileSize;
         gp.monster[3].worldy=110*gp.tileSize;
+
         gp.monster[4]= new BlazingWoodEntity(gp);
         gp.monster[4].worldx=110*gp.tileSize;
         gp.monster[4].worldy=110*gp.tileSize;
+
         gp.monster[5]= new Goblin(gp);
         gp.monster[5].worldx=117*gp.tileSize;
         gp.monster[5].worldy=125*gp.tileSize;
+
         gp.monster[6]= new Goblin(gp);
         gp.monster[6].worldx=118*gp.tileSize;
         gp.monster[6].worldy=125*gp.tileSize;
 
+        gp.monster[7]= new OakWoodEntity(gp);
+        gp.monster[7].worldx=116*gp.tileSize;
+        gp.monster[7].worldy=130*gp.tileSize;
 
 
 

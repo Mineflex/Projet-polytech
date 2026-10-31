@@ -3,10 +3,7 @@ package coreProtector.gameGestion;
 import coreProtector.entity.defenses.Canon;
 import coreProtector.entity.mobs.Goblin;
 import coreProtector.entity.mobs.Slime;
-import coreProtector.entity.naturalResources.BlazingWoodEntity;
-import coreProtector.entity.naturalResources.CherryWoodEntity;
-import coreProtector.entity.naturalResources.DarkOakWoodEntity;
-import coreProtector.entity.naturalResources.OakWoodEntity;
+import coreProtector.entity.naturalResources.*;
 import coreProtector.items.ExperienceOrb;
 import coreProtector.items.GoldCoin;
 import coreProtector.items.OakWoodItem;
@@ -75,8 +72,17 @@ public class AssetSetter {
         gp.monster[7].worldx=116*gp.tileSize;
         gp.monster[7].worldy=130*gp.tileSize;
 
+        gp.monster[8]= new StoneEntity(gp);
+        gp.monster[8].worldx=110*gp.tileSize;
+        gp.monster[8].worldy=130*gp.tileSize;
 
+        gp.monster[9]= new IronEntity(gp);
+        gp.monster[9].worldx=112*gp.tileSize;
+        gp.monster[9].worldy=130*gp.tileSize;
 
+        gp.monster[10]= new OnyxEntity(gp);
+        gp.monster[10].worldx=114*gp.tileSize;
+        gp.monster[10].worldy=130*gp.tileSize;
 
     }
 

@@ -19,7 +19,7 @@ public void setDefaultTime(){
     //ici qu'il faut changer les valeurs si jamais :)
     frameCounter = 0;
     day = 0;
-    hour = 21;
+    hour = 15;
     min = 25 ;
 }
 

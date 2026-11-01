@@ -1,12 +1,9 @@
 package coreProtector.gameGestion;
 
-import coreProtector.entity.defenses.Canon;
 import coreProtector.entity.mobs.Goblin;
 import coreProtector.entity.mobs.Slime;
 import coreProtector.entity.naturalResources.*;
 import coreProtector.items.ExperienceOrb;
-import coreProtector.items.GoldCoin;
-import coreProtector.items.OakWoodItem;
 
 public class AssetSetter {
 
@@ -83,13 +80,14 @@ public class AssetSetter {
         gp.monster[10]= new OnyxEntity(gp);
         gp.monster[10].worldx=114*gp.tileSize;
         gp.monster[10].worldy=130*gp.tileSize;
+        gp.monster[11]= new Core(gp);
+        gp.monster[11].worldx=123*gp.tileSize;
+        gp.monster[11].worldy=123*gp.tileSize;
 
     }
 
     public  void  setDefense(){
-        gp.defense[0]= new Canon(gp);
-        gp.defense[0].worldx=15*gp.tileSize;
-        gp.defense[0].worldy=15*gp.tileSize;
+
 
     }
 }

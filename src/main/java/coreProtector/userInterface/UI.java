@@ -108,9 +108,9 @@ public class UI {
             darkOak = ImageIO.read(getClass().getResourceAsStream("/UI/darkoak_wood_ui.png"));
             cherryWood = ImageIO.read(getClass().getResourceAsStream("/UI/cherry_wood_ui.png"));
             woodBrazier = ImageIO.read(getClass().getResourceAsStream("/UI/blazing_wood_ui.png"));
-            rock = ImageIO.read(getClass().getResourceAsStream("/entities/ressource/stone_ore.png"));
-            iron = ImageIO.read(getClass().getResourceAsStream("/entities/ressource/iron_ore.png"));
-            onyx = ImageIO.read(getClass().getResourceAsStream("/entities/ressource/onyx_ore.png"));
+            rock = ImageIO.read(getClass().getResourceAsStream("/UI/stone_ui.png"));
+            iron = ImageIO.read(getClass().getResourceAsStream("/UI/iron_ui.png"));
+            onyx = ImageIO.read(getClass().getResourceAsStream("/UI/onyx_ui.png"));
 
             //défenses
             canon = ImageIO.read(getClass().getResourceAsStream("/defense/canon/lvl1_canon_sprite05.png"));
@@ -461,20 +461,20 @@ public class UI {
         g2.setColor(new Color(97, 64, 4, 247));
         g2.fillRoundRect(16,50, gp.screenWidth/3 - 60, 140, 50, 50);
 
-        g2.drawImage(rock, 40, 60, rock.getWidth() *2 ,rock.getHeight() *2,null);
+        g2.drawImage(rock, 40, 50, rock.getWidth() *2 ,rock.getHeight() *2,null);
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        g2.drawString("×" + gp.player.rock, 100, 105);
+        g2.drawString("×" + gp.player.rock, 100, 95);
 
-        g2.drawImage(iron, 40, 125, iron.getWidth() *2 ,iron.getHeight() *2,null);
+        g2.drawImage(iron, 40, 115, iron.getWidth() *2 ,iron.getHeight() *2,null);
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        g2.drawString("×" + gp.player.iron, 100, 170);
+        g2.drawString("×" + gp.player.iron, 100, 160);
 
-        g2.drawImage(onyx, 155, 60, onyx.getWidth() *2 ,onyx.getHeight() *2,null);
+        g2.drawImage(onyx, 155, 50, onyx.getWidth() *2 ,onyx.getHeight() *2,null);
         g2.setFont(arial_20);
         g2.setColor(Color.white);
-        g2.drawString("×" + gp.player.onyx, 215, 105);
+        g2.drawString("×" + gp.player.onyx, 215, 95);
 
         //runes (il faudra finir cette partie une fois les sprites finis)
         g2.setColor(Color.white);

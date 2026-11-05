@@ -224,6 +224,18 @@ public class GamePanel extends JPanel implements  Runnable{
                                 break;
                             }
                         }
+                    case "onyx":
+                        playerXP.updateExperience(5);
+                        stack= rd.nextInt(3,5);
+                        for (int j = 0; j < 9999; j++) {
+                            if (itm[j]==null){
+                                itm[j]=new OnyxItem(this);
+                                itm[j].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
+                                itm[j].worldY=monster[i].worldy + monster[i].hitBox.height/2;
+                                itm[j].stack=stack;
+                                break;
+                            }
+                        }
 
 
                         break;

@@ -26,7 +26,7 @@ public class Canon extends Entity {
         maxCooldown=60*5;
         cooldown=60*5;
         this.gp=gp;
-        sizeMultiplier=3;
+        sizeMultiplier=1;
         hitBox=new Rectangle(0 + gp.scale *8*sizeMultiplier,0 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
         hitBoxDefaultY=hitBox.y;
         projectile=  new CanonBall(gp);

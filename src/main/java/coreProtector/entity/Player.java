@@ -349,6 +349,10 @@ public class Player extends Entity{
                     woodBrazier+=1*gp.itm[index].stack * ressourcesFortune;
                     gp.itm[index]=null;
                     break;
+                case "onyx":
+                    onyx+=1*gp.itm[index].stack * ressourcesFortune;
+                    gp.itm[index]=null;
+                    break;
             }
 
         }

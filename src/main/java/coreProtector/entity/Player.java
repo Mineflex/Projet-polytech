@@ -353,6 +353,14 @@ public class Player extends Entity{
                     onyx+=1*gp.itm[index].stack * ressourcesFortune;
                     gp.itm[index]=null;
                     break;
+                case "iron":
+                    iron+=1*gp.itm[index].stack * ressourcesFortune;
+                    gp.itm[index]=null;
+                    break;
+                case "stone":
+                    rock+=1*gp.itm[index].stack * ressourcesFortune;
+                    gp.itm[index]=null;
+                    break;
             }
 
         }

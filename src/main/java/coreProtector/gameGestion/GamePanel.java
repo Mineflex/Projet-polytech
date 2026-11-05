@@ -240,6 +240,37 @@ public class GamePanel extends JPanel implements  Runnable{
 
                         break;
 
+                    case "iron":
+                        playerXP.updateExperience(5);
+                        stack= rd.nextInt(3,5);
+                        for (int j = 0; j < 9999; j++) {
+                            if (itm[j]==null){
+                                itm[j]=new IronItem(this);
+                                itm[j].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
+                                itm[j].worldY=monster[i].worldy + monster[i].hitBox.height/2;
+                                itm[j].stack=stack;
+                                break;
+                            }
+                        }
+
+
+                        break;
+                    case "stone":
+                        playerXP.updateExperience(5);
+                        stack= rd.nextInt(3,5);
+                        for (int j = 0; j < 9999; j++) {
+                            if (itm[j]==null){
+                                itm[j]=new StoneItem(this);
+                                itm[j].worldX= monster[i].worldx+ monster[i].hitBox.width/2 ;
+                                itm[j].worldY=monster[i].worldy + monster[i].hitBox.height/2;
+                                itm[j].stack=stack;
+                                break;
+                            }
+                        }
+
+
+                        break;
+
 
                     case "Goblin Lvl1":
                         playerXP.updateExperience(25);

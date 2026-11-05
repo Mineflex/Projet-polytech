@@ -10,7 +10,7 @@ public class IronEntity extends Entity{
     public IronEntity(GamePanel gp) {
         super(gp);
 
-        name= "Iron";
+        name= "iron";
         speed =1;
         maxLife=6;
         life=maxLife;

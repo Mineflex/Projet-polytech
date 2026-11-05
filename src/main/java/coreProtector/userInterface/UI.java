@@ -1,16 +1,9 @@
 package coreProtector.userInterface;
-import coreProtector.entity.Entity;
-import coreProtector.entity.Player;
 import coreProtector.gameGestion.*;
-import coreProtector.items.GoldCoin;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 public class UI {
     GamePanel gp;
@@ -61,24 +54,24 @@ public class UI {
 
     BufferedImage canon=null;
     BufferedImage flameThrower=null;
-    BufferedImage electricTower=null;
-    BufferedImage catapult=null;
-    BufferedImage DEF5 = null;
-    BufferedImage DEF6 = null;
-    BufferedImage DEF7 = null;
-    BufferedImage DEF8 = null;
+    BufferedImage wall=null;
+    //BufferedImage catapult=null;
+    BufferedImage slingshot = null;
+    BufferedImage pricklyGround = null;
+    BufferedImage spearThrower = null;
+    //BufferedImage DEF8 = null;
     //il faudra changer les noms des défenses par celles qu on gardera
 
 
 
     public Rectangle btnCanon;
     public Rectangle btnFlameThrower;
-    public Rectangle btnElectricTower;
-    public Rectangle btnCatapult;
-    public Rectangle btnDEF5;
-    public Rectangle btnDEF6;
-    public Rectangle btnDEF7;
-    public Rectangle btnDEF8;
+    public Rectangle btnWall;
+    //public Rectangle btnCatapult;
+    public Rectangle btnSlingshot;
+    public Rectangle btnPricklyGround;
+    public Rectangle btnSpearThrower;
+    //public Rectangle btnDEF8;
 
 
 
@@ -115,8 +108,12 @@ public class UI {
             //défenses
             canon = ImageIO.read(getClass().getResourceAsStream("/defense/canon/lvl1_canon_sprite05.png"));
             flameThrower = ImageIO.read(getClass().getResourceAsStream("/defense/Flamethrower/lvl1_flameT_sprite_06.png"));
-            //electricTower =
-            //catapult =
+            //wall =
+            //catapult (si on a le temps)
+            //slingshot =
+            //pricklyGround =
+            //spearThrower =
+            //DEF8 (si on a le temps)
             // il faudra compléter cette partie du code quand les images du reste des défenses et ressources seront faites
 
             logo = ImageIO.read(getClass().getResourceAsStream("/UI/logo.png"));
@@ -136,13 +133,15 @@ public class UI {
 
         btnCanon = new Rectangle(30, 440, canon.getWidth()*3, canon.getHeight()*3); // x, y, largeur, hauteur
         btnFlameThrower = new Rectangle(140, 440, canon.getWidth()*3, canon.getHeight()*3);
-        btnElectricTower = new Rectangle(250, 440, canon.getWidth()*3, canon.getHeight()*3);
-        btnCatapult = new Rectangle(360, 440, canon.getWidth()*3, canon.getHeight()*3);
-        btnDEF5 = new Rectangle(30, 605, canon.getWidth()*3, canon.getHeight()*3);
-        btnDEF6 = new Rectangle(140, 605, canon.getWidth()*3, canon.getHeight()*3);
-        btnDEF7 = new Rectangle(250, 605, canon.getWidth()*3, canon.getHeight()*3);
-        btnDEF8 = new Rectangle(360, 605, canon.getWidth()*3, canon.getHeight()*3);
+        btnWall = new Rectangle(250, 440, canon.getWidth()*3, canon.getHeight()*3);
+        //btnCatapult = new Rectangle(360, 440, canon.getWidth()*3, canon.getHeight()*3);
+        btnSlingshot = new Rectangle(30, 605, canon.getWidth()*3, canon.getHeight()*3);
+        btnPricklyGround = new Rectangle(140, 605, canon.getWidth()*3, canon.getHeight()*3);
+        btnSpearThrower = new Rectangle(250, 605, canon.getWidth()*3, canon.getHeight()*3);
+        //btnDEF8 = new Rectangle(360, 605, canon.getWidth()*3, canon.getHeight()*3);
+
         // il faudra changer les wight et height quand les sprites seront fait pour chaque défenses
+        //pour la catapulte et la 8e def on les fera si on a le temps
 
 
 
@@ -525,48 +524,49 @@ public class UI {
         }
         g2.drawString("×10", btnFlameThrower.x + 30, btnFlameThrower.y + 125);
 
-        //tour électrique
+        //mur
         g2.setColor(Color.WHITE);
-        g2.draw(btnElectricTower);
+        g2.draw(btnWall);
         g2.setColor(new Color(97, 64, 4, 247));
-        g2.fillRect(btnElectricTower.x, btnElectricTower.y, btnElectricTower.width, btnElectricTower.height);
-        g2.drawImage(electricTower, btnElectricTower.x, btnElectricTower.y, btnElectricTower.width , btnElectricTower.height, null);
+        g2.fillRect(btnWall.x, btnWall.y, btnWall.width, btnWall.height);
+        g2.drawImage(woodBrazier, btnWall.x, btnWall.y, btnWall.width , btnWall.height, null);
 
-        //catapulte
-        g2.setColor(Color.WHITE);
+        //catapulte (on la fera si on a le temps)
+        /*g2.setColor(Color.WHITE);
         g2.draw(btnCatapult);
         g2.setColor(new Color(97, 64, 4, 247));
         g2.fillRect(btnCatapult.x, btnCatapult.y, btnCatapult.width, btnCatapult.height);
         g2.drawImage(catapult, btnCatapult.x, btnCatapult.y, btnCatapult.width , btnCatapult.height, null);
+         */
 
-        //DEF5
+        //lance pierre
         g2.setColor(Color.WHITE);
-        g2.draw(btnDEF5);
+        g2.draw(btnSlingshot);
         g2.setColor(new Color(97, 64, 4, 247));
-        g2.fillRect(btnDEF5.x, btnDEF5.y, btnDEF5.width, btnDEF5.height);
-        g2.drawImage(DEF5, btnDEF5.x, btnDEF5.y, btnDEF5.width , btnDEF5.height, null);
+        g2.fillRect(btnSlingshot.x, btnSlingshot.y, btnSlingshot.width, btnSlingshot.height);
+        g2.drawImage(slingshot, btnSlingshot.x, btnSlingshot.y, btnSlingshot.width , btnSlingshot.height, null);
 
-        //DEF6
+        //Sol piquant
         g2.setColor(Color.WHITE);
-        g2.draw(btnDEF6);
+        g2.draw(btnPricklyGround);
         g2.setColor(new Color(97, 64, 4, 247));
-        g2.fillRect(btnDEF6.x, btnDEF6.y, btnDEF6.width, btnDEF6.height);
-        g2.drawImage(DEF6, btnDEF6.x, btnDEF6.y, btnDEF6.width , btnDEF6.height, null);
+        g2.fillRect(btnPricklyGround.x, btnPricklyGround.y, btnPricklyGround.width, btnPricklyGround.height);
+        g2.drawImage(pricklyGround, btnPricklyGround.x, btnPricklyGround.y, btnPricklyGround.width , btnPricklyGround.height, null);
 
-        //DEF7
+        //Baliste
         g2.setColor(Color.WHITE);
-        g2.draw(btnDEF7);
+        g2.draw(btnSpearThrower);
         g2.setColor(new Color(97, 64, 4, 247));
-        g2.fillRect(btnDEF7.x, btnDEF7.y, btnDEF7.width, btnDEF7.height);
-        g2.drawImage(DEF7, btnDEF7.x, btnDEF7.y, btnDEF7.width , btnDEF7.height, null);
+        g2.fillRect(btnSpearThrower.x, btnSpearThrower.y, btnSpearThrower.width, btnSpearThrower.height);
+        g2.drawImage(spearThrower, btnSpearThrower.x, btnSpearThrower.y, btnSpearThrower.width , btnSpearThrower.height, null);
 
         //DEF8
-        g2.setColor(Color.WHITE);
+        /*g2.setColor(Color.WHITE);
         g2.draw(btnDEF8);
         g2.setColor(new Color(97, 64, 4, 247));
         g2.fillRect(btnDEF8.x, btnDEF8.y, btnDEF8.width, btnDEF8.height);
         g2.drawImage(DEF8, btnDEF8.x, btnDEF8.y, btnDEF8.width , btnDEF8.height, null);
-
+         */
 
 
 

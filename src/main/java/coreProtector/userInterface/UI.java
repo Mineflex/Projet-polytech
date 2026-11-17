@@ -582,16 +582,30 @@ public class UI {
         g2.fillRect(0, 25, gp.screenWidth, btnCanon.height*3);
         g2.setColor(Color.white);
         g2.setFont(arial_80_Bold);
+        int score = (int) Math.round((0.1*gp.playerXP.playerExPoSave * (gp.dayCycle.day * 100 + gp.dayCycle.hour)) );
+
         g2.drawString(gameOver, gp.screenWidth/2  - gameOver.length()*20 - 40 ,  200);
+        g2.setFont(arial_28_Bold);
+        String scoreS = "score : " + score;
+        g2.drawString(scoreS, gp.screenWidth/2  -scoreS.length()*7 ,  300);
+
         g2.setColor(Color.WHITE);
         g2.draw(btnRetry);
         g2.setColor(new Color(250, 250, 250, 50));
         g2.fillRect(gp.screenWidth/2 - 100, 465, 200, 50);
         g2.setColor(Color.WHITE);
         g2.setFont(arial_28_Bold);
+
         g2.drawString(Retry, gp.screenWidth/2 -Retry.length()*7,  500);
         g2.drawImage(logo, 50, 50, btnCanon.height*3 ,btnCanon.height*3,null);
+
+
         g2.drawImage(logo, gp.screenWidth - btnCanon.height*3 - 50, 50, btnCanon.height*3 ,btnCanon.height*3,null);
+
+
+
+
+
     }
 
 
@@ -741,9 +755,18 @@ public class UI {
                         int clickedTileID = 0;
                         if (clickedTileID == 0) {
 
-                            dManager.addDefense(defType, col * gp.tileSize, row * gp.tileSize);
+                            for (int i = 0; i < gp.defense.length ; i++) {
+                                if ( gp.defense[i] !=null &&   gp.defense[i].worldx==col * gp.tileSize && gp.defense[i].worldy==row * gp.tileSize){
+                                    isPlacingDef=false;
+                                }
+                            }
+                            if (isPlacingDef==true){
+                                dManager.addDefense(defType, col * gp.tileSize, row * gp.tileSize);
+                                isPlacingDef = false;
 
-                            isPlacingDef = false;
+                            }
+
+
                             gp.mouseH.mousePressedVar = false;
 
 

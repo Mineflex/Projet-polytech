@@ -41,9 +41,14 @@ public class Projectile extends Entity {
                         gp.monster[monsterIndex].life -= strength;
                     }
 
+
+
+
+
                 }else {
                     gp.monster[monsterIndex].life-=strength;
                     alive=false;
+
                 }
 
 
@@ -70,7 +75,23 @@ public class Projectile extends Entity {
         if (life<=0){
             alive=false;
         }
+        spriteCounter++;
 
-        spriteNum=1;
+
+//Faire varié les sprites pour faire l'animation
+        if(spriteCounter>10){
+            if(spriteNum==1){
+                spriteNum=2;
+            }
+            else if (spriteNum==2){
+                spriteNum=3;
+            }else if (spriteNum==3){
+                spriteNum=4;
+            }else if (spriteNum==4){
+                spriteNum=1;
+            }
+            spriteCounter=0;
+        }
+
     }
 }

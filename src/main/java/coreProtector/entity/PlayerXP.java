@@ -11,7 +11,7 @@ public class PlayerXP   {
     public double nextLevel;
     public  int cPAvailable;
     public int cPUsed;
-
+public int playerExPoSave;
     public PlayerXP(GamePanel gp){
         this.gp=gp;
     }
@@ -20,12 +20,15 @@ public class PlayerXP   {
         //ici qu'il faut changer les valeurs si jamais :)
         playerLevel=0;
         playerExPo=0;
+        playerExPoSave=0;
         nextLevel=100;
         cPAvailable=0;
         cPUsed=0;
     }
     public void updateExperience(double amount) {
         playerExPo += amount;
+        playerExPoSave+=amount;
+
 
         while (playerExPo >= nextLevel) {
             levelUp();

@@ -23,7 +23,7 @@ public class FlameThrower extends Entity{
         life=maxLife;
         int defenseLevel=1;
         maxCooldown=65*3;
-        cooldown=65*3;
+        cooldown=maxCooldown;
         this.gp=gp;
         hitBox=new Rectangle(0 + gp.scale *8*sizeMultiplier,0 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
         hitBoxDefaultY=hitBox.y;

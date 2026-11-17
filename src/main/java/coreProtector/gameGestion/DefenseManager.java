@@ -22,7 +22,11 @@ public class DefenseManager {
 
     public void addDefense(String type,int x, int y) {
         for (int i = 0; i < gp.defense.length; i++) {
+
+
+
             if (gp.defense[i] == null) {
+
 
 
 

@@ -1,5 +1,6 @@
 package coreProtector.entity;
 
+import coreProtector.entity.defenses.WoodWall;
 import coreProtector.entity.projectiles.Projectile;
 import coreProtector.gameGestion.GamePanel;
 import coreProtector.gameGestion.UtilityTool;
@@ -8,6 +9,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Entity {
@@ -41,6 +43,11 @@ public class Entity {
     public Projectile projectile;
     public int cooldown=0;
     public int maxCooldown=0;
+    public int level=1;
+    public int maxLevel=3;
+    public Entity nextLevel;
+
+    public ArrayList<Integer> upCost;
     public Entity(GamePanel gp){
         this.gp=gp;
 

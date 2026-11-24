@@ -1,9 +1,12 @@
 package coreProtector.userInterface;
+import coreProtector.entity.Entity;
+import coreProtector.entity.Player;
 import coreProtector.gameGestion.*;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class UI {
     GamePanel gp;
@@ -112,7 +115,8 @@ public class UI {
             //catapult (si on a le temps)
             //slingshot =
             //pricklyGround =
-            //spearThrower =
+            spearThrower =ImageIO.read(getClass().getResourceAsStream("/defense/upgrade.png"));
+
             //DEF8 (si on a le temps)
             // il faudra compléter cette partie du code quand les images du reste des défenses et ressources seront faites
 
@@ -739,7 +743,12 @@ public class UI {
                     gp.mouseH.mousePressedVar = false;
                     defType="wall";
 
-                }
+                } else if (btnSpearThrower.contains(mousePoint) ) {
+                    isPlacingDef = true;
+                     gp.mouseH.mousePressedVar = false;
+                     defType="upgrade";
+
+            }
             }
 
         }
@@ -761,11 +770,50 @@ public class UI {
                         if (clickedTileID == 0) {
 
                             for (int i = 0; i < gp.defense.length ; i++) {
-                                if ( gp.defense[i] !=null &&   gp.defense[i].worldx==col * gp.tileSize && gp.defense[i].worldy==row * gp.tileSize){
+                                if (gp.defense[i] !=null &&   gp.defense[i].worldx==col * gp.tileSize && gp.defense[i].worldy==row * gp.tileSize){
+                                    if ( defType =="upgrade" && gp.defense[i].upCost!=null){
+                                            Player p = gp.player;
+                                            ArrayList<Integer> d = gp.defense[i].upCost ;
+                                            if (
+                                                p.goldCoin >= d.get(0) &&
+                                                p.oak>=d.get(1) &&
+                                                p.birch>= d.get(2) &&
+                                                p.darkOak>=d.get(3) &&
+                                                p.cherryWood>=d.get(4) &&
+                                                p.woodBrazier>=d.get(5) &&
+                                                p.chargedWood>=d.get(6) &&
+                                                p.rock>=d.get(7)&&
+                                                p.iron>= d.get(8) &&
+                                                p.titane>=d.get(9) &&
+                                                p.rubis >= d.get(10) &&
+                                                p.onyx>=d.get(11) &&
+                                                        gp.defense[i].level< gp.defense[i].maxLevel
+                                            ){
+
+                                                p.goldCoin -= d.get(0) ;
+                                                        p.oak-=d.get(1);
+                                                        p.birch-=d.get(2);
+                                                        p.darkOak-=d.get(3);
+                                                        p.cherryWood-=d.get(4) ;
+                                                        p.woodBrazier-=d.get(5) ;
+                                                        p.chargedWood-=d.get(6) ;
+                                                        p.rock-=d.get(7);
+                                                        p.iron-= d.get(8);
+                                                        p.titane-=d.get(9);
+                                                        p.rubis -= d.get(10);
+                                                        p.onyx-=d.get(11);
+                                                String dir = gp.defense[i].direction;
+                                                gp.defense[i]=gp.defense[i].nextLevel;
+                                                gp.defense[i].worldx=col * gp.tileSize;
+                                                gp.defense[i].worldy=row * gp.tileSize;
+                                                gp.defense[i].direction=dir;
+
+                                        }
+                                    }
                                     isPlacingDef=false;
                                 }
                             }
-                            if (isPlacingDef==true){
+                            if (isPlacingDef==true && defType !="upgrade"){
                                 dManager.addDefense(defType, col * gp.tileSize, row * gp.tileSize);
                                 isPlacingDef = false;
 

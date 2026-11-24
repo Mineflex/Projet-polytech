@@ -89,24 +89,18 @@ public class Player extends Entity{
         speed = 4 ;
         direction= "up";
         //inventaire lors du spawn ou après gameOver
-        goldCoin = 0;
+        goldCoin = 10000;
         oak=10000;
-        birch=10;
-        darkOak=0;
-        cherryWood=0;
-        woodBrazier=100;
-        chargedWood=0;
-        rock=10;
-        iron=0;
-        titane=0;
-        rubis=0;
-        onyx=0;
-        chargedRock=0;
-        volcanicRock=0;
-        sand=0;
-        runeBrazier=0;
-        chargedRune=0;
-        physicalRune=0;
+        birch=10000;
+        darkOak=10000;
+        cherryWood=10000;
+        woodBrazier=10000;
+        chargedWood=10000;
+        rock=10000;
+        iron=10000;
+        titane=10000;
+        rubis=10000;
+        onyx=10000;
         //compétence lors du spawn ou après gameOver
         speedMultiplier=1;
         frameCounter=0;

@@ -6,6 +6,9 @@ import coreProtector.entity.projectiles.Fire;
 import coreProtector.gameGestion.GamePanel;
 
 import java.awt.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Canon extends Entity {
@@ -19,6 +22,10 @@ public class Canon extends Entity {
 
 
         name= "Canon";
+        level=1;
+        maxLevel=2;
+
+        nextLevel = new FlameThrower(gp);
         speed =0;
         maxLife=5;
         life=maxLife;
@@ -30,7 +37,22 @@ public class Canon extends Entity {
         hitBox=new Rectangle(0 + gp.scale *8*sizeMultiplier,0 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
         hitBoxDefaultY=hitBox.y;
         projectile=  new CanonBall(gp);
-
+        upCost = new ArrayList<>(
+                Arrays.asList(
+                        3, //gold
+                        10 , //oak
+                        0, //birch
+                        0 , //dark
+                        0 , //cherry
+                        0 , //brazier
+                        0 ,//charged wood
+                        10, //rock
+                        5,//iron
+                        0,//titane
+                        0, //rubis
+                        0 // onyx
+                )
+        );
 
         getImage();
     }

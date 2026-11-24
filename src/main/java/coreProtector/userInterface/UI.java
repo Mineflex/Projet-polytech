@@ -108,7 +108,7 @@ public class UI {
             //défenses
             canon = ImageIO.read(getClass().getResourceAsStream("/defense/canon/lvl1_canon_sprite05.png"));
             flameThrower = ImageIO.read(getClass().getResourceAsStream("/defense/Flamethrower/lvl1_flameT_sprite_06.png"));
-            //wall =
+            wall =ImageIO.read(getClass().getResourceAsStream("/defense/wall/wood_wall_0.png"));
             //catapult (si on a le temps)
             //slingshot =
             //pricklyGround =
@@ -529,7 +529,7 @@ public class UI {
         g2.draw(btnWall);
         g2.setColor(new Color(97, 64, 4, 247));
         g2.fillRect(btnWall.x, btnWall.y, btnWall.width, btnWall.height);
-        g2.drawImage(woodBrazier, btnWall.x, btnWall.y, btnWall.width , btnWall.height, null);
+        g2.drawImage(wall, btnWall.x, btnWall.y, btnWall.width , btnWall.height, null);
 
         //catapulte (on la fera si on a le temps)
         /*g2.setColor(Color.WHITE);
@@ -733,6 +733,11 @@ public class UI {
                     isPlacingDef = true;
                     gp.mouseH.mousePressedVar = false;
                     defType="flameThrower";
+
+                }else if (btnWall.contains(mousePoint) && gp.player.oak >= 15) {
+                    isPlacingDef = true;
+                    gp.mouseH.mousePressedVar = false;
+                    defType="wall";
 
                 }
             }

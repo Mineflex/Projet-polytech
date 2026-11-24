@@ -90,7 +90,7 @@ public class Player extends Entity{
         direction= "up";
         //inventaire lors du spawn ou après gameOver
         goldCoin = 0;
-        oak=100;
+        oak=10000;
         birch=10;
         darkOak=0;
         cherryWood=0;
@@ -204,7 +204,7 @@ public class Player extends Entity{
                     spriteCounter = 0;
                     hasHit=true;
 
-                    projectile.set(worldx,worldy,direction,true,this);
+                    //projectile.set(worldx,worldy,direction,true,this);
                     gp.projectileList.add(projectile);
                 }
             if ( !attacking && keyH.sprintPressed != true){

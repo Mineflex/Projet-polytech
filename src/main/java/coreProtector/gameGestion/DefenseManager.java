@@ -2,6 +2,7 @@ package coreProtector.gameGestion;
 
 import coreProtector.entity.defenses.Canon;
 import coreProtector.entity.defenses.FlameThrower;
+import coreProtector.entity.defenses.WoodWall;
 
 import javax.imageio.ImageIO;
 import java.awt.Graphics ;
@@ -44,6 +45,10 @@ public class DefenseManager {
                             gp.player.woodBrazier -= 10;
 
                             break;
+                        case "wall":
+                            gp.defense[i] = new WoodWall(gp);
+                            gp.player.oak -= 15;
+                            break;
                     }
 
 
@@ -64,6 +69,10 @@ public class DefenseManager {
                             gp.defense[i] = new FlameThrower(gp);
                             gp.player.woodBrazier -= 10;
 
+                            break;
+                        case "wall":
+                            gp.defense[i] = new WoodWall(gp);
+                            gp.player.oak -= 15;
                             break;
                     }
 
@@ -87,6 +96,10 @@ public class DefenseManager {
                             gp.player.woodBrazier -= 10;
 
                             break;
+                        case "wall":
+                            gp.defense[i] = new WoodWall(gp);
+                            gp.player.oak -= 15;
+                            break;
                     }
 
 
@@ -108,6 +121,11 @@ public class DefenseManager {
                             gp.defense[i] = new FlameThrower(gp);
                             gp.player.woodBrazier -= 10;
 
+                            break;
+
+                        case "wall":
+                            gp.defense[i] = new WoodWall(gp);
+                            gp.player.oak -= 15;
                             break;
                     }
 

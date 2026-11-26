@@ -5,6 +5,8 @@ import coreProtector.entity.mobs.Slime;
 import coreProtector.entity.naturalResources.*;
 import coreProtector.items.ExperienceOrb;
 
+import java.util.Random;
+
 public class AssetSetter {
 
     GamePanel gp;
@@ -83,6 +85,16 @@ public class AssetSetter {
         gp.monster[11]= new Core(gp);
         gp.monster[11].worldx=123*gp.tileSize;
         gp.monster[11].worldy=123*gp.tileSize;
+
+        Random rd = new Random();
+        for (int i = 12; i < 28 ; i++) {
+           int x =   rd.nextInt(100,150);
+           int y =   rd.nextInt(100,150);
+           gp.monster[i] = new OakWoodEntity(gp);
+           gp.monster[i].worldx=x*gp.tileSize;
+           gp.monster[i].worldy=y*gp.tileSize;
+
+        }
 
     }
 

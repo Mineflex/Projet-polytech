@@ -5,6 +5,8 @@ import coreProtector.entity.projectiles.CanonBall;
 import coreProtector.gameGestion.GamePanel;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class WoodWall extends Entity {
 
@@ -25,7 +27,26 @@ public class WoodWall extends Entity {
         sizeMultiplier=1;
         hitBox=new Rectangle(0 + gp.scale *8*sizeMultiplier,0 + gp.scale *8*sizeMultiplier ,gp.scale*16*sizeMultiplier,gp.scale*16*sizeMultiplier);
         hitBoxDefaultY=hitBox.y;
+        level=1;
+        maxLevel=2;
 
+        nextLevel = new StoneWall(gp);
+        upCost = new ArrayList<>(
+                Arrays.asList(
+                        3, //gold
+                        5 , //oak
+                        0, //birch
+                        0 , //dark
+                        0 , //cherry
+                        0 , //brazier
+                        0 ,//charged wood
+                        15, //rock
+                        0,//iron
+                        0,//titane
+                        0, //rubis
+                        0 // onyx
+                )
+        );
 
 
         getImage();

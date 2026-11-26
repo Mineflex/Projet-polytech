@@ -92,12 +92,12 @@ public class AssetSetter {
 
            int y =   125;
 
-           while (((x>=124 && x<=126) && ( y<=141 && y>= 109)) || ((y>=124 && y<=126) && ( x<=141 && x>= 109))  ){
+           while (((x>=122 && x<=128) && ( y<=145 && y>= 105)) || ((y>=131 && y<=122) && ( x<=145 && x>= 105))  ){
                 x =   rd.nextInt(105,145);
 
                 y =   rd.nextInt(105,145);
                for (int j = 0; j < gp.monster.length; j++) {
-                   if(gp.monster[i] !=null && gp.monster[i].worldx == x * gp.tileSize && gp.monster[i].worldy ==y ){
+                   if(gp.monster[i] !=null && gp.monster[i].worldx == x * gp.tileSize && (gp.monster[i].worldy ==y* gp.tileSize || gp.monster[i].worldy == (y+1) * gp.tileSize )){
                        x =   rd.nextInt(105,145);
 
                        y =   rd.nextInt(105,145);

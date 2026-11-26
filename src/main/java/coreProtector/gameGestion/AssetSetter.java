@@ -87,9 +87,27 @@ public class AssetSetter {
         gp.monster[11].worldy=123*gp.tileSize;
 
         Random rd = new Random();
-        for (int i = 12; i < 28 ; i++) {
-           int x =   rd.nextInt(100,150);
-           int y =   rd.nextInt(100,150);
+        for (int i = 12; i < 45 ; i++) {
+           int x =   125;
+
+           int y =   125;
+
+           while (((x>=124 && x<=126) && ( y<=141 && y>= 109)) || ((y>=124 && y<=126) && ( x<=141 && x>= 109))  ){
+                x =   rd.nextInt(105,145);
+
+                y =   rd.nextInt(105,145);
+               for (int j = 0; j < gp.monster.length; j++) {
+                   if(gp.monster[i] !=null && gp.monster[i].worldx == x * gp.tileSize && gp.monster[i].worldy ==y ){
+                       x =   rd.nextInt(105,145);
+
+                       y =   rd.nextInt(105,145);
+                   }
+               }
+
+           }
+
+
+
            gp.monster[i] = new OakWoodEntity(gp);
            gp.monster[i].worldx=x*gp.tileSize;
            gp.monster[i].worldy=y*gp.tileSize;
